@@ -7,9 +7,11 @@ import TelaCadastroEndereco from './TelaCadastroEndereco';
 import TelaCadastroCliente from './TelaCadastroCliente';
 import TelaCadastroFornecedor from './TelaCadastroFornecedor';
 import TelaPrincipalUsuario from './TelaPrincipalUsuario';
+import TelaPedidos from './TelaPedidos';
+import TelaGerenciarServicos from './TelaGerenciarServicos';
 import TelaCategoria from './TelaCategoria';
 import TelaFavoritos from './TelaFavoritos';
-import TelaPerfilUsuario from './TelaPerfilUsuario';
+import TelaPerfil from './TelaPerfil';
 import CommonStyles from '../CommonStyles';
 import { Icon } from 'react-native-elements/dist/icons/Icon';
 
@@ -17,7 +19,7 @@ export default () => {
     const Stack = createNativeStackNavigator();
     const Tab = createBottomTabNavigator();
 
-    function Tabs() {
+    function TabUsuario() {
         return (
             <Tab.Navigator
                 screenOptions={{
@@ -72,8 +74,65 @@ export default () => {
                     }}
                 />
                 <Tab.Screen
-                    component={TelaPerfilUsuario}
-                    name="TelaPerfilUsuario"
+                    component={TelaPerfil}
+                    name="TelaPerfil"
+                    options={{
+                        title: 'Perfil',
+                        tabBarIcon: ({ color }) => (
+                            <Icon color={color} name="user" size={25} type="font-awesome" />
+                        )
+                    }}
+                />
+            </Tab.Navigator>
+        )
+    }
+
+    function TabFornecedor() {
+        return (
+            <Tab.Navigator
+                screenOptions={{
+                    headerStyle: {
+                        backgroundColor: CommonStyles.corPrincipal,
+                    },
+                    headerTintColor: CommonStyles.corSecundaria,
+                    headerTitleAlign: 'center',
+                    headerTitleStyle: {
+                        fontSize: 28,
+                        fontWeight: 'bold',
+                    },
+                    tabBarStyle: {
+                        backgroundColor: CommonStyles.corSecundaria,
+                        borderTopColor: CommonStyles.corTerciaria,
+                        padding: 5,
+                    },
+                    tabBarActiveTintColor: '#FFF',
+                    tabBarLabelStyle: {
+                        fontSize: 14,
+                    },
+                }}>
+                <Tab.Screen
+                    component={TelaPedidos}
+                    name="TelaPedidos"
+                    options={{
+                        title: 'Pedidos',
+                        tabBarIcon: ({ color }) => (
+                            <Icon color={color} name="request-page" size={25} type="materialicons" />
+                        )
+                    }}
+                />
+                <Tab.Screen
+                    component={TelaGerenciarServicos}
+                    name="TelaGerenciarServicos"
+                    options={{
+                        title: 'Gerenciar Serviços',
+                        tabBarIcon: ({ color }) => (
+                            <Icon color={color} name="laptop" size={25} type="font-awesome" />
+                        )
+                    }}
+                />
+                <Tab.Screen
+                    component={TelaPerfil}
+                    name="TelaPerfil"
                     options={{
                         title: 'Perfil',
                         tabBarIcon: ({ color }) => (
@@ -87,7 +146,7 @@ export default () => {
 
     return (
         <Stack.Navigator
-            initialRouteName="Tabs">
+            initialRouteName="TabFornecedor">
             <Stack.Screen
                 component={TelaCadastro}
                 name="TelaCadastro"
@@ -124,8 +183,15 @@ export default () => {
                 }}
             />
             <Stack.Screen
-                component={Tabs}
-                name="Tabs"
+                component={TabUsuario}
+                name="TabUsuario"
+                options={{
+                    headerShown: false,
+                }}
+            />
+            <Stack.Screen
+                component={TabFornecedor}
+                name="TabFornecedor"
                 options={{
                     headerShown: false,
                 }}
