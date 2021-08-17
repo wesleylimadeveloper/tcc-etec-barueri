@@ -146,7 +146,7 @@ export default () => {
 
     return (
         <Stack.Navigator
-            initialRouteName="TabFornecedor">
+            initialRouteName="TabUsuario">
             <Stack.Screen
                 component={TelaCadastro}
                 name="TelaCadastro"
