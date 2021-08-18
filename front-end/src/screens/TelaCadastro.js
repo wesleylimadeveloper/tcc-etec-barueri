@@ -10,7 +10,6 @@ import BotaoPrincipal from '../components/BotaoPrincipal';
 import CommonStyles from '../CommonStyles';
 
 export default ({ navigation }) => {
-
     const [checked, setChecked] = useState('usuário');
     
     return (

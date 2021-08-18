@@ -10,7 +10,6 @@ import BotaoPrincipal from '../components/BotaoPrincipal';
 import CommonStyles from '../CommonStyles';
 
 export default () => {
-  
   const [email, setEmail] = useState('');
 
   return (

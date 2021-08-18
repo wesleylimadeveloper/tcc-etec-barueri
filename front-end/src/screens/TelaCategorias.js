@@ -5,6 +5,7 @@ import {
     Text, 
     View 
 } from 'react-native';
+import SearchBar from '../components/SearchBar';
 import CommonStyles from '../CommonStyles';
 
 export default () => {
@@ -13,7 +14,11 @@ export default () => {
             <StatusBar 
                 backgroundColor={CommonStyles.corSecundaria}
                 barStyle="light-content" />
-            <Text style={styles.titulo}>Tela Categoria</Text>
+            <View style={styles.searchBarContainer}>
+                <SearchBar 
+                    placeholder="Buscar..." 
+                />
+            </View>
         </View>
     );
 }
@@ -23,12 +28,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: CommonStyles.corPrincipal,
         flex: 1,
-        justifyContent: 'center',
     },
-    titulo: {
-        color: CommonStyles.corSecundaria,
-        fontSize: 30,
-        fontWeight: 'bold',
-        textAlign: 'center',
+    searchBarContainer: {
+        marginVertical: 20,
     },
 });

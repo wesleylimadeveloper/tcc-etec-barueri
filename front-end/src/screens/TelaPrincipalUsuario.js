@@ -14,7 +14,6 @@ import estabelecimentos from '../data/Estabelecimentos';
 import CommonStyles from '../CommonStyles';
 
 export default () => {
-    
     const [buscar, setBuscar] = useState('');
 
     function estabelecimentosProximos({ item }) {

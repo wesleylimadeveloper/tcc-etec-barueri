@@ -1,25 +1,24 @@
 import React, { useState } from 'react';
 import {
-  StatusBar, 
-  StyleSheet, 
-  Text, 
-  View 
+  StatusBar,
+  StyleSheet,
+  Text,
+  View
 } from 'react-native';
 import Input from '../components/Input';
 import BotaoPrincipal from '../components/BotaoPrincipal';
 import CommonStyles from '../CommonStyles';
 
 export default ({ navigation }) => {
-
   const [nome, setNome] = useState('');
   const [telefone, setTelefone] = useState('');
   const [dataNascimento, setDataNascimento] = useState('');
-  
+
   return (
     <View style={styles.container}>
-      <StatusBar 
-                backgroundColor={CommonStyles.corSecundaria}
-                barStyle="light-content" />
+      <StatusBar
+        backgroundColor={CommonStyles.corSecundaria}
+        barStyle="light-content" />
       <Text style={styles.titulo}>Dados de Cliente</Text>
       <View style={styles.inputsContainer}>
         <Input
@@ -41,7 +40,7 @@ export default ({ navigation }) => {
         />
       </View>
       <View>
-        <BotaoPrincipal 
+        <BotaoPrincipal
           onPress={() => navigation.navigate("TelaCadastroEndereco")}
           title="Avançar" />
       </View>

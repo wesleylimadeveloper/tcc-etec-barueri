@@ -10,18 +10,17 @@ import BotaoPrincipal from '../components/BotaoPrincipal';
 import CommonStyles from '../CommonStyles';
 
 export default ({ navigation }) => {
-
   const [nomeUsuario, setNomeUsuario] = useState('');
   const [email, setEmail] = useState('');
   const [emailRecuperacao, setEmailRecuperacao] = useState('');
   const [senha, setSenha] = useState('');
   const [confirmarSenha, setConfirmarSenha] = useState('');
-  
+
   return (
     <View style={styles.container}>
-      <StatusBar 
-                backgroundColor={CommonStyles.corSecundaria}
-                barStyle="light-content" />
+      <StatusBar
+        backgroundColor={CommonStyles.corSecundaria}
+        barStyle="light-content" />
       <Text style={styles.titulo}>Cadastro de Usuário</Text>
       <View style={styles.inputsContainer}>
         <Input

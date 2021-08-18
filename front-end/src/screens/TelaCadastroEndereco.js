@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import {
-  StatusBar, 
-  StyleSheet, 
-  Text, 
-  View 
+  StatusBar,
+  StyleSheet,
+  Text,
+  View
 } from 'react-native';
 import Input from '../components/Input';
 import BotaoPrincipal from '../components/BotaoPrincipal';
@@ -11,7 +11,6 @@ import BotaoSecundario from '../components/BotaoSecundario';
 import CommonStyles from '../CommonStyles';
 
 export default ({ navigation }) => {
-  
   const [cep, setCep] = useState('');
   const [logradouro, setLogradouro] = useState('');
   const [numero, setNumero] = useState('');
@@ -21,9 +20,9 @@ export default ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <StatusBar 
-                backgroundColor={CommonStyles.corSecundaria}
-                barStyle="light-content" />
+      <StatusBar
+        backgroundColor={CommonStyles.corSecundaria}
+        barStyle="light-content" />
       <Text style={styles.titulo}>Cadastro de Endereço</Text>
       <View style={styles.inputsContainer}>
         <Input
@@ -59,8 +58,8 @@ export default ({ navigation }) => {
       </View>
       <View style={styles.botoesContainer}>
         <BotaoPrincipal
-          onPress={() => navigation.navigate("Tabs")}
-          title="Cadastrar" 
+          onPress={() => navigation.navigate("TabUsuario")}
+          title="Cadastrar"
         />
         <BotaoSecundario title="Pular" />
       </View>

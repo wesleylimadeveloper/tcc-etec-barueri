@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import { 
+import {
   StatusBar,
-  StyleSheet, 
-  Text, 
-  View 
+  StyleSheet,
+  Text,
+  View
 } from 'react-native';
 import Input from '../components/Input';
 import BotaoPrincipal from '../components/BotaoPrincipal';
 import CommonStyles from '../CommonStyles';
 
 export default ({ navigation }) => {
-
   const [cnpj, setCnpj] = useState('');
   const [razaoSocial, setRazaoSocial] = useState('');
   const [nomeFantasia, setNomeFantasia] = useState('');
@@ -18,12 +17,12 @@ export default ({ navigation }) => {
   const [senha, setSenha] = useState('');
   const [confirmarSenha, setConfirmarSenha] = useState('');
   const [horarioFuncionamento, setHorarioFuncionamento] = useState('');
-  
+
   return (
     <View style={styles.container}>
-      <StatusBar 
-                backgroundColor={CommonStyles.corSecundaria}
-                barStyle="light-content" />
+      <StatusBar
+        backgroundColor={CommonStyles.corSecundaria}
+        barStyle="light-content" />
       <Text style={styles.titulo}>Cadastro de Fornecedor</Text>
       <View style={styles.inputsContainer}>
         <Input
@@ -70,7 +69,7 @@ export default ({ navigation }) => {
       </View>
       <View>
         <BotaoPrincipal
-          onPress={() => navigation.navigate("TelaCadastroEndereco")} 
+          onPress={() => navigation.navigate("TelaCadastroEndereco")}
           title="Avançar" />
       </View>
     </View>

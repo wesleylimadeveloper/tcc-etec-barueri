@@ -19,8 +19,10 @@ export default () => {
             <View style={styles.favoritoContainer}>
                 <Image style={styles.imagemFavoritos} source={{ uri: `${item.imageURL}` }} />
                 <View>
-                    <Text style={styles.textoNomeFantasia}>{item.nomeFantasia}</Text>
-                    <Text style={styles.textoEndereco}>{item.endereco}, {item.numero}</Text>
+                    <TouchableOpacity>
+                        <Text style={styles.textoNomeFantasia}>{item.nomeFantasia}</Text>
+                        <Text style={styles.textoEndereco}>{item.endereco}, {item.numero}</Text>
+                    </TouchableOpacity>
                 </View>
                 <TouchableOpacity>
                     <Icon color={CommonStyles.corSecundaria} name="heart" size={26} type="font-awesome" />

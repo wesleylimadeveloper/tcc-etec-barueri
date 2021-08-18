@@ -11,7 +11,6 @@ import BotaoSecundario from '../components/BotaoSecundario';
 import CommonStyles from '../CommonStyles';
 
 export default () => {
-  
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
