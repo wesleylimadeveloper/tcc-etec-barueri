@@ -25,7 +25,7 @@ export default () => {
                     </TouchableOpacity>
                 </View>
                 <TouchableOpacity>
-                    <Icon color={CommonStyles.corSecundaria} name="heart" size={26} type="font-awesome" />
+                    <Icon color="#E63F23" name="heart" size={26} type="font-awesome" />
                 </TouchableOpacity>
             </View>
         )
