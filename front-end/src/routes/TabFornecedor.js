@@ -23,7 +23,7 @@ export default () => {
                 },
                 tabBarStyle: {
                     backgroundColor: CommonStyles.corSecundaria,
-                    borderTopColor: CommonStyles.corTerciaria,
+                    borderTopColor: 'transparent',
                     padding: 5,
                 },
                 tabBarActiveTintColor: '#FFF',

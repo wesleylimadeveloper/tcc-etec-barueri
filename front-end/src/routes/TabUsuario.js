@@ -4,6 +4,7 @@ import { Icon } from 'react-native-elements';
 import TelaPrincipalUsuario from '../screens/TelaPrincipalUsuario';
 import TelaCategorias from '../screens/TelaCategorias';
 import TelaFavoritos from '../screens/TelaFavoritos';
+import TelaEnderecos from '../screens/TelaEnderecos';
 import TelaPerfil from '../screens/TelaPerfil';
 import CommonStyles from '../CommonStyles';
 
@@ -24,12 +25,12 @@ export default () => {
                 },
                 tabBarStyle: {
                     backgroundColor: CommonStyles.corSecundaria,
-                    borderTopColor: CommonStyles.corTerciaria,
+                    borderTopColor: 'transparent',
                     padding: 5,
                 },
                 tabBarActiveTintColor: '#FFF',
                 tabBarLabelStyle: {
-                    fontSize: 14,
+                    fontSize: 13,
                 },
             }}>
             <Tab.Screen
@@ -60,6 +61,16 @@ export default () => {
                     title: 'Favoritos',
                     tabBarIcon: ({ color }) => (
                         <Icon color={color} name="heart" size={25} type="font-awesome" />
+                    )
+                }}
+            />
+            <Tab.Screen
+                component={TelaEnderecos}
+                name="TelaEnderecos"
+                options={{
+                    title: 'Endereços',
+                    tabBarIcon: ({ color }) => (
+                        <Icon color={color} name="map-marker" size={25} type="font-awesome" />
                     )
                 }}
             />
