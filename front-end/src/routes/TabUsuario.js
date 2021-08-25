@@ -68,6 +68,7 @@ export default () => {
                 component={TelaEnderecos}
                 name="TelaEnderecos"
                 options={{
+                    headerShown: false,
                     title: 'Endereços',
                     tabBarIcon: ({ color }) => (
                         <Icon color={color} name="map-marker" size={25} type="font-awesome" />

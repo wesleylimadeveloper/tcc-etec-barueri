@@ -1,20 +1,37 @@
 import React from 'react';
-import { 
+import {
+    Dimensions,
     StatusBar,
-    StyleSheet, 
-    Text, 
-    View 
+    StyleSheet,
+    View
 } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
 import CommonStyles from '../CommonStyles';
 
 export default () => {
     return (
         <View style={styles.container}>
-            <StatusBar 
+            <StatusBar
                 backgroundColor={CommonStyles.corSecundaria}
                 barStyle="light-content" />
-            <Text style={styles.titulo}>Tela Endereços</Text>
-        </View>
+            <MapView
+                style={styles.mapa}
+                initialRegion={{
+                    latitude: -23.499796,
+                    longitude: -46.812634,
+                    latitudeDelta: 0.0125,
+                    longitudeDelta: 0.0125,
+                }}>
+                    <Marker 
+                        coordinate={{
+                            latitude: -23.499796,
+                            longitude: -46.812634,
+                        }}
+                        description="Avenida Diretriz, 422 - Jardim Mutinga - Barueri"
+                        title="Casa"
+                    />
+            </MapView>
+        </View >
     );
 }
 
@@ -25,11 +42,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
     },
-    titulo: {
-        color: CommonStyles.corSecundaria,
-        fontSize: 30,
-        fontWeight: 'bold',
-        marginBottom: 15,
-        textAlign: 'center',
-    },
+    mapa: {
+        height: Dimensions.get('window').height,
+        width: Dimensions.get('window').width,
+    }
 });

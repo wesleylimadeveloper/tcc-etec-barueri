@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import {
   StatusBar,
   StyleSheet,
+  TouchableOpacity,
+  Text,
   View
 } from 'react-native';
+import { Icon } from 'react-native-elements';
 import Logo from '../components/Logo';
 import Input from '../components/Input';
-import BotaoPrincipal from '../components/BotaoPrincipal';
 import BotaoSecundario from '../components/BotaoSecundario';
 import CommonStyles from '../CommonStyles';
 
@@ -36,8 +38,14 @@ export default () => {
         />
       </View>
       <View style={styles.botoesContainer}>
-        <BotaoPrincipal title="Entrar com Facebook" />
-        <BotaoPrincipal title="Entrar com a conta do Google" />
+        <TouchableOpacity style={styles.botaoFacebook}>
+          <Icon color="#FFF" name="facebook-square" size={20} type="font-awesome" />
+          <Text style={styles.textoBotaoFacebook}>Entrar com o Facebook</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.botaoGoogle}>
+          <Icon color="#555" name="google" size={20} type="font-awesome" />
+          <Text style={styles.textoBotaoGoogle}>Entrar com a conta do Google</Text>
+        </TouchableOpacity>
         <BotaoSecundario title="Pular" />
       </View>
     </View>
@@ -62,5 +70,37 @@ const styles = StyleSheet.create({
   botoesContainer: {
     height: 145,
     justifyContent: 'space-between',
-  }
+  },
+  botaoFacebook: {
+    alignItems: 'center',
+    backgroundColor: '#1877F2',
+    borderRadius: 5,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingVertical: 10,
+    width: 300,
+  },
+  textoBotaoFacebook: {
+    color: '#FFF',
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginLeft: 10,
+    textAlign: 'center',
+  },
+  botaoGoogle: {
+    alignItems: 'center',
+    backgroundColor: '#FFF',
+    borderRadius: 5,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingVertical: 10,
+    width: 300,
+  },
+  textoBotaoGoogle: {
+    color: '#555',
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginLeft: 10,
+    textAlign: 'center',
+  },
 });

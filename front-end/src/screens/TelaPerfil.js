@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
         backgroundColor: CommonStyles.corSecundaria,
         borderRadius: 5,
         flexDirection: 'row',
+        justifyContent: 'center',
         paddingHorizontal: 15,
         paddingVertical: 8,
         width: 300,
@@ -71,6 +72,7 @@ const styles = StyleSheet.create({
     textoBotoes: {
         color: '#FFF',
         fontSize: 18,
+        fontWeight: 'bold',
         marginLeft: 10,
     },
 });

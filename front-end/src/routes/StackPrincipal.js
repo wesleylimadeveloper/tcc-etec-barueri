@@ -1,5 +1,6 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import TelaLogin from '../screens/TelaLogin';
 import TelaCadastro from '../screens/TelaCadastro';
 import TelaCadastroUsuario from '../screens/TelaCadastroUsuario';
 import TelaCadastroFornecedor from '../screens/TelaCadastroFornecedor';
@@ -13,10 +14,17 @@ export default () => {
 
     return (
         <Stack.Navigator
-            initialRouteName="TabUsuario">
+            initialRouteName="TelaCadastro">
             <Stack.Screen
                 component={TelaCadastro}
                 name="TelaCadastro"
+                options={{
+                    headerShown: false,
+                }}
+            />
+            <Stack.Screen
+                component={TelaLogin}
+                name="TelaLogin"
                 options={{
                     headerShown: false,
                 }}
