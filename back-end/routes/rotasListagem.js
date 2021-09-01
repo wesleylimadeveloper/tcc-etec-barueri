@@ -50,6 +50,18 @@ router.get('/categorias', (req, res) => {
     })
 })
 
+router.get('/usuarios', (req, res) => {
+    const sql = 'SELECT * from tbl_usuario'
+
+    connection.query(sql, (error, results, fields) => {
+        if (!error) {
+            res.send(results)
+        } else {
+            res.send('Erro ao listar dados!')
+        }
+    })
+})
+
 router.get('/formaspagamento', (req, res) => {
     const sql = 'SELECT * from tbl_forma_pagamento'
 
@@ -110,5 +122,19 @@ router.get('/agendas', (req, res) => {
         }
     })
 })
+
+router.get('/estabelecimentos', (req, res) => {
+    const sql = 'SELECT * FROM tbl_fornecedor INNER JOIN tbl_endereco ON tbl_fornecedor.cod_fornecedor = tbl_endereco.cod_endereco'
+
+    connection.query(sql, (error, results, fields) => {
+        if (!error) {
+            res.send(results)
+        } else {
+            res.send('Erro ao listar dados!')
+        }
+    })
+})
+
+
 
 module.exports = router

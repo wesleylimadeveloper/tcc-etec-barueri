@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Image, 
     ScrollView, 
@@ -10,21 +10,28 @@ import {
 } from 'react-native';
 import SearchBar from '../components/SearchBar';
 import Carousel from 'react-native-snap-carousel';
-import estabelecimentos from '../data/Estabelecimentos';
+import api from '../api/Api';
 import CommonStyles from '../CommonStyles';
 
 export default () => {
     const [buscar, setBuscar] = useState('');
+    const [estabelecimentos, setEstabelecimentos] = useState([]);
+
+    useEffect(() => {
+        api.get('/estabelecimentos')
+            .then(res => setEstabelecimentos(res.data))
+            .catch(error => console.log(error));
+    }, []);
 
     function estabelecimentosProximos({ item }) {
         return (
             <View style={styles.carouselContainer}>
                 <Image style={styles.imagemEstabelecimento} 
-                    source={{ uri: `${item.imageURL}` }} />
+                    source={{ uri: `${item.fotos_lugar}` }} />
                 <View style={styles.infoContainer}>
                     <TouchableOpacity>
-                        <Text style={styles.nomeFantasia}>{item.nomeFantasia}</Text>
-                        <Text style={styles.endereco}>{item.endereco}, {item.numero} - {item.bairro}</Text>
+                        <Text style={styles.nomeFantasia}>{item.nome_fantasia}</Text>
+                        <Text style={styles.endereco}>{item.logradouro}, {item.numero} - {item.cidade}</Text>
                     </TouchableOpacity>
                 </View>
             </View>
