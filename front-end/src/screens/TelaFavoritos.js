@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     textoEndereco: {
+        alignSelf: 'center',
         color: CommonStyles.corSecundaria,
         fontSize: 16,
     }

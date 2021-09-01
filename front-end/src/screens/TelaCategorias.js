@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     FlatList,
     Image,
@@ -9,17 +9,24 @@ import {
     View
 } from 'react-native';
 import SearchBar from '../components/SearchBar';
-import categorias from '../data/Categorias';
+import api from '../api/Api';
 import CommonStyles from '../CommonStyles';
 
 export default () => {
+    const [categorias, setCategorias] = useState([]);
+
+    useEffect(() => {
+        api.get('/categorias')
+            .then(response => setCategorias(response.data))
+            .catch(error => console.log(error));
+    }, []);
 
     function renderItem({ item }) {
         return (
             <View style={styles.categoriaContainer}>
-                <Image style={styles.imagemCategoria} source={{ uri: `${item.imagemCategoria}` }} />
+                <Image style={styles.foto} source={{ uri: `${item.foto}` }} />
                 <TouchableOpacity>
-                    <Text style={styles.textoCategoria}>{item.nomeCategoria}</Text>
+                    <Text style={styles.nome}>{item.nome_categoria}</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -37,7 +44,7 @@ export default () => {
             </View>
             <FlatList
                 data={categorias}
-                keyExtractor={item => item.id}
+                keyExtractor={item => item.cod_categoria.toString()}
                 renderItem={renderItem}
             />
         </View>
@@ -63,15 +70,14 @@ const styles = StyleSheet.create({
         padding: 10,
         width: '80%',
     },
-    imagemCategoria: {
-        borderRadius: 75,
+    foto: {
         height: 150,
-        marginBottom: 5,
+        marginBottom: 10,
         width: 150,
     },
-    textoCategoria: {
+    nome: {
         color: CommonStyles.corSecundaria,
-        fontSize: 22,
+        fontSize: 23,
         fontWeight: 'bold',
     },
 });

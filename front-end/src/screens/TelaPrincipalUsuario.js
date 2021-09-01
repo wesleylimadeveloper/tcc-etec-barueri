@@ -19,7 +19,7 @@ export default () => {
 
     useEffect(() => {
         api.get('/estabelecimentos')
-            .then(res => setEstabelecimentos(res.data))
+            .then(response => setEstabelecimentos(response.data))
             .catch(error => console.log(error));
     }, []);
 
