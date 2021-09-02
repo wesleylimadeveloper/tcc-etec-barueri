@@ -55,16 +55,6 @@ export default () => {
                 }}
             />
             <Tab.Screen
-                component={TelaFavoritos}
-                name="TelaFavoritos"
-                options={{
-                    title: 'Favoritos',
-                    tabBarIcon: ({ color }) => (
-                        <Icon color={color} name="heart" size={25} type="font-awesome" />
-                    )
-                }}
-            />
-            <Tab.Screen
                 component={TelaEnderecos}
                 name="TelaEnderecos"
                 options={{

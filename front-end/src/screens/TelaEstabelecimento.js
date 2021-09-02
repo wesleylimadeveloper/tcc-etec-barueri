@@ -1,16 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
+    FlatList,
     Image,
     StatusBar,
     StyleSheet,
     Text,
     View
 } from 'react-native'
+import api from '../api/Api'
 import BotaoPrincipal from '../components/BotaoPrincipal'
 import CommonStyles from '../CommonStyles'
 
 export default (props) => {
-    const { nome_fantasia, fotos_lugar } = props.route.params
+    const [servicos, setServicos] = useState([])
+    const { cod_fornecedor, nome_fantasia, fotos_lugar } = props.route.params
+
+    useEffect(() => {
+        api.get(`/servicos/${cod_fornecedor}`)
+            .then(response => setServicos(response.data))
+            .catch(error => console.log(error))
+    }, [])
 
     return (
         <View style={styles.container}>
@@ -25,8 +34,22 @@ export default (props) => {
                     source={{ uri: `${fotos_lugar}` }} 
                 />
             </View>
-            <Text style={styles.textoServiços}>Serviços</Text>
-            <BotaoPrincipal title="Agendar" />
+            <Text style={styles.textoServicos}>Serviços</Text>
+            <View style={styles.servicosContainer}>
+                <FlatList 
+                    data={servicos}
+                    keyExtractor={item => item.cod_servicos.toString()}
+                    renderItem={({item}) => {
+                        return (
+                            <View style={styles.infoServico}>
+                                <Text style={styles.textoInfoServico}>{item.nome_servico}</Text>
+                                <Text style={styles.textoInfoServico}>R$ {item.valor}</Text>
+                            </View>
+                        )
+                    }}
+                />
+            </View>
+            <BotaoPrincipal title="Agendar" onPress={() => console.log(servicos)} />
         </View>
     )
 }
@@ -43,7 +66,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: CommonStyles.corSecundaria,
-        fontSize: 28,
+        fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 5,
         marginTop: 50,
@@ -53,7 +76,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#FFF',
         borderRadius: 5,
-        elevation: 10,
         marginBottom: 10,
         padding: 5,
     },
@@ -61,10 +83,27 @@ const styles = StyleSheet.create({
         height: 218,
         width: 330,
     },
-    textoServiços: {
+    textoServicos: {
         color: CommonStyles.corSecundaria,
         fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 5,
+    },
+    servicosContainer: {
+        backgroundColor: '#FFF',
+        borderRadius: 5,
+        marginBottom: 20,
+        padding: 15,
+        width: '85%',
+    },
+    infoServico: {
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    textoInfoServico: {
+        color: CommonStyles.corSecundaria,
+        fontSize: 17,
+        fontWeight: 'bold',
     }
 })
