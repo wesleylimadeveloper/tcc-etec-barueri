@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Icon } from 'react-native-elements';
-import TelaPrincipalUsuario from '../screens/TelaPrincipalUsuario';
+import StackPrincipalUsuario from './StackPrincipalUsuario';
 import TelaCategorias from '../screens/TelaCategorias';
 import TelaFavoritos from '../screens/TelaFavoritos';
 import TelaEnderecos from '../screens/TelaEnderecos';
@@ -34,8 +34,8 @@ export default () => {
                 },
             }}>
             <Tab.Screen
-                component={TelaPrincipalUsuario}
-                name="TelaPrincipalUsuario"
+                component={StackPrincipalUsuario}
+                name="StackPrincipalUsuario"
                 options={{
                     headerShown: false,
                     title: 'Inicio',

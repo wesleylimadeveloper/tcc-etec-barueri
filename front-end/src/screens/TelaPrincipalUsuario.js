@@ -13,7 +13,7 @@ import Carousel from 'react-native-snap-carousel';
 import api from '../api/Api';
 import CommonStyles from '../CommonStyles';
 
-export default () => {
+export default ({ navigation }) => {
     const [buscar, setBuscar] = useState('');
     const [estabelecimentos, setEstabelecimentos] = useState([]);
 
@@ -29,7 +29,7 @@ export default () => {
                 <Image style={styles.imagemEstabelecimento} 
                     source={{ uri: `${item.fotos_lugar}` }} />
                 <View style={styles.infoContainer}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate("TelaEstabelecimento", item)}>
                         <Text style={styles.nomeFantasia}>{item.nome_fantasia}</Text>
                         <Text style={styles.endereco}>{item.logradouro}, {item.numero} - {item.cidade}</Text>
                     </TouchableOpacity>
