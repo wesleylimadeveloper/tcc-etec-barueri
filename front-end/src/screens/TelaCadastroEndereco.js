@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   StatusBar,
   StyleSheet,
   Text,
   View
-} from 'react-native';
-import Input from '../components/Input';
-import BotaoPrincipal from '../components/BotaoPrincipal';
-import BotaoSecundario from '../components/BotaoSecundario';
-import CommonStyles from '../CommonStyles';
+} from 'react-native'
+import Input from '../components/Input'
+import BotaoPrincipal from '../components/BotaoPrincipal'
+import BotaoSecundario from '../components/BotaoSecundario'
+import CommonStyles from '../CommonStyles'
 
 export default ({ navigation }) => {
-  const [cep, setCep] = useState('');
-  const [logradouro, setLogradouro] = useState('');
-  const [numero, setNumero] = useState('');
-  const [complemento, setComplemento] = useState('');
-  const [bairro, setBairro] = useState('');
-  const [cidade, setCidade] = useState('');
+  const [cep, setCep] = useState('')
+  const [logradouro, setLogradouro] = useState('')
+  const [numero, setNumero] = useState('')
+  const [complemento, setComplemento] = useState('')
+  const [bairro, setBairro] = useState('')
+  const [cidade, setCidade] = useState('')
 
   return (
     <View style={styles.container}>
@@ -64,7 +64,7 @@ export default ({ navigation }) => {
         <BotaoSecundario title="Pular" />
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -89,4 +89,4 @@ const styles = StyleSheet.create({
     height: 100,
     justifyContent: 'space-around',
   },
-});
+})

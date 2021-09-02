@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 import {
   ActivityIndicator,
   StatusBar,
   StyleSheet,
   View
-} from 'react-native';
-import Logo from '../components/Logo';
-import CommonStyles from '../CommonStyles';
+} from 'react-native'
+import Logo from '../components/Logo'
+import CommonStyles from '../CommonStyles'
 
 export default () => {
   return (
@@ -19,7 +19,7 @@ export default () => {
         <ActivityIndicator color={CommonStyles.corSecundaria} size="large" />
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -33,4 +33,4 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 100,
   }
-});
+})

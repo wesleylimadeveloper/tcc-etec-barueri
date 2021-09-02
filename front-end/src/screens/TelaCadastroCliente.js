@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   StatusBar,
   StyleSheet,
   Text,
   View
-} from 'react-native';
-import Input from '../components/Input';
-import BotaoPrincipal from '../components/BotaoPrincipal';
-import CommonStyles from '../CommonStyles';
+} from 'react-native'
+import Input from '../components/Input'
+import BotaoPrincipal from '../components/BotaoPrincipal'
+import CommonStyles from '../CommonStyles'
 
 export default ({ navigation }) => {
-  const [nome, setNome] = useState('');
-  const [telefone, setTelefone] = useState('');
-  const [dataNascimento, setDataNascimento] = useState('');
+  const [nome, setNome] = useState('')
+  const [telefone, setTelefone] = useState('')
+  const [dataNascimento, setDataNascimento] = useState('')
 
   return (
     <View style={styles.container}>
@@ -45,7 +45,7 @@ export default ({ navigation }) => {
           title="Avançar" />
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -67,4 +67,4 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginTop: 10
   },
-});
+})

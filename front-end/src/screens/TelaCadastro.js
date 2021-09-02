@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import { 
     StatusBar,
     StyleSheet, 
     Text, 
     View 
-} from 'react-native';
-import { RadioButton } from 'react-native-paper';
-import BotaoPrincipal from '../components/BotaoPrincipal';
-import CommonStyles from '../CommonStyles';
+} from 'react-native'
+import { RadioButton } from 'react-native-paper'
+import BotaoPrincipal from '../components/BotaoPrincipal'
+import CommonStyles from '../CommonStyles'
 
 export default ({ navigation }) => {
-    const [checked, setChecked] = useState('usuário');
+    const [checked, setChecked] = useState('usuário')
     
     return (
         <View style={styles.container}>
@@ -49,7 +49,7 @@ export default ({ navigation }) => {
                 />
             </View>
         </View>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
@@ -79,4 +79,4 @@ const styles = StyleSheet.create({
         color: CommonStyles.corSecundaria,
         fontSize: 18,
     },
-});
+})

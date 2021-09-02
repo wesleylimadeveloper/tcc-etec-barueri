@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   StatusBar,
   StyleSheet,
   Text,
   View
-} from 'react-native';
-import Input from '../components/Input';
-import BotaoPrincipal from '../components/BotaoPrincipal';
-import CommonStyles from '../CommonStyles';
+} from 'react-native'
+import Input from '../components/Input'
+import BotaoPrincipal from '../components/BotaoPrincipal'
+import CommonStyles from '../CommonStyles'
 
 export default ({ navigation }) => {
-  const [nomeUsuario, setNomeUsuario] = useState('');
-  const [email, setEmail] = useState('');
-  const [emailRecuperacao, setEmailRecuperacao] = useState('');
-  const [senha, setSenha] = useState('');
-  const [confirmarSenha, setConfirmarSenha] = useState('');
+  const [nomeUsuario, setNomeUsuario] = useState('')
+  const [email, setEmail] = useState('')
+  const [emailRecuperacao, setEmailRecuperacao] = useState('')
+  const [senha, setSenha] = useState('')
+  const [confirmarSenha, setConfirmarSenha] = useState('')
 
   return (
     <View style={styles.container}>
@@ -58,7 +58,7 @@ export default ({ navigation }) => {
         />
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -80,4 +80,4 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginTop: 10,
   },
-});
+})

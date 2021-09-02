@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 import { 
     StyleSheet, 
     TextInput, 
     View 
-} from 'react-native';
-import { Icon } from 'react-native-elements';
-import CommonStyles from '../CommonStyles';
+} from 'react-native'
+import { Icon } from 'react-native-elements'
+import CommonStyles from '../CommonStyles'
 
 export default (props) => {
     return(
@@ -17,7 +17,7 @@ export default (props) => {
                 value={props.value}
             />
         </View>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
@@ -35,4 +35,4 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         width: '90%',
     }
-});
+})

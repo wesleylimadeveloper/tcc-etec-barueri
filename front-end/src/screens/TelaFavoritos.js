@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {
     FlatList,
     Image,
@@ -7,10 +7,10 @@ import {
     Text,
     TouchableOpacity,
     View
-} from 'react-native';
-import estabelecimentos from '../data/Estabelecimentos';
-import { Icon } from 'react-native-elements/dist/icons/Icon';
-import CommonStyles from '../CommonStyles';
+} from 'react-native'
+import estabelecimentos from '../data/Estabelecimentos'
+import { Icon } from 'react-native-elements/dist/icons/Icon'
+import CommonStyles from '../CommonStyles'
 
 export default () => {
 
@@ -42,7 +42,7 @@ export default () => {
                 renderItem={renderItem}
             />
         </View>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
@@ -77,4 +77,4 @@ const styles = StyleSheet.create({
         color: CommonStyles.corSecundaria,
         fontSize: 16,
     }
-});
+})

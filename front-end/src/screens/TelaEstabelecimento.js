@@ -7,6 +7,7 @@ import {
     Text,
     View
 } from 'react-native'
+import { Divider } from 'react-native-elements/dist/divider/Divider'
 import api from '../api/Api'
 import BotaoPrincipal from '../components/BotaoPrincipal'
 import CommonStyles from '../CommonStyles'
@@ -41,9 +42,12 @@ export default (props) => {
                     keyExtractor={item => item.cod_servicos.toString()}
                     renderItem={({item}) => {
                         return (
-                            <View style={styles.infoServico}>
-                                <Text style={styles.textoInfoServico}>{item.nome_servico}</Text>
-                                <Text style={styles.textoInfoServico}>R$ {item.valor}</Text>
+                            <View>
+                                <View style={styles.infoServico}>
+                                    <Text style={styles.textoInfoServico}>{item.nome_servico}</Text>
+                                    <Text style={styles.textoInfoServico}>R$ {item.valor.toString().replace(".", ",")}</Text>
+                                </View>
+                                <Divider orientation="horizontal" />
                             </View>
                         )
                     }}
@@ -77,7 +81,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFF',
         borderRadius: 5,
         marginBottom: 10,
-        padding: 5,
+        padding: 10,
     },
     imagemEstabelecimento: {
         height: 218,
@@ -99,11 +103,11 @@ const styles = StyleSheet.create({
     infoServico: {
         alignItems: 'center',
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
     textoInfoServico: {
         color: CommonStyles.corSecundaria,
-        fontSize: 17,
+        fontSize: 16,
         fontWeight: 'bold',
     }
 })

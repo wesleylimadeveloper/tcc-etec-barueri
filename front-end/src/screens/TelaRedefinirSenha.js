@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   StatusBar,
   StyleSheet,
   Text,
   View
-} from 'react-native';
-import Input from '../components/Input';
-import BotaoPrincipal from '../components/BotaoPrincipal';
-import CommonStyles from '../CommonStyles';
+} from 'react-native'
+import Input from '../components/Input'
+import BotaoPrincipal from '../components/BotaoPrincipal'
+import CommonStyles from '../CommonStyles'
 
 export default () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('')
 
   return (
     <View style={styles.container}>
@@ -29,7 +29,7 @@ export default () => {
         <BotaoPrincipal title="Redefinir Senha" />
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -49,4 +49,4 @@ const styles = StyleSheet.create({
   inputContainer: {
     marginBottom: 10,
   },
-});
+})

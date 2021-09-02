@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import {
     Image, 
     ScrollView, 
@@ -7,21 +7,21 @@ import {
     Text, 
     TouchableOpacity, 
     View 
-} from 'react-native';
-import SearchBar from '../components/SearchBar';
-import Carousel from 'react-native-snap-carousel';
-import api from '../api/Api';
-import CommonStyles from '../CommonStyles';
+} from 'react-native'
+import SearchBar from '../components/SearchBar'
+import Carousel from 'react-native-snap-carousel'
+import api from '../api/Api'
+import CommonStyles from '../CommonStyles'
 
 export default ({ navigation }) => {
-    const [buscar, setBuscar] = useState('');
-    const [estabelecimentos, setEstabelecimentos] = useState([]);
+    const [buscar, setBuscar] = useState('')
+    const [estabelecimentos, setEstabelecimentos] = useState([])
 
     useEffect(() => {
         api.get('/estabelecimentos')
             .then(response => setEstabelecimentos(response.data))
-            .catch(error => console.log(error));
-    }, []);
+            .catch(error => console.log(error))
+    }, [])
 
     function estabelecimentosProximos({ item }) {
         return (
@@ -65,7 +65,7 @@ export default ({ navigation }) => {
                 sliderWidth={400}
             />
         </ScrollView>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     },
     nomeFantasia: {
         color: CommonStyles.corSecundaria,
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: 'bold',
         textAlign: 'center',
     },
@@ -110,4 +110,4 @@ const styles = StyleSheet.create({
         fontSize: 14,
         textAlign: 'center',
     }
-});
+})

@@ -1,13 +1,13 @@
-import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import CommonStyles from '../CommonStyles';
+import React from 'react'
+import { StyleSheet, Text, TouchableOpacity } from 'react-native'
+import CommonStyles from '../CommonStyles'
 
 export default (props) => {
     return(
         <TouchableOpacity style={styles.botao} onPress={props.onPress} >
             <Text style={styles.textoBotao}>{props.title}</Text>
         </TouchableOpacity>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
@@ -23,4 +23,4 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
     },
-});
+})

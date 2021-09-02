@@ -1,16 +1,16 @@
-import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import TelaLogin from '../screens/TelaLogin';
-import TelaCadastro from '../screens/TelaCadastro';
-import TelaCadastroUsuario from '../screens/TelaCadastroUsuario';
-import TelaCadastroFornecedor from '../screens/TelaCadastroFornecedor';
-import TelaCadastroEndereco from '../screens/TelaCadastroEndereco';
-import TelaCadastroCliente from '../screens/TelaCadastroCliente';
-import TabUsuario from './TabUsuario';
-import TabFornecedor from './TabFornecedor';
+import React from 'react'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import TelaLogin from '../screens/TelaLogin'
+import TelaCadastro from '../screens/TelaCadastro'
+import TelaCadastroUsuario from '../screens/TelaCadastroUsuario'
+import TelaCadastroFornecedor from '../screens/TelaCadastroFornecedor'
+import TelaCadastroEndereco from '../screens/TelaCadastroEndereco'
+import TelaCadastroCliente from '../screens/TelaCadastroCliente'
+import TabUsuario from './TabUsuario'
+import TabFornecedor from './TabFornecedor'
 
 export default () => {
-    const Stack = createNativeStackNavigator();
+    const Stack = createNativeStackNavigator()
 
     return (
         <Stack.Navigator
@@ -72,5 +72,5 @@ export default () => {
                 }}
             />
         </Stack.Navigator>
-    );
+    )
 }

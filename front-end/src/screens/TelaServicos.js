@@ -1,7 +1,7 @@
-import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { Icon } from 'react-native-elements';
-import CommonStyles from '../CommonStyles';
+import React from 'react'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Icon } from 'react-native-elements'
+import CommonStyles from '../CommonStyles'
 
 export default () => {
     return (
@@ -15,7 +15,7 @@ export default () => {
                 <Icon color="green" name="check-circle" size={40} type="font-awesome" />
             </TouchableOpacity>
         </View>
-    );
+    )
 }
 
 const styles = StyleSheet.create({

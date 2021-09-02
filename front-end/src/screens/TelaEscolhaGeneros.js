@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 import {
   StatusBar,
   StyleSheet,
   Text,
   View
-} from 'react-native';
-import BotaoPrincipal from '../components/BotaoPrincipal';
-import CommonStyles from '../CommonStyles';
+} from 'react-native'
+import BotaoPrincipal from '../components/BotaoPrincipal'
+import CommonStyles from '../CommonStyles'
 
 export default () => {
   return (
@@ -21,7 +21,7 @@ export default () => {
         <BotaoPrincipal title="Ambos" />
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -41,4 +41,4 @@ const styles = StyleSheet.create({
     height: 150,
     justifyContent: 'space-between'
   }
-});
+})

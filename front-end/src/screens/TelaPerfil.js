@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {
     Image, 
     StatusBar, 
@@ -6,10 +6,10 @@ import {
     Text, 
     TouchableOpacity, 
     View 
-} from 'react-native';
-import { Icon } from 'react-native-elements/dist/icons/Icon';
+} from 'react-native'
+import { Icon } from 'react-native-elements/dist/icons/Icon'
 import foto from '../assets/usuario.jpg'
-import CommonStyles from '../CommonStyles';
+import CommonStyles from '../CommonStyles'
 
 export default () => {
     return (
@@ -32,7 +32,7 @@ export default () => {
                 </TouchableOpacity>
             </View>
         </View>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
@@ -75,4 +75,4 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginLeft: 10,
     },
-});
+})

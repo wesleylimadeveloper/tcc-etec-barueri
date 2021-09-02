@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 import {
     Dimensions,
     StatusBar,
     StyleSheet,
     View
-} from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
-import CommonStyles from '../CommonStyles';
+} from 'react-native'
+import MapView, { Marker } from 'react-native-maps'
+import CommonStyles from '../CommonStyles'
 
 export default () => {
     return (
@@ -32,7 +32,7 @@ export default () => {
                     />
             </MapView>
         </View >
-    );
+    )
 }
 
 const styles = StyleSheet.create({
@@ -46,4 +46,4 @@ const styles = StyleSheet.create({
         height: Dimensions.get('window').height,
         width: Dimensions.get('window').width,
     }
-});
+})

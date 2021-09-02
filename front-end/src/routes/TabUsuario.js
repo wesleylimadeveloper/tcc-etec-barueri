@@ -1,15 +1,14 @@
-import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Icon } from 'react-native-elements';
-import StackPrincipalUsuario from './StackPrincipalUsuario';
-import TelaCategorias from '../screens/TelaCategorias';
-import TelaFavoritos from '../screens/TelaFavoritos';
-import TelaEnderecos from '../screens/TelaEnderecos';
-import TelaPerfil from '../screens/TelaPerfil';
-import CommonStyles from '../CommonStyles';
+import React from 'react'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { Icon } from 'react-native-elements'
+import StackPrincipalUsuario from './StackPrincipalUsuario'
+import TelaCategorias from '../screens/TelaCategorias'
+import TelaEnderecos from '../screens/TelaEnderecos'
+import TelaPerfil from '../screens/TelaPerfil'
+import CommonStyles from '../CommonStyles'
 
 export default () => {
-    const Tab = createBottomTabNavigator();
+    const Tab = createBottomTabNavigator()
 
     return (
         <Tab.Navigator
@@ -26,9 +25,10 @@ export default () => {
                 tabBarStyle: {
                     backgroundColor: CommonStyles.corSecundaria,
                     borderTopColor: 'transparent',
-                    padding: 5,
+                    paddingVertical: 5,
                 },
                 tabBarActiveTintColor: '#FFF',
+                tabBarInactiveTintColor: CommonStyles.corPrincipal,
                 tabBarLabelStyle: {
                     fontSize: 13,
                 },

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import {
     FlatList,
     Image,
@@ -7,19 +7,19 @@ import {
     Text,
     TouchableOpacity,
     View
-} from 'react-native';
-import SearchBar from '../components/SearchBar';
-import api from '../api/Api';
-import CommonStyles from '../CommonStyles';
+} from 'react-native'
+import SearchBar from '../components/SearchBar'
+import api from '../api/Api'
+import CommonStyles from '../CommonStyles'
 
 export default () => {
-    const [categorias, setCategorias] = useState([]);
+    const [categorias, setCategorias] = useState([])
 
     useEffect(() => {
         api.get('/categorias')
             .then(response => setCategorias(response.data))
-            .catch(error => console.log(error));
-    }, []);
+            .catch(error => console.log(error))
+    }, [])
 
     function renderItem({ item }) {
         return (
@@ -48,7 +48,7 @@ export default () => {
                 renderItem={renderItem}
             />
         </View>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
@@ -80,4 +80,4 @@ const styles = StyleSheet.create({
         fontSize: 23,
         fontWeight: 'bold',
     },
-});
+})

@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   StatusBar,
   StyleSheet,
   TouchableOpacity,
   Text,
   View
-} from 'react-native';
-import { Icon } from 'react-native-elements';
-import Logo from '../components/Logo';
-import Input from '../components/Input';
-import BotaoSecundario from '../components/BotaoSecundario';
-import CommonStyles from '../CommonStyles';
+} from 'react-native'
+import { Icon } from 'react-native-elements'
+import Logo from '../components/Logo'
+import Input from '../components/Input'
+import BotaoSecundario from '../components/BotaoSecundario'
+import CommonStyles from '../CommonStyles'
 
 export default () => {
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
+  const [email, setEmail] = useState('')
+  const [senha, setSenha] = useState('')
 
   return (
     <View style={styles.container}>
@@ -49,7 +49,7 @@ export default () => {
         <BotaoSecundario title="Pular" />
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -103,4 +103,4 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     textAlign: 'center',
   },
-});
+})

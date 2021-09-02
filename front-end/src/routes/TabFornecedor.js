@@ -1,13 +1,13 @@
-import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Icon } from 'react-native-elements';
-import TelaServicos from '../screens/TelaServicos';
-import TelaGerenciarServicos from '../screens/TelaGerenciarServicos';
-import TelaPerfil from '../screens/TelaPerfil';
-import CommonStyles from '../CommonStyles';
+import React from 'react'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { Icon } from 'react-native-elements'
+import TelaServicos from '../screens/TelaServicos'
+import TelaGerenciarServicos from '../screens/TelaGerenciarServicos'
+import TelaPerfil from '../screens/TelaPerfil'
+import CommonStyles from '../CommonStyles'
 
 export default () => {
-    const Tab = createBottomTabNavigator();
+    const Tab = createBottomTabNavigator()
 
     return (
         <Tab.Navigator

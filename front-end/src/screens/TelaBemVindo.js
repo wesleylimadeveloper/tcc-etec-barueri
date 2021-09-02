@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 import { 
     Image, 
     StatusBar, 
     StyleSheet, 
     Text, 
     View 
-} from 'react-native';
-import BotaoPrincipal from '../components/BotaoPrincipal';
-import BotaoSecundario from '../components/BotaoSecundario';
-import CommonStyles from '../CommonStyles';
+} from 'react-native'
+import BotaoPrincipal from '../components/BotaoPrincipal'
+import BotaoSecundario from '../components/BotaoSecundario'
+import CommonStyles from '../CommonStyles'
 
 export default () => {
     return (
@@ -31,7 +31,7 @@ export default () => {
                 <BotaoPrincipal title="Ativar serviços de localização" />
             </View>
         </View>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
@@ -67,4 +67,4 @@ const styles = StyleSheet.create({
         height: 100,
         justifyContent: 'space-between'
     }
-});
+})

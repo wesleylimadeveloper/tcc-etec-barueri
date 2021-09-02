@@ -1,6 +1,6 @@
-import React from 'react';
-import { StyleSheet, TextInput } from 'react-native';
-import CommonStyles from '../CommonStyles';
+import React from 'react'
+import { StyleSheet, TextInput } from 'react-native'
+import CommonStyles from '../CommonStyles'
 
 export default (props) => {
     return(
@@ -12,7 +12,7 @@ export default (props) => {
             secureTextEntry={props.secureTextEntry}
             value={props.value}  
         />
-    );
+    )
 }
 
 const styles = StyleSheet.create({
@@ -25,4 +25,4 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         width: 300,
     },
-});
+})
