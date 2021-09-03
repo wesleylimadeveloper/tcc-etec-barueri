@@ -2,7 +2,7 @@ import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Icon } from 'react-native-elements'
 import StackPrincipalUsuario from './StackPrincipalUsuario'
-import TelaCategorias from '../screens/TelaCategorias'
+import StackCategorias from './StackCategorias'
 import TelaEnderecos from '../screens/TelaEnderecos'
 import TelaPerfil from '../screens/TelaPerfil'
 import CommonStyles from '../CommonStyles'
@@ -13,6 +13,7 @@ export default () => {
     return (
         <Tab.Navigator
             screenOptions={{
+                headerShown: false,
                 headerStyle: {
                     backgroundColor: CommonStyles.corPrincipal,
                 },
@@ -37,7 +38,6 @@ export default () => {
                 component={StackPrincipalUsuario}
                 name="StackPrincipalUsuario"
                 options={{
-                    headerShown: false,
                     title: 'Inicio',
                     tabBarIcon: ({ color }) => (
                         <Icon color={color} name="home" size={25} type="font-awesome" />
@@ -45,8 +45,8 @@ export default () => {
                 }}
             />
             <Tab.Screen
-                component={TelaCategorias}
-                name="TelaCategorias"
+                component={StackCategorias}
+                name="StackCategorias"
                 options={{
                     title: 'Categorias',
                     tabBarIcon: ({ color }) => (
@@ -58,7 +58,6 @@ export default () => {
                 component={TelaEnderecos}
                 name="TelaEnderecos"
                 options={{
-                    headerShown: false,
                     title: 'Endereços',
                     tabBarIcon: ({ color }) => (
                         <Icon color={color} name="map-marker" size={25} type="font-awesome" />

@@ -12,7 +12,7 @@ import SearchBar from '../components/SearchBar'
 import api from '../api/Api'
 import CommonStyles from '../CommonStyles'
 
-export default () => {
+export default ({ navigation }) => {
     const [categorias, setCategorias] = useState([])
 
     useEffect(() => {
@@ -25,7 +25,7 @@ export default () => {
         return (
             <View style={styles.categoriaContainer}>
                 <Image style={styles.foto} source={{ uri: `${item.foto}` }} />
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate("TelaFiltroCategorias", item)}>
                     <Text style={styles.nome}>{item.nome_categoria}</Text>
                 </TouchableOpacity>
             </View>
@@ -37,6 +37,7 @@ export default () => {
             <StatusBar
                 backgroundColor={CommonStyles.corSecundaria}
                 barStyle="light-content" />
+            <Text style={styles.titulo}>Categorias</Text>
             <View style={styles.searchBarContainer}>
                 <SearchBar
                     placeholder="Buscar..."
@@ -57,6 +58,13 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
     },
+    titulo: {
+        color: CommonStyles.corSecundaria,
+        fontSize: 28,
+        fontWeight: 'bold',
+        marginTop: 20,
+        textAlign: 'center',
+    },
     searchBarContainer: {
         alignItems: 'center',
         marginVertical: 20,
@@ -71,6 +79,7 @@ const styles = StyleSheet.create({
         width: '80%',
     },
     foto: {
+        borderRadius: 75,
         height: 150,
         marginBottom: 10,
         width: 150,

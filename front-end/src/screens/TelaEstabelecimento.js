@@ -28,7 +28,7 @@ export default (props) => {
                 backgroundColor={CommonStyles.corSecundaria}
                 barStyle="light-content" />
             <View style={styles.nomeFantasiaContainer}>
-                <Text style={styles.text}>{nome_fantasia}</Text>
+                <Text style={styles.texto}>{nome_fantasia}</Text>
             </View>
             <View style={styles.imagemContainer}>
                 <Image style={styles.imagemEstabelecimento} 
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: '85%',
     },
-    text: {
+    texto: {
         color: CommonStyles.corSecundaria,
         fontSize: 24,
         fontWeight: 'bold',

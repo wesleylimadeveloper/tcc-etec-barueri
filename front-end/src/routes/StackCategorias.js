@@ -1,7 +1,7 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import TelaPrincipalUsuario from '../screens/TelaPrincipalUsuario'
-import TelaEstabelecimento from '../screens/TelaEstabelecimento'
+import TelaCategorias from '../screens/TelaCategorias'
+import TelaFiltroCategorias from '../screens/TelaFiltroCategorias'
 import CommonStyles from '../CommonStyles'
 
 export default () => {
@@ -22,12 +22,12 @@ export default () => {
                 },
             }}>
             <Stack.Screen 
-                component={TelaPrincipalUsuario}
-                name="TelaPrincipalUsuario"
+                component={TelaCategorias}
+                name="TelaCategorias"
             />
             <Stack.Screen 
-                component={TelaEstabelecimento}
-                name="TelaEstabelecimento"
+                component={TelaFiltroCategorias}
+                name="TelaFiltroCategorias"
             />            
         </Stack.Navigator>
     )

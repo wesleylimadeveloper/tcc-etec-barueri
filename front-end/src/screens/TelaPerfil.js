@@ -17,9 +17,10 @@ export default () => {
             <StatusBar 
                 backgroundColor={CommonStyles.corSecundaria}
                 barStyle="light-content" />
+            <Text style={styles.titulo}>Perfil</Text>
             <View>
                 <Image style={styles.fotoPerfil} source={foto} />
-                <Text style={styles.titulo}>Wesley Lima</Text>
+                <Text style={styles.nome}>Wesley Lima</Text>
             </View>
             <View style={styles.botoesContainer}>
                 <TouchableOpacity style={styles.botoes}>
@@ -41,14 +42,21 @@ const styles = StyleSheet.create({
         backgroundColor: CommonStyles.corPrincipal,
         flex: 1,
     },
+    titulo: {
+        color: CommonStyles.corSecundaria,
+        fontSize: 28,
+        fontWeight: 'bold',
+        marginBottom: 50,
+        marginTop: 20,
+        textAlign: 'center',
+    },
     fotoPerfil: {
         borderRadius: 75,
         height: 150,
         marginBottom: 5,
-        marginTop: 50,
         width: 150,
     },
-    titulo: {
+    nome: {
         color: CommonStyles.corSecundaria,
         fontSize: 24,
         fontWeight: 'bold',

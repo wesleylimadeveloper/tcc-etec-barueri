@@ -14,62 +14,41 @@ export default () => {
 
     return (
         <Stack.Navigator
-            initialRouteName="TelaCadastro">
+            initialRouteName="TabUsuario"
+            screenOptions={{
+                headerShown: false,
+            }}>
             <Stack.Screen
                 component={TelaCadastro}
                 name="TelaCadastro"
-                options={{
-                    headerShown: false,
-                }}
             />
             <Stack.Screen
                 component={TelaLogin}
                 name="TelaLogin"
-                options={{
-                    headerShown: false,
-                }}
             />
             <Stack.Screen
                 component={TelaCadastroUsuario}
                 name="TelaCadastroUsuario"
-                options={{
-                    headerShown: false,
-                }}
             />
             <Stack.Screen
                 component={TelaCadastroFornecedor}
                 name="TelaCadastroFornecedor"
-                options={{
-                    headerShown: false,
-                }}
             />
             <Stack.Screen
                 component={TelaCadastroEndereco}
                 name="TelaCadastroEndereco"
-                options={{
-                    headerShown: false,
-                }}
             />
             <Stack.Screen
                 component={TelaCadastroCliente}
                 name="TelaCadastroCliente"
-                options={{
-                    headerShown: false,
-                }}
             />
             <Stack.Screen
                 component={TabUsuario}
                 name="TabUsuario"
-                options={{
-                    headerShown: false,
-                }}
             />
             <Stack.Screen
                 component={TabFornecedor}
                 name="TabFornecedor"
-                options={{
-                    headerShown: false,
-                }}
             />
         </Stack.Navigator>
     )
