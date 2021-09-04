@@ -6,6 +6,7 @@ import {
     View 
 } from 'react-native'
 import { RadioButton } from 'react-native-paper'
+import Titulo from '../components/Titulo'
 import BotaoPrincipal from '../components/BotaoPrincipal'
 import globalStyles from '../styles/globalStyles'
 
@@ -17,7 +18,11 @@ export default ({ navigation }) => {
             <StatusBar 
                 backgroundColor={globalStyles.corSecundaria}
                 barStyle="light-content" />
-            <Text style={styles.titulo}>Cadastrar</Text>
+            <View style={styles.titulo}>
+                <Titulo>
+                    <Text>Cadastrar</Text>
+                </Titulo>
+            </View>
             <View style={styles.radioContainer}>
                 <View style={styles.radioOptionContainer}>
                     <RadioButton
@@ -60,11 +65,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     titulo: {
-        color: globalStyles.corSecundaria,
-        fontSize: 30,
-        fontWeight: 'bold',
         marginBottom: 15,
-        textAlign: 'center',
     },
     radioContainer: {
         flexDirection: 'row',

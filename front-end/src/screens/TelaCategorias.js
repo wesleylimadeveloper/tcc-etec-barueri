@@ -8,6 +8,7 @@ import {
     TouchableOpacity,
     View
 } from 'react-native'
+import Titulo from '../components/Titulo'
 import SearchBar from '../components/SearchBar'
 import api from '../api/api'
 import globalStyles from '../styles/globalStyles'
@@ -37,7 +38,11 @@ export default ({ navigation }) => {
             <StatusBar
                 backgroundColor={globalStyles.corSecundaria}
                 barStyle="light-content" />
-            <Text style={styles.titulo}>Categorias</Text>
+            <View style={styles.titulo}>
+                <Titulo>
+                    <Text>Categorias</Text>
+                </Titulo>
+            </View>
             <View style={styles.searchBarContainer}>
                 <SearchBar
                     placeholder="Buscar..."
@@ -59,11 +64,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     titulo: {
-        color: globalStyles.corSecundaria,
-        fontSize: 28,
-        fontWeight: 'bold',
+        alignItems: 'center',
         marginTop: 20,
-        textAlign: 'center',
     },
     searchBarContainer: {
         alignItems: 'center',

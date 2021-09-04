@@ -5,6 +5,7 @@ import {
   Text,
   View
 } from 'react-native'
+import Titulo from '../components/Titulo'
 import Input from '../components/Input'
 import BotaoPrincipal from '../components/BotaoPrincipal'
 import globalStyles from '../styles/globalStyles'
@@ -17,7 +18,11 @@ export default () => {
       <StatusBar
         backgroundColor={globalStyles.corSecundaria}
         barStyle="light-content" />
-      <Text style={styles.titulo}>Redefinir Senha</Text>
+      <View style={styles.titulo}>
+        <Titulo>
+            <Text>Redefinir Senha</Text>
+        </Titulo>
+      </View>
       <View style={styles.inputContainer}>
         <Input
           onChangeText={(txtEmail) => setEmail(txtEmail)}
@@ -39,12 +44,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   titulo: {
-    color: globalStyles.corSecundaria,
-    fontSize: 30,
-    fontWeight: 'bold',
     marginBottom: 15,
     marginTop: 250,
-    textAlign: 'center',
   },
   inputContainer: {
     marginBottom: 10,

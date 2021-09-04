@@ -7,14 +7,14 @@ import {
 import { Icon } from 'react-native-elements'
 import globalStyles from '../styles/globalStyles'
 
-export default (props) => {
+export default ({ onChangeText, placeholder, value }) => {
     return(
         <View style={styles.searchBar}>
             <Icon color={globalStyles.corSecundaria} name="search" size={20} type="font-awesome"  />
             <TextInput style={styles.input}
-                onChangeText={props.onChangeText} 
-                placeholder={props.placeholder}
-                value={props.value}
+                onChangeText={onChangeText} 
+                placeholder={placeholder}
+                value={value}
             />
         </View>
     )

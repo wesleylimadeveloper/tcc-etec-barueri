@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import {
     FlatList,
-    StatusBar, 
-    StyleSheet, 
+    Image,
+    StatusBar,
+    StyleSheet,
     Text,
+    TouchableOpacity,
     View,
 } from 'react-native'
+import Titulo from '../components/Titulo'
 import api from '../api/api'
-import BotaoPrincipal from '../components/BotaoPrincipal'
 import globalStyles from '../styles/globalStyles'
 
-export default (props) => {
-    const { cod_categoria, nome_categoria } = props.route.params
+export default ({ route, navigation }) => {
+    const { cod_categoria, nome_categoria } = route.params
     const [servicos, setServicos] = useState([])
 
     useEffect(() => {
@@ -22,21 +24,29 @@ export default (props) => {
 
     return (
         <View style={styles.container}>
-            <StatusBar 
+            <StatusBar
                 backgroundColor={globalStyles.corSecundaria}
                 barStyle="light-content" />
-            <Text style={styles.titulo}>{nome_categoria}</Text>
-            <FlatList 
+            <View style={styles.titulo}>
+                <Titulo>
+                    <Text>{nome_categoria}</Text>
+                </Titulo>
+            </View>
+            <FlatList
                 data={servicos}
                 keyExtractor={item => item.cod_servicos.toString()}
                 renderItem={({ item }) => {
                     return (
                         <View style={styles.servicoContainer}>
+                            <Image style={styles.fotoLugar} source={{ uri: `${item.fotos_lugar}` }} />
+                            <TouchableOpacity style={styles.nomeFantasiaContainer}
+                                onPress={() => navigation.navigate("TelaEstabelecimento", item)}>
+                                <Text style={styles.nomeFantasia}>{item.nome_fantasia}</Text>
+                            </TouchableOpacity>
                             <View style={styles.servicoInfoContainer}>
                                 <Text style={styles.textoInfoServico}>{item.nome_servico}</Text>
                                 <Text style={styles.textoInfoServico}>R$ {item.valor.toString().replace(".", ",")}</Text>
                             </View>
-                            <BotaoPrincipal title="Estabelecimento" />
                         </View>
                     )
                 }}
@@ -51,11 +61,22 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     titulo: {
-        color: globalStyles.corSecundaria,
-        fontSize: 26,
-        fontWeight: 'bold',
+        alignItems: 'center',
         marginBottom: 15,
-        marginTop: 50,
+        marginTop: 30,
+    },
+    fotoLugar: {
+        height: 218,
+        width: 330,
+    },
+    nomeFantasiaContainer: {
+        width: '80%'
+    },
+    nomeFantasia: {
+        color: globalStyles.corSecundaria,
+        fontSize: 22,
+        fontWeight: 'bold',
+        marginBottom: 5,
         textAlign: 'center',
     },
     servicoContainer: {
@@ -64,21 +85,19 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFF',
         borderRadius: 10,
         marginBottom: 10,
-        padding: 10,
-        width: '80%'
+        paddingVertical: 5,
+        width: '85%'
     },
     servicoInfoContainer: {
         alignSelf: 'center',
         borderRadius: 5,
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginBottom: 10,
-        padding: 10,
-        width: '100%',
+        justifyContent: 'space-evenly',
+        width: '100%'
     },
     textoInfoServico: {
         color: globalStyles.corSecundaria,
-        fontSize: 18,
+        fontSize: 16,
         fontWeight: 'bold',
     },
 })

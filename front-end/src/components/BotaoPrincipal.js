@@ -6,10 +6,10 @@ import {
 } from 'react-native'
 import globalStyles from '../styles/globalStyles'
 
-export default (props) => {
+export default ({ onPress, title }) => {
     return(
-        <TouchableOpacity style={styles.botao} onPress={props.onPress} >
-            <Text style={styles.textoBotao}>{props.title}</Text>
+        <TouchableOpacity style={styles.botao} onPress={onPress} >
+            <Text style={styles.textoBotao}>{title}</Text>
         </TouchableOpacity>
     )
 }

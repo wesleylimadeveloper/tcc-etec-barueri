@@ -5,6 +5,7 @@ import {
   Text,
   View
 } from 'react-native'
+import Titulo from '../components/Titulo'
 import Input from '../components/Input'
 import BotaoPrincipal from '../components/BotaoPrincipal'
 import BotaoSecundario from '../components/BotaoSecundario'
@@ -23,7 +24,9 @@ export default ({ navigation }) => {
       <StatusBar
         backgroundColor={globalStyles.corSecundaria}
         barStyle="light-content" />
-      <Text style={styles.titulo}>Cadastro de Endereço</Text>
+      <Titulo>
+        <Text>Cadastro de Endereço</Text>
+      </Titulo>
       <View style={styles.inputsContainer}>
         <Input
           onChangeText={value => setCep(value)}
@@ -73,12 +76,6 @@ const styles = StyleSheet.create({
     backgroundColor: globalStyles.corPrincipal,
     flex: 1,
     justifyContent: 'center',
-  },
-  titulo: {
-    color: globalStyles.corSecundaria,
-    fontSize: 30,
-    fontWeight: 'bold',
-    textAlign: 'center',
   },
   inputsContainer: {
     height: 315,

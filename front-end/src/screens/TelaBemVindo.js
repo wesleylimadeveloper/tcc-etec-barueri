@@ -6,6 +6,7 @@ import {
     Text, 
     View 
 } from 'react-native'
+import Titulo from '../components/Titulo'
 import BotaoPrincipal from '../components/BotaoPrincipal'
 import BotaoSecundario from '../components/BotaoSecundario'
 import globalStyles from '../styles/globalStyles'
@@ -16,7 +17,11 @@ export default () => {
             <StatusBar 
                 backgroundColor={globalStyles.corSecundaria}
                 barStyle="light-content" />
-            <Text style={styles.titulo}>Bem-vindo(a)!</Text>
+            <View style={styles.titulo}>
+                <Titulo>
+                    <Text>Bem-vindo(a)!</Text>
+                </Titulo>
+            </View>
             <View style={styles.locationContainer}>
                 <Text style={styles.subtitulo}>Habilitar serviços de localização</Text>
                 <Image style={styles.location}
@@ -41,18 +46,15 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     titulo: {
-        color: 'black',
-        fontSize: 30,
-        fontWeight: 'bold',
         marginBottom: 15,
         marginTop: 80,
-        textAlign: 'center',
     },
     locationContainer: {
         alignItems: 'center',
         marginBottom: 15,
     },
     subtitulo: {
+        color: globalStyles.corSecundaria,
         fontSize: 24,
         textAlign: 'center',
     },
@@ -60,6 +62,7 @@ const styles = StyleSheet.create({
         marginBottom: 30,
     },
     texto: {
+        color: globalStyles.corSecundaria,
         marginHorizontal: 50,
         textAlign: 'center',
     },

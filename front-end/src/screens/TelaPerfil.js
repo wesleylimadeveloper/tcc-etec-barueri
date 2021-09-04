@@ -8,6 +8,7 @@ import {
     View 
 } from 'react-native'
 import { Icon } from 'react-native-elements/dist/icons/Icon'
+import Titulo from '../components/Titulo'
 import foto from '../assets/usuario.jpg'
 import globalStyles from '../styles/globalStyles'
 
@@ -17,7 +18,11 @@ export default () => {
             <StatusBar 
                 backgroundColor={globalStyles.corSecundaria}
                 barStyle="light-content" />
-            <Text style={styles.titulo}>Perfil</Text>
+            <View style={styles.titulo}>
+                <Titulo>
+                    <Text>Perfil</Text>
+                </Titulo>
+            </View>
             <View>
                 <Image style={styles.fotoPerfil} source={foto} />
                 <Text style={styles.nome}>Wesley Lima</Text>
@@ -43,12 +48,8 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     titulo: {
-        color: globalStyles.corSecundaria,
-        fontSize: 28,
-        fontWeight: 'bold',
         marginBottom: 50,
         marginTop: 20,
-        textAlign: 'center',
     },
     fotoPerfil: {
         borderRadius: 75,

@@ -9,12 +9,13 @@ import {
 } from 'react-native'
 import { Divider } from 'react-native-elements/dist/divider/Divider'
 import api from '../api/api'
+import Titulo from '../components/Titulo'
 import BotaoPrincipal from '../components/BotaoPrincipal'
 import globalStyles from '../styles/globalStyles'
 
-export default (props) => {
+export default ({ route }) => {
     const [servicos, setServicos] = useState([])
-    const { cod_fornecedor, nome_fantasia, fotos_lugar } = props.route.params
+    const { cod_fornecedor, nome_fantasia, fotos_lugar } = route.params
 
     useEffect(() => {
         api.get(`/servicos/${cod_fornecedor}`)
@@ -28,7 +29,9 @@ export default (props) => {
                 backgroundColor={globalStyles.corSecundaria}
                 barStyle="light-content" />
             <View style={styles.nomeFantasiaContainer}>
-                <Text style={styles.texto}>{nome_fantasia}</Text>
+                <Titulo>
+                    <Text>{nome_fantasia}</Text>
+                </Titulo>
             </View>
             <View style={styles.imagemContainer}>
                 <Image style={styles.imagemEstabelecimento} 
@@ -65,16 +68,9 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     nomeFantasiaContainer: {
-        alignItems: 'center',
-        width: '85%',
-    },
-    texto: {
-        color: globalStyles.corSecundaria,
-        fontSize: 24,
-        fontWeight: 'bold',
         marginBottom: 5,
         marginTop: 50,
-        textAlign: 'center',
+        width: '85%',
     },
     imagemContainer: {
         alignItems: 'center',

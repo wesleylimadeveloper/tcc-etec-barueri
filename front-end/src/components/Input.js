@@ -5,15 +5,15 @@ import {
 } from 'react-native'
 import globalStyles from '../styles/globalStyles'
 
-export default (props) => {
+export default ({ onChangeText, placeholder, secureTextEntry, value }) => {
     return(
         <TextInput 
             style={styles.input}
-            onChangeText={props.onChangeText} 
-            placeholder={props.placeholder}
+            onChangeText={onChangeText} 
+            placeholder={placeholder}
             placeholderTextColor='gray'
-            secureTextEntry={props.secureTextEntry}
-            value={props.value}  
+            secureTextEntry={secureTextEntry}
+            value={value}  
         />
     )
 }
