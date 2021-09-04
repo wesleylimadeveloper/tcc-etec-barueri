@@ -7,7 +7,7 @@ import {
 } from 'react-native'
 import Input from '../components/Input'
 import BotaoPrincipal from '../components/BotaoPrincipal'
-import CommonStyles from '../CommonStyles'
+import globalStyles from '../styles/globalStyles'
 
 export default () => {
   const [email, setEmail] = useState('')
@@ -15,7 +15,7 @@ export default () => {
   return (
     <View style={styles.container}>
       <StatusBar
-        backgroundColor={CommonStyles.corSecundaria}
+        backgroundColor={globalStyles.corSecundaria}
         barStyle="light-content" />
       <Text style={styles.titulo}>Redefinir Senha</Text>
       <View style={styles.inputContainer}>
@@ -35,11 +35,11 @@ export default () => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: CommonStyles.corPrincipal,
+    backgroundColor: globalStyles.corPrincipal,
     flex: 1,
   },
   titulo: {
-    color: CommonStyles.corSecundaria,
+    color: globalStyles.corSecundaria,
     fontSize: 30,
     fontWeight: 'bold',
     marginBottom: 15,

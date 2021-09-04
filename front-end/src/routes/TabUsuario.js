@@ -1,11 +1,11 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Icon } from 'react-native-elements'
-import StackPrincipalUsuario from './StackPrincipalUsuario'
+import StackInicioUsuario from './StackInicioUsuario'
 import StackCategorias from './StackCategorias'
 import TelaEnderecos from '../screens/TelaEnderecos'
 import TelaPerfil from '../screens/TelaPerfil'
-import CommonStyles from '../CommonStyles'
+import globalStyles from '../styles/globalStyles'
 
 export default () => {
     const Tab = createBottomTabNavigator()
@@ -15,28 +15,28 @@ export default () => {
             screenOptions={{
                 headerShown: false,
                 headerStyle: {
-                    backgroundColor: CommonStyles.corPrincipal,
+                    backgroundColor: globalStyles.corPrincipal,
                 },
-                headerTintColor: CommonStyles.corSecundaria,
+                headerTintColor: globalStyles.corSecundaria,
                 headerTitleAlign: 'center',
                 headerTitleStyle: {
                     fontSize: 28,
                     fontWeight: 'bold',
                 },
                 tabBarStyle: {
-                    backgroundColor: CommonStyles.corSecundaria,
+                    backgroundColor: globalStyles.corSecundaria,
                     borderTopColor: 'transparent',
                     paddingVertical: 5,
                 },
                 tabBarActiveTintColor: '#FFF',
-                tabBarInactiveTintColor: CommonStyles.corPrincipal,
+                tabBarInactiveTintColor: globalStyles.corPrincipal,
                 tabBarLabelStyle: {
                     fontSize: 13,
                 },
             }}>
             <Tab.Screen
-                component={StackPrincipalUsuario}
-                name="StackPrincipalUsuario"
+                component={StackInicioUsuario}
+                name="StackInicioUsuario"
                 options={{
                     title: 'Inicio',
                     tabBarIcon: ({ color }) => (

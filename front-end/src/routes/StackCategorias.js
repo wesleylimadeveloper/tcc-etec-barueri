@@ -2,7 +2,7 @@ import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import TelaCategorias from '../screens/TelaCategorias'
 import TelaFiltroCategorias from '../screens/TelaFiltroCategorias'
-import CommonStyles from '../CommonStyles'
+import globalStyles from '../styles/globalStyles'
 
 export default () => {
     const Stack = createNativeStackNavigator()
@@ -12,9 +12,9 @@ export default () => {
             screenOptions={{
                 headerShown: false,
                 headerStyle: {
-                    backgroundColor: CommonStyles.corPrincipal,
+                    backgroundColor: globalStyles.corPrincipal,
                 },
-                headerTintColor: CommonStyles.corSecundaria,
+                headerTintColor: globalStyles.corSecundaria,
                 headerTitleAlign: 'center',
                 headerTitleStyle: {
                     fontSize: 28,

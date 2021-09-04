@@ -7,7 +7,7 @@ import {
 } from 'react-native'
 import Input from '../components/Input'
 import BotaoPrincipal from '../components/BotaoPrincipal'
-import CommonStyles from '../CommonStyles'
+import globalStyles from '../styles/globalStyles'
 
 export default ({ navigation }) => {
   const [nomeUsuario, setNomeUsuario] = useState('')
@@ -19,7 +19,7 @@ export default ({ navigation }) => {
   return (
     <View style={styles.container}>
       <StatusBar
-        backgroundColor={CommonStyles.corSecundaria}
+        backgroundColor={globalStyles.corSecundaria}
         barStyle="light-content" />
       <Text style={styles.titulo}>Cadastro de Usuário</Text>
       <View style={styles.inputsContainer}>
@@ -64,12 +64,12 @@ export default ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: CommonStyles.corPrincipal,
+    backgroundColor: globalStyles.corPrincipal,
     flex: 1,
     justifyContent: 'center',
   },
   titulo: {
-    color: CommonStyles.corSecundaria,
+    color: globalStyles.corSecundaria,
     fontSize: 30,
     fontWeight: 'bold',
     textAlign: 'center',

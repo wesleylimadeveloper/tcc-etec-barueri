@@ -10,7 +10,7 @@ import {
 } from 'react-native'
 import estabelecimentos from '../data/Estabelecimentos'
 import { Icon } from 'react-native-elements/dist/icons/Icon'
-import CommonStyles from '../CommonStyles'
+import globalStyles from '../styles/globalStyles'
 
 export default () => {
 
@@ -34,7 +34,7 @@ export default () => {
     return (
         <View style={styles.container}>
             <StatusBar
-                backgroundColor={CommonStyles.corSecundaria}
+                backgroundColor={globalStyles.corSecundaria}
                 barStyle="light-content" />
             <FlatList
                 data={estabelecimentos}
@@ -47,7 +47,7 @@ export default () => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: CommonStyles.corPrincipal,
+        backgroundColor: globalStyles.corPrincipal,
         flex: 1,
         justifyContent: 'center',
     },
@@ -68,13 +68,13 @@ const styles = StyleSheet.create({
         width: 100,
     },
     textoNomeFantasia: {
-        color: CommonStyles.corSecundaria,
+        color: globalStyles.corSecundaria,
         fontSize: 18,
         fontWeight: 'bold',
     },
     textoEndereco: {
         alignSelf: 'center',
-        color: CommonStyles.corSecundaria,
+        color: globalStyles.corSecundaria,
         fontSize: 16,
     }
 })

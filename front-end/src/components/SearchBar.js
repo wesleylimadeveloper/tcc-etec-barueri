@@ -5,12 +5,12 @@ import {
     View 
 } from 'react-native'
 import { Icon } from 'react-native-elements'
-import CommonStyles from '../CommonStyles'
+import globalStyles from '../styles/globalStyles'
 
 export default (props) => {
     return(
         <View style={styles.searchBar}>
-            <Icon color={CommonStyles.corSecundaria} name="search" size={20} type="font-awesome"  />
+            <Icon color={globalStyles.corSecundaria} name="search" size={20} type="font-awesome"  />
             <TextInput style={styles.input}
                 onChangeText={props.onChangeText} 
                 placeholder={props.placeholder}

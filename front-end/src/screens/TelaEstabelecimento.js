@@ -8,9 +8,9 @@ import {
     View
 } from 'react-native'
 import { Divider } from 'react-native-elements/dist/divider/Divider'
-import api from '../api/Api'
+import api from '../api/api'
 import BotaoPrincipal from '../components/BotaoPrincipal'
-import CommonStyles from '../CommonStyles'
+import globalStyles from '../styles/globalStyles'
 
 export default (props) => {
     const [servicos, setServicos] = useState([])
@@ -25,7 +25,7 @@ export default (props) => {
     return (
         <View style={styles.container}>
             <StatusBar
-                backgroundColor={CommonStyles.corSecundaria}
+                backgroundColor={globalStyles.corSecundaria}
                 barStyle="light-content" />
             <View style={styles.nomeFantasiaContainer}>
                 <Text style={styles.texto}>{nome_fantasia}</Text>
@@ -61,7 +61,7 @@ export default (props) => {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        backgroundColor: CommonStyles.corPrincipal,
+        backgroundColor: globalStyles.corPrincipal,
         flex: 1,
     },
     nomeFantasiaContainer: {
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
         width: '85%',
     },
     texto: {
-        color: CommonStyles.corSecundaria,
+        color: globalStyles.corSecundaria,
         fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 5,
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
         width: 330,
     },
     textoServicos: {
-        color: CommonStyles.corSecundaria,
+        color: globalStyles.corSecundaria,
         fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 5,
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     textoInfoServico: {
-        color: CommonStyles.corSecundaria,
+        color: globalStyles.corSecundaria,
         fontSize: 16,
         fontWeight: 'bold',
     }

@@ -7,7 +7,7 @@ import {
 } from 'react-native'
 import { RadioButton } from 'react-native-paper'
 import BotaoPrincipal from '../components/BotaoPrincipal'
-import CommonStyles from '../CommonStyles'
+import globalStyles from '../styles/globalStyles'
 
 export default ({ navigation }) => {
     const [checked, setChecked] = useState('usuário')
@@ -15,13 +15,13 @@ export default ({ navigation }) => {
     return (
         <View style={styles.container}>
             <StatusBar 
-                backgroundColor={CommonStyles.corSecundaria}
+                backgroundColor={globalStyles.corSecundaria}
                 barStyle="light-content" />
             <Text style={styles.titulo}>Cadastrar</Text>
             <View style={styles.radioContainer}>
                 <View style={styles.radioOptionContainer}>
                     <RadioButton
-                        color={CommonStyles.corSecundaria}
+                        color={globalStyles.corSecundaria}
                         onPress={() => setChecked('usuário')}
                         status={checked === 'usuário' ? 'checked' : 'unchecked'}
                         value="usuário"
@@ -30,7 +30,7 @@ export default ({ navigation }) => {
                 </View>
                 <View style={styles.radioOptionContainer}>
                     <RadioButton
-                        color={CommonStyles.corSecundaria}
+                        color={globalStyles.corSecundaria}
                         onPress={() => setChecked('fornecedor')}
                         status={checked === 'fornecedor' ? 'checked' : 'unchecked'}
                         value="fornecedor"
@@ -55,12 +55,12 @@ export default ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        backgroundColor: CommonStyles.corPrincipal,
+        backgroundColor: globalStyles.corPrincipal,
         flex: 1,
         justifyContent: 'center',
     },
     titulo: {
-        color: CommonStyles.corSecundaria,
+        color: globalStyles.corSecundaria,
         fontSize: 30,
         fontWeight: 'bold',
         marginBottom: 15,
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 15,
     },
     texto: {
-        color: CommonStyles.corSecundaria,
+        color: globalStyles.corSecundaria,
         fontSize: 18,
     },
 })

@@ -4,7 +4,7 @@ import { Icon } from 'react-native-elements'
 import TelaServicos from '../screens/TelaServicos'
 import TelaGerenciarServicos from '../screens/TelaGerenciarServicos'
 import TelaPerfil from '../screens/TelaPerfil'
-import CommonStyles from '../CommonStyles'
+import globalStyles from '../styles/globalStyles'
 
 export default () => {
     const Tab = createBottomTabNavigator()
@@ -13,16 +13,16 @@ export default () => {
         <Tab.Navigator
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: CommonStyles.corPrincipal,
+                    backgroundColor: globalStyles.corPrincipal,
                 },
-                headerTintColor: CommonStyles.corSecundaria,
+                headerTintColor: globalStyles.corSecundaria,
                 headerTitleAlign: 'center',
                 headerTitleStyle: {
                     fontSize: 28,
                     fontWeight: 'bold',
                 },
                 tabBarStyle: {
-                    backgroundColor: CommonStyles.corSecundaria,
+                    backgroundColor: globalStyles.corSecundaria,
                     borderTopColor: 'transparent',
                     padding: 5,
                 },

@@ -8,13 +8,13 @@ import {
 } from 'react-native'
 import BotaoPrincipal from '../components/BotaoPrincipal'
 import BotaoSecundario from '../components/BotaoSecundario'
-import CommonStyles from '../CommonStyles'
+import globalStyles from '../styles/globalStyles'
 
 export default () => {
     return (
         <View style={styles.container}>
             <StatusBar 
-                backgroundColor={CommonStyles.corSecundaria}
+                backgroundColor={globalStyles.corSecundaria}
                 barStyle="light-content" />
             <Text style={styles.titulo}>Bem-vindo(a)!</Text>
             <View style={styles.locationContainer}>
@@ -37,7 +37,7 @@ export default () => {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        backgroundColor: CommonStyles.corPrincipal,
+        backgroundColor: globalStyles.corPrincipal,
         flex: 1,
     },
     titulo: {

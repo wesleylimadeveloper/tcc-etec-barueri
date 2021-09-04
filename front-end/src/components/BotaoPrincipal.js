@@ -1,6 +1,10 @@
 import React from 'react'
-import { StyleSheet, Text, TouchableOpacity } from 'react-native'
-import CommonStyles from '../CommonStyles'
+import { 
+    StyleSheet, 
+    Text, 
+    TouchableOpacity 
+} from 'react-native'
+import globalStyles from '../styles/globalStyles'
 
 export default (props) => {
     return(
@@ -12,7 +16,7 @@ export default (props) => {
 
 const styles = StyleSheet.create({
     botao: {
-        backgroundColor: CommonStyles.corSecundaria,
+        backgroundColor: globalStyles.corSecundaria,
         borderRadius: 5,
         paddingVertical: 10,
         width: 300,

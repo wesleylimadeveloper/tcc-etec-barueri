@@ -10,7 +10,7 @@ import { Icon } from 'react-native-elements'
 import Logo from '../components/Logo'
 import Input from '../components/Input'
 import BotaoSecundario from '../components/BotaoSecundario'
-import CommonStyles from '../CommonStyles'
+import globalStyles from '../styles/globalStyles'
 
 export default () => {
   const [email, setEmail] = useState('')
@@ -19,7 +19,7 @@ export default () => {
   return (
     <View style={styles.container}>
       <StatusBar
-        backgroundColor={CommonStyles.corSecundaria}
+        backgroundColor={globalStyles.corSecundaria}
         barStyle="light-content" />
       <View style={styles.logoContainer}>
         <Logo />
@@ -55,7 +55,7 @@ export default () => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: CommonStyles.corPrincipal,
+    backgroundColor: globalStyles.corPrincipal,
     flex: 1,
   },
   logoContainer: {

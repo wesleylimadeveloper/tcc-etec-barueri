@@ -6,13 +6,13 @@ import {
     View
 } from 'react-native'
 import MapView, { Marker } from 'react-native-maps'
-import CommonStyles from '../CommonStyles'
+import globalStyles from '../styles/globalStyles'
 
 export default () => {
     return (
         <View style={styles.container}>
             <StatusBar
-                backgroundColor={CommonStyles.corSecundaria}
+                backgroundColor={globalStyles.corSecundaria}
                 barStyle="light-content" />
             <MapView
                 style={styles.mapa}
@@ -38,7 +38,7 @@ export default () => {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        backgroundColor: CommonStyles.corPrincipal,
+        backgroundColor: globalStyles.corPrincipal,
         flex: 1,
         justifyContent: 'center',
     },

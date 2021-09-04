@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import CommonStyles from '../CommonStyles'
+import globalStyles from '../styles/globalStyles'
 
 export default () => {
     return (
@@ -13,12 +13,12 @@ export default () => {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        backgroundColor: CommonStyles.corPrincipal,
+        backgroundColor: globalStyles.corPrincipal,
         flex: 1,
         justifyContent: 'center',
     },
     texto: {
-        color: CommonStyles.corSecundaria,
+        color: globalStyles.corSecundaria,
         fontSize: 26,
         fontWeight: 'bold',
     },

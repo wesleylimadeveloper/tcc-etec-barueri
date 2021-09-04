@@ -1,5 +1,8 @@
 import React from 'react'
-import { Image, StyleSheet } from 'react-native'
+import { 
+    Image, 
+    StyleSheet 
+} from 'react-native'
 import logo from '../assets/logo.png'
 
 export default () => {

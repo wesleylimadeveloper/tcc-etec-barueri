@@ -9,13 +9,13 @@ import {
 } from 'react-native'
 import { Icon } from 'react-native-elements/dist/icons/Icon'
 import foto from '../assets/usuario.jpg'
-import CommonStyles from '../CommonStyles'
+import globalStyles from '../styles/globalStyles'
 
 export default () => {
     return (
         <View style={styles.container}>
             <StatusBar 
-                backgroundColor={CommonStyles.corSecundaria}
+                backgroundColor={globalStyles.corSecundaria}
                 barStyle="light-content" />
             <Text style={styles.titulo}>Perfil</Text>
             <View>
@@ -39,11 +39,11 @@ export default () => {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        backgroundColor: CommonStyles.corPrincipal,
+        backgroundColor: globalStyles.corPrincipal,
         flex: 1,
     },
     titulo: {
-        color: CommonStyles.corSecundaria,
+        color: globalStyles.corSecundaria,
         fontSize: 28,
         fontWeight: 'bold',
         marginBottom: 50,
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         width: 150,
     },
     nome: {
-        color: CommonStyles.corSecundaria,
+        color: globalStyles.corSecundaria,
         fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 20,
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     },
     botoes: {
         alignItems: 'center',
-        backgroundColor: CommonStyles.corSecundaria,
+        backgroundColor: globalStyles.corSecundaria,
         borderRadius: 5,
         flexDirection: 'row',
         justifyContent: 'center',

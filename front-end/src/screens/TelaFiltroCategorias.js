@@ -6,10 +6,9 @@ import {
     Text,
     View,
 } from 'react-native'
-import api from '../api/Api'
-import { Divider } from 'react-native-elements/dist/divider/Divider'
+import api from '../api/api'
 import BotaoPrincipal from '../components/BotaoPrincipal'
-import CommonStyles from '../CommonStyles'
+import globalStyles from '../styles/globalStyles'
 
 export default (props) => {
     const { cod_categoria, nome_categoria } = props.route.params
@@ -24,7 +23,7 @@ export default (props) => {
     return (
         <View style={styles.container}>
             <StatusBar 
-                backgroundColor={CommonStyles.corSecundaria}
+                backgroundColor={globalStyles.corSecundaria}
                 barStyle="light-content" />
             <Text style={styles.titulo}>{nome_categoria}</Text>
             <FlatList 
@@ -48,11 +47,11 @@ export default (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: CommonStyles.corPrincipal,
+        backgroundColor: globalStyles.corPrincipal,
         flex: 1,
     },
     titulo: {
-        color: CommonStyles.corSecundaria,
+        color: globalStyles.corSecundaria,
         fontSize: 26,
         fontWeight: 'bold',
         marginBottom: 15,
@@ -78,7 +77,7 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     textoInfoServico: {
-        color: CommonStyles.corSecundaria,
+        color: globalStyles.corSecundaria,
         fontSize: 18,
         fontWeight: 'bold',
     },

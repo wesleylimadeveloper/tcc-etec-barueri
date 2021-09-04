@@ -1,6 +1,9 @@
 import React from 'react'
-import { StyleSheet, TextInput } from 'react-native'
-import CommonStyles from '../CommonStyles'
+import { 
+    StyleSheet, 
+    TextInput 
+} from 'react-native'
+import globalStyles from '../styles/globalStyles'
 
 export default (props) => {
     return(
@@ -19,7 +22,7 @@ const styles = StyleSheet.create({
     input: {
         backgroundColor: '#FFF',
         borderRadius: 5,
-        color: CommonStyles.corSecundaria,
+        color: globalStyles.corSecundaria,
         fontSize: 16,
         paddingVertical: 6,
         textAlign: 'center',

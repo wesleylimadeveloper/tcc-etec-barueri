@@ -9,8 +9,8 @@ import {
     View
 } from 'react-native'
 import SearchBar from '../components/SearchBar'
-import api from '../api/Api'
-import CommonStyles from '../CommonStyles'
+import api from '../api/api'
+import globalStyles from '../styles/globalStyles'
 
 export default ({ navigation }) => {
     const [categorias, setCategorias] = useState([])
@@ -35,7 +35,7 @@ export default ({ navigation }) => {
     return (
         <View style={styles.container}>
             <StatusBar
-                backgroundColor={CommonStyles.corSecundaria}
+                backgroundColor={globalStyles.corSecundaria}
                 barStyle="light-content" />
             <Text style={styles.titulo}>Categorias</Text>
             <View style={styles.searchBarContainer}>
@@ -54,12 +54,12 @@ export default ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: CommonStyles.corPrincipal,
+        backgroundColor: globalStyles.corPrincipal,
         flex: 1,
         justifyContent: 'center',
     },
     titulo: {
-        color: CommonStyles.corSecundaria,
+        color: globalStyles.corSecundaria,
         fontSize: 28,
         fontWeight: 'bold',
         marginTop: 20,
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
         width: 150,
     },
     nome: {
-        color: CommonStyles.corSecundaria,
+        color: globalStyles.corSecundaria,
         fontSize: 23,
         fontWeight: 'bold',
     },

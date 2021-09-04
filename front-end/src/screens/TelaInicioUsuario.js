@@ -10,8 +10,8 @@ import {
 } from 'react-native'
 import SearchBar from '../components/SearchBar'
 import Carousel from 'react-native-snap-carousel'
-import api from '../api/Api'
-import CommonStyles from '../CommonStyles'
+import api from '../api/api'
+import globalStyles from '../styles/globalStyles'
 
 export default ({ navigation }) => {
     const [buscar, setBuscar] = useState('')
@@ -41,7 +41,7 @@ export default ({ navigation }) => {
     return (
         <ScrollView style={styles.container}>
             <StatusBar 
-                backgroundColor={CommonStyles.corSecundaria}
+                backgroundColor={globalStyles.corSecundaria}
                 barStyle="light-content" />
             <View style={styles.searchBarContainer}>
                 <SearchBar
@@ -70,7 +70,7 @@ export default ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: CommonStyles.corPrincipal,
+        backgroundColor: globalStyles.corPrincipal,
         flex: 1,
     },
     searchBarContainer: {
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
         marginVertical: 20,
     },
     titulo: {
-        color: CommonStyles.corSecundaria,
+        color: globalStyles.corSecundaria,
         fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 5,
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     nomeFantasia: {
-        color: CommonStyles.corSecundaria,
+        color: globalStyles.corSecundaria,
         fontSize: 18,
         fontWeight: 'bold',
         textAlign: 'center',

@@ -1,8 +1,8 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import TelaPrincipalUsuario from '../screens/TelaPrincipalUsuario'
+import TelaInicioUsuario from '../screens/TelaInicioUsuario'
 import TelaEstabelecimento from '../screens/TelaEstabelecimento'
-import CommonStyles from '../CommonStyles'
+import globalStyles from '../styles/globalStyles'
 
 export default () => {
     const Stack = createNativeStackNavigator()
@@ -12,9 +12,9 @@ export default () => {
             screenOptions={{
                 headerShown: false,
                 headerStyle: {
-                    backgroundColor: CommonStyles.corPrincipal,
+                    backgroundColor: globalStyles.corPrincipal,
                 },
-                headerTintColor: CommonStyles.corSecundaria,
+                headerTintColor: globalStyles.corSecundaria,
                 headerTitleAlign: 'center',
                 headerTitleStyle: {
                     fontSize: 28,
@@ -22,8 +22,8 @@ export default () => {
                 },
             }}>
             <Stack.Screen 
-                component={TelaPrincipalUsuario}
-                name="TelaPrincipalUsuario"
+                component={TelaInicioUsuario}
+                name="TelaInicioUsuario"
             />
             <Stack.Screen 
                 component={TelaEstabelecimento}

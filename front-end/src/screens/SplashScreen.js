@@ -6,17 +6,17 @@ import {
   View
 } from 'react-native'
 import Logo from '../components/Logo'
-import CommonStyles from '../CommonStyles'
+import globalStyles from '../styles/globalStyles'
 
 export default () => {
   return (
     <View style={styles.container}>
       <StatusBar
-        backgroundColor={CommonStyles.corSecundaria}
+        backgroundColor={globalStyles.corSecundaria}
         barStyle="light-content" />
       <View style={styles.logoContainer}>
         <Logo />
-        <ActivityIndicator color={CommonStyles.corSecundaria} size="large" />
+        <ActivityIndicator color={globalStyles.corSecundaria} size="large" />
       </View>
     </View>
   )
@@ -25,7 +25,7 @@ export default () => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: CommonStyles.corPrincipal,
+    backgroundColor: globalStyles.corPrincipal,
     flex: 1,
   },
   logoContainer: {
