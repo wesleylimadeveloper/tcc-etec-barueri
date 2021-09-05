@@ -77,7 +77,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFF',
         borderRadius: 5,
         marginBottom: 10,
-        padding: 10,
+        paddingHorizontal: 10,
+        paddingVertical: 5,
     },
     imagemEstabelecimento: {
         height: 218,

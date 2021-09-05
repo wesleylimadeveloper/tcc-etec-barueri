@@ -165,7 +165,7 @@ router.get('/agendas', (req, res) => {
 })
 
 router.get('/estabelecimentos', (req, res) => {
-    const sql = 'SELECT cod_fornecedor, nome_fantasia, fotos_lugar, logradouro, numero, cidade FROM tbl_fornecedor f JOIN tbl_endereco e ON f.cod_fornecedor = e.cod_endereco ORDER BY nome_fantasia'
+    const sql = 'SELECT cod_fornecedor, nome_fantasia, fotos_lugar, logradouro, numero, cidade FROM tbl_fornecedor f JOIN tbl_endereco e ON f.cod_endereco = e.cod_endereco ORDER BY nome_fantasia'
 
     connection.query(sql, (error, results, fields) => {
         if (!error) {
