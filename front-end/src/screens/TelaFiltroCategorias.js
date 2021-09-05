@@ -8,6 +8,7 @@ import {
     TouchableOpacity,
     View,
 } from 'react-native'
+import { Divider } from 'react-native-elements'
 import Titulo from '../components/Titulo'
 import api from '../api/api'
 import globalStyles from '../styles/globalStyles'
@@ -42,6 +43,7 @@ export default ({ route, navigation }) => {
                             <TouchableOpacity style={styles.nomeFantasiaContainer}
                                 onPress={() => navigation.navigate("TelaEstabelecimento", item)}>
                                 <Text style={styles.nomeFantasia}>{item.nome_fantasia}</Text>
+                                <Divider />
                             </TouchableOpacity>
                             <View style={styles.servicoInfoContainer}>
                                 <Text style={styles.textoInfoServico}>{item.nome_servico}</Text>
@@ -70,13 +72,13 @@ const styles = StyleSheet.create({
         width: 330,
     },
     nomeFantasiaContainer: {
+        marginBottom: 5,
         width: '80%'
     },
     nomeFantasia: {
         color: globalStyles.corSecundaria,
-        fontSize: 22,
+        fontSize: 20,
         fontWeight: 'bold',
-        marginBottom: 5,
         textAlign: 'center',
     },
     servicoContainer: {
@@ -92,7 +94,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         borderRadius: 5,
         flexDirection: 'row',
-        justifyContent: 'space-evenly',
+        justifyContent: 'space-around',
         width: '100%'
     },
     textoInfoServico: {
