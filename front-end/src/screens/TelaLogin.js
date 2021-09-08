@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {
+  Alert,
   StatusBar,
   StyleSheet,
   TouchableOpacity,
@@ -7,14 +8,38 @@ import {
   View
 } from 'react-native'
 import { Icon } from 'react-native-elements'
+import api from '../api/api'
 import Logo from '../components/Logo'
 import Input from '../components/Input'
-import BotaoSecundario from '../components/BotaoSecundario'
+import BotaoPrincipal from '../components/BotaoPrincipal'
 import globalStyles from '../styles/globalStyles'
 
-export default () => {
+export default ({ navigation }) => {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
+
+  function validarLogin(emailUsuario, senhaUsuario) {
+    if(emailUsuario.trim() != '' && senhaUsuario.trim() != '') {
+      api.get(`/usuarios/${emailUsuario}/${senhaUsuario}`)
+        .then(response => {
+          const [dadosLogin] = response.data
+          if(emailUsuario.trim() == dadosLogin.email && senhaUsuario.trim() == dadosLogin.senha) {
+            if(dadosLogin.tipo_de_conta == "CLIENTE") {
+              navigation.navigate("TabUsuario")
+            } else {
+              navigation.navigate("TabFornecedor")
+            }
+          } else(
+            Alert.alert("Senha incorreta", "Verifique e-mail e senha.")
+          )
+        })
+        .catch(error => {
+          Alert.alert("Senha incorreta", "Verifique e-mail e senha.")
+        }) 
+    } else {
+      Alert.alert('Preencha todos os campos', "Digite e-mail e senha.")
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -26,18 +51,19 @@ export default () => {
       </View>
       <View style={styles.inputsContainer}>
         <Input
-          onChangeText={(txtEmail) => setEmail(txtEmail)}
-          placeholder="E-mail ou Usuário"
+          onChangeText={value => setEmail(value)}
+          placeholder="E-mail"
           value={email}
         />
         <Input
-          onChangeText={(txtSenha) => setSenha(txtSenha)}
+          onChangeText={value => setSenha(value)}
           placeholder="Senha"
           secureTextEntry={true}
           value={senha}
         />
       </View>
       <View style={styles.botoesContainer}>
+        <BotaoPrincipal onPress={() => validarLogin(email, senha)} title="Entrar" />
         <TouchableOpacity style={styles.botaoFacebook}>
           <Icon color="#FFF" name="facebook-square" size={20} type="font-awesome" />
           <Text style={styles.textoBotaoFacebook}>Entrar com o Facebook</Text>
@@ -46,7 +72,6 @@ export default () => {
           <Icon color="#555" name="google" size={20} type="font-awesome" />
           <Text style={styles.textoBotaoGoogle}>Entrar com a conta do Google</Text>
         </TouchableOpacity>
-        <BotaoSecundario title="Pular" />
       </View>
     </View>
   )

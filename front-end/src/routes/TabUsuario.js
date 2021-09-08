@@ -29,7 +29,6 @@ export default () => {
                     paddingVertical: 5,
                 },
                 tabBarActiveTintColor: '#FFF',
-                tabBarInactiveTintColor: globalStyles.corPrincipal,
                 tabBarLabelStyle: {
                     fontSize: 13,
                 },

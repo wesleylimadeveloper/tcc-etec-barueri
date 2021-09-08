@@ -75,6 +75,19 @@ router.get('/usuarios', (req, res) => {
     })
 })
 
+router.get('/usuarios/:email/:senha', (req, res) => {
+    const { email, senha } = req.params
+    const sql = 'SELECT cod_usuario, senha, email, tipo_de_conta from tbl_usuario WHERE email = ? AND senha = ?'
+
+    connection.query(sql, [email, senha], (error, results, fields) => {
+        if (!error) {
+            res.send(results)
+        } else {
+            res.send('Erro ao listar dados!')
+        }
+    })
+})
+
 router.get('/formaspagamento', (req, res) => {
     const sql = 'SELECT * from tbl_forma_pagamento'
 
