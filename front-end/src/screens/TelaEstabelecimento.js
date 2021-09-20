@@ -18,6 +18,18 @@ export default ({ route }) => {
     const { cod_fornecedor, nome_fantasia, fotos_lugar } = route.params
 
     useEffect(() => {
+        async function getServicos() {
+            try {
+               const { data } = await api.get(`/servicos/${cod_fornecedor}`)
+               setServicos(data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        getServicos()
+    }, [])
+
+    useEffect(() => {
         api.get(`/servicos/${cod_fornecedor}`)
             .then(response => setServicos(response.data))
             .catch(error => console.log(error))

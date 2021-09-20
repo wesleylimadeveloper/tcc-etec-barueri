@@ -18,9 +18,15 @@ export default ({ route, navigation }) => {
     const [servicos, setServicos] = useState([])
 
     useEffect(() => {
-        api.get(`/servicos/categoria/${cod_categoria}`)
-            .then(response => setServicos(response.data))
-            .catch(error => console.log(error))
+        async function getCategorias() {
+            try {
+                const { data } = await api.get(`/servicos/categoria/${cod_categoria}`)
+                setServicos(data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        getCategorias()
     }, [])
 
     return (

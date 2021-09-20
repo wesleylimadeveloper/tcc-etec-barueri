@@ -18,9 +18,15 @@ export default ({ navigation }) => {
     const [estabelecimentos, setEstabelecimentos] = useState([])
 
     useEffect(() => {
-        api.get('/estabelecimentos')
-            .then(response => setEstabelecimentos(response.data))
-            .catch(error => console.log(error))
+        async function getEstabelecimentos() {
+            try {
+                const { data } = await api.get('/estabelecimentos')
+                setEstabelecimentos(data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        getEstabelecimentos()
     }, [])
 
     function estabelecimentosProximos({ item }) {
