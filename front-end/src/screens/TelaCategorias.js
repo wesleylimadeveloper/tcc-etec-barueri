@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {
+    ActivityIndicator,
     FlatList,
     Image,
     StatusBar,
@@ -15,11 +16,19 @@ import globalStyles from '../styles/globalStyles'
 
 export default ({ navigation }) => {
     const [categorias, setCategorias] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        api.get('/categorias')
-            .then(response => setCategorias(response.data))
-            .catch(error => console.log(error))
+        async function getCategorias() {
+            try {
+                const { data } = await api.get('/categorias')
+                setCategorias(data)
+                setLoading(false)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        getCategorias()
     }, [])
 
     function renderItem({ item }) {
@@ -48,11 +57,21 @@ export default ({ navigation }) => {
                     placeholder="Buscar..."
                 />
             </View>
-            <FlatList
-                data={categorias}
-                keyExtractor={item => item.cod_categoria.toString()}
-                renderItem={renderItem}
-            />
+            {loading
+                ?
+                <View style={styles.loading}>
+                    <ActivityIndicator size="large" color={globalStyles.corSecundaria} />
+                </View>
+                :
+                <>
+                    <FlatList
+                    data={categorias}
+                    keyExtractor={item => item.cod_categoria.toString()}
+                    renderItem={renderItem}
+                    />
+                </>
+            }
+            
         </View>
     )
 }
@@ -61,7 +80,6 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: globalStyles.corPrincipal,
         flex: 1,
-        justifyContent: 'center',
     },
     titulo: {
         alignItems: 'center',
@@ -70,6 +88,10 @@ const styles = StyleSheet.create({
     searchBarContainer: {
         alignItems: 'center',
         marginVertical: 20,
+    },
+    loading: {
+        flex: 1,
+        justifyContent: 'center',
     },
     categoriaContainer: {
         alignItems: 'center',

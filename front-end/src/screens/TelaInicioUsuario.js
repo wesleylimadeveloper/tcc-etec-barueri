@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {
+    ActivityIndicator,
     Image, 
     ScrollView, 
     StatusBar, 
@@ -16,12 +17,14 @@ import globalStyles from '../styles/globalStyles'
 export default ({ navigation }) => {
     const [buscar, setBuscar] = useState('')
     const [estabelecimentos, setEstabelecimentos] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         async function getEstabelecimentos() {
             try {
                 const { data } = await api.get('/estabelecimentos')
                 setEstabelecimentos(data)
+                setLoading(false)
             } catch (error) {
                 console.log(error)
             }
@@ -57,19 +60,28 @@ export default ({ navigation }) => {
                 />
             </View>
             <Text style={styles.titulo}>Estabelecimentos próximos</Text>
-            <Carousel 
-                data={estabelecimentos}
-                itemWidth={350}
-                renderItem={estabelecimentosProximos}
-                sliderWidth={400}
-            />
-            <Text style={styles.titulo}>Promoções</Text>
-            <Carousel 
-                data={estabelecimentos}
-                itemWidth={350}
-                renderItem={estabelecimentosProximos}
-                sliderWidth={400}
-            />
+            {loading
+                ?
+                <View style={styles.loading}>
+                    <ActivityIndicator size="large" color={globalStyles.corSecundaria} />
+                </View>
+                :
+                <>
+                    <Carousel 
+                        data={estabelecimentos}
+                        itemWidth={350}
+                        renderItem={estabelecimentosProximos}
+                        sliderWidth={400}
+                    />
+                    <Text style={styles.titulo}>Promoções</Text>
+                    <Carousel 
+                        data={estabelecimentos}
+                        itemWidth={350}
+                        renderItem={estabelecimentosProximos}
+                        sliderWidth={400}
+                    />
+                </>
+            }
         </ScrollView>
     )
 }
@@ -89,6 +101,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 5,
         textAlign: 'center',
+    },
+    loading: {
+        marginTop: 250,
     },
     carouselContainer: {
         alignItems: 'center',

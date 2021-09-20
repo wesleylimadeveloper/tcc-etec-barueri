@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {
+    ActivityIndicator,
     FlatList,
     Image,
     StatusBar,
@@ -16,12 +17,14 @@ import globalStyles from '../styles/globalStyles'
 export default ({ route, navigation }) => {
     const { cod_categoria, nome_categoria } = route.params
     const [servicos, setServicos] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         async function getCategorias() {
             try {
                 const { data } = await api.get(`/servicos/categoria/${cod_categoria}`)
                 setServicos(data)
+                setLoading(false)
             } catch (error) {
                 console.log(error)
             }
@@ -39,26 +42,37 @@ export default ({ route, navigation }) => {
                     <Text>{nome_categoria}</Text>
                 </Titulo>
             </View>
-            <FlatList
-                data={servicos}
-                keyExtractor={item => item.cod_servicos.toString()}
-                renderItem={({ item }) => {
-                    return (
-                        <View style={styles.servicoContainer}>
-                            <Image style={styles.fotoLugar} source={{ uri: `${item.fotos_lugar}` }} />
-                            <TouchableOpacity style={styles.nomeFantasiaContainer}
-                                onPress={() => navigation.navigate("TelaEstabelecimento", item)}>
-                                <Text style={styles.nomeFantasia}>{item.nome_fantasia}</Text>
-                                <Divider />
-                            </TouchableOpacity>
-                            <View style={styles.servicoInfoContainer}>
-                                <Text style={styles.textoInfoServico}>{item.nome_servico}</Text>
-                                <Text style={styles.textoInfoServico}>R$ {item.valor.toString().replace(".", ",")}</Text>
-                            </View>
-                        </View>
-                    )
-                }}
-            />
+            {loading
+                ?
+                <View style={styles.loading}>
+                    <ActivityIndicator size="large" color={globalStyles.corSecundaria} />
+                </View>
+                :
+                <>
+                    <FlatList
+                        data={servicos}
+                        keyExtractor={item => item.cod_servicos.toString()}
+                        renderItem={({ item }) => {
+                            return (
+                                <View style={styles.servicoContainer}>
+                                    <Image style={styles.fotoLugar} source={{ uri: `${item.fotos_lugar}` }} />
+                                    <TouchableOpacity style={styles.nomeFantasiaContainer}
+                                        onPress={() => navigation.navigate("TelaEstabelecimento", item)}>
+                                        <Text style={styles.nomeFantasia}>{item.nome_fantasia}</Text>
+                                        <Divider />
+                                    </TouchableOpacity>
+                                    <View style={styles.servicoInfoContainer}>
+                                        <Text style={styles.textoInfoServico}>{item.nome_servico}</Text>
+                                        <Text style={styles.textoInfoServico}>R$ {item.valor.toString().replace(".", ",")}</Text>
+                                    </View>
+                                </View>
+                            )
+                        }}
+                    />
+                </>
+                
+
+            }
         </View>
     )
 }
@@ -72,6 +86,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 15,
         marginTop: 30,
+    },
+    loading: {
+        flex: 1,
+        justifyContent: 'center'
     },
     fotoLugar: {
         height: 218,

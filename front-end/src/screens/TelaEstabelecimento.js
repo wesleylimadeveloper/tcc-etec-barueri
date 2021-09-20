@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {
+    ActivityIndicator,
     FlatList,
     Image,
     StatusBar,
@@ -15,13 +16,15 @@ import globalStyles from '../styles/globalStyles'
 
 export default ({ route }) => {
     const [servicos, setServicos] = useState([])
+    const [loading, setLoading] = useState(true)
     const { cod_fornecedor, nome_fantasia, fotos_lugar } = route.params
 
     useEffect(() => {
         async function getServicos() {
             try {
-               const { data } = await api.get(`/servicos/${cod_fornecedor}`)
-               setServicos(data)
+                const { data } = await api.get(`/servicos/${cod_fornecedor}`)
+                setServicos(data)
+                setLoading(false)
             } catch (error) {
                 console.log(error)
             }
@@ -46,29 +49,39 @@ export default ({ route }) => {
                 </Titulo>
             </View>
             <View style={styles.imagemContainer}>
-                <Image style={styles.imagemEstabelecimento} 
-                    source={{ uri: `${fotos_lugar}` }} 
+                <Image style={styles.imagemEstabelecimento}
+                    source={{ uri: `${fotos_lugar}` }}
                 />
             </View>
             <Text style={styles.textoServicos}>Serviços</Text>
-            <View style={styles.servicosContainer}>
-                <FlatList 
-                    data={servicos}
-                    keyExtractor={item => item.cod_servicos.toString()}
-                    renderItem={({item}) => {
-                        return (
-                            <View>
-                                <View style={styles.infoServico}>
-                                    <Text style={styles.textoInfoServico}>{item.nome_servico}</Text>
-                                    <Text style={styles.textoInfoServico}>R$ {item.valor.toString().replace(".", ",")}</Text>
-                                </View>
-                                <Divider orientation="horizontal" />
-                            </View>
-                        )
-                    }}
-                />
-            </View>
-            <BotaoPrincipal title="Agendar" onPress={() => console.log(servicos)} />
+            {loading
+                ?
+                <View>
+                    <ActivityIndicator style={styles.loading} size="large" color={globalStyles.corSecundaria} />
+                </View>
+                :
+                <>
+                    <View style={styles.servicosContainer}>
+                        <FlatList 
+                            data={servicos}
+                            keyExtractor={item => item.cod_servicos.toString()}
+                            renderItem={({item}) => {
+                                return (
+                                    <View>
+                                        <View style={styles.infoServico}>
+                                            <Text style={styles.textoInfoServico}>{item.nome_servico}</Text>
+                                            <Text style={styles.textoInfoServico}>R$ {item.valor.toString().replace(".", ",")}</Text>
+                                        </View>
+                                        <Divider orientation="horizontal" />
+                                    </View>
+                                )
+                            }}
+                        />
+                    </View>
+                    <BotaoPrincipal title="Agendar" onPress={() => console.log(servicos)} />
+                </>   
+            }
+
         </View>
     )
 }
@@ -101,6 +114,9 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 5,
+    },
+    loading: {
+        marginTop: 20,
     },
     servicosContainer: {
         backgroundColor: '#FFF',
