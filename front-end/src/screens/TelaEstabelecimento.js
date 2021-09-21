@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     loading: {
-        marginTop: 20,
+        marginTop: 40,
     },
     servicosContainer: {
         backgroundColor: '#FFF',
