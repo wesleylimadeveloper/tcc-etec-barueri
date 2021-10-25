@@ -1,219 +1,148 @@
-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
-
-##
-##     CRIAÇÂO DO DATABASE DO APLICATIVO DE PTCC
-##
-## COMANDO  DE CRIAÇÃO DO DATABASE
+## CRIAÇÃO DO DATABASE DO APLICATIVO DE TCC
 
 CREATE DATABASE bdtcc;
+
 USE bdtcc;
+
+=============================================================================================================================================================================
+
 ## CRIAÇÃO DAS TABELAS
+
 ## 1
-########## TABELA CLIENTE #####################
+## TABELA CLIENTE
 CREATE TABLE tbl_cliente(
-		cod_cliente INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        cod_usuario INT(10) UNSIGNED NOT NULL,
-		cod_endereco INT(10) UNSIGNED NOT NULL,
-        nome_cliente VARCHAR(100) NOT NULL,
-        telefone VARCHAR(20) NOT NULL,
-        dt_nascimento TIMESTAMP(6) NOT NULL,
-        sexo ENUM ('Feminino', 'Masculino') NOT NULL,
-        descricao VARCHAR (255)
+        id_cliente INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        nome VARCHAR(255) NOT NULL,
+        sobrenome VARCHAR(255) NOT NULL,
+        email VARCHAR(255) NOT NULL,
+        senha VARCHAR(255) NOT NULL,
+        telefone VARCHAR(255) NOT NULL,
+        foto VARCHAR(255),
+        sexo ENUM ('MASCULINO', 'FEMININO', 'OUTRO') NOT NULL
 );
+
+=============================================================================================================================================================================
+
 ## 2
-##########  TABELA ENDEREÇO  #####################
+## TABELA ENDEREÇO
 CREATE TABLE tbl_endereco(
-		cod_endereco INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        logradouro VARCHAR(45) NOT NULL,
-        numero VARCHAR(20) NOT NULL,
-		cidade VARCHAR(50) NOT NULL,
+		id_endereco INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        cep VARCHAR(255) NOT NULL,
+        logradouro VARCHAR(255) NOT NULL,
+        numero VARCHAR(255) NOT NULL,
+        complemento VARCHAR(255),
+		cidade VARCHAR(255) NOT NULL,
         uf VARCHAR(2) NOT NULL,
-        cep VARCHAR(45) NOT NULL,
-        latitude VARCHAR(45),
-        longitude VARCHAR(45),
-        complemento VARCHAR (100)
+        latitude VARCHAR(255),
+        longitude VARCHAR(255)
 );
+
+=============================================================================================================================================================================
+
 ## 3
-##########  TABELA FORNECEDOR #####################
-CREATE TABLE tbl_fornecedor(
-		cod_fornecedor INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        cod_usuario INT(10) UNSIGNED NOT NULL,
-		cod_endereco INT(10) UNSIGNED NOT NULL,
-        razao_social VARCHAR(100) NOT NULL,
+## TABELA ESTABELECIMENTO
+CREATE TABLE tbl_estabelecimento(
+		id_estabelecimento INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+		id_endereco INT(10) UNSIGNED NOT NULL,
+        nome_fantasia VARCHAR (100) NOT NULL,
         telefone VARCHAR(20) NOT NULL,
-        CNPJ_CPF VARCHAR(45) NOT NULL,
-        tipo_estabelecimento ENUM('PESSOA FISICA','PESSOA JURIDICA') NOT NULL,
-        horario_funcionamento TIMESTAMP(6) NOT NULL,
-        status_estabelecimento ENUM ('ABERTO', 'FECHADO') NOT NULL,
-        nome_fantasia VARCHAR (100),
-        fotos_lugar Varchar(255),
-        descricao TEXT
+        foto VARCHAR(255),
+        status_estabelecimento ENUM ('ABERTO', 'ALMOÇO', 'JANTA', 'FECHADO') NOT NULL
 );
+
+=============================================================================================================================================================================
+
 ## 4
-##########  TABELA RELACIONAMENTO FORNECEDOR E CATEGORIA #####################
-
-CREATE TABLE tbl_fornecedor_has_tbl_categoria(
-		cod_fornecedor INT(10) UNSIGNED NOT NULL,
-        cod_categoria INT(10) UNSIGNED NOT NULL
-);
-## 5
-##########  TABELA CATEGORIA #####################
+## TABELA CATEGORIA
 CREATE TABLE tbl_categoria(
-		cod_categoria INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        nome_categoria VARCHAR(45) NOT NULL,
-        foto VARCHAR(255) NOT NULL,
-        descricao VARCHAR (45)
+		id_categoria INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        nome VARCHAR(255) NOT NULL,
+        foto VARCHAR(255)
 );
-## 6
-##########  TABELA USUARIO #####################
-CREATE TABLE tbl_usuario(
-		cod_usuario INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        nome_usuario VARCHAR(45) NOT NULL,
-        senha VARCHAR(20) NOT NULL,
-        email VARCHAR(45) NOT NULL,
-        email_recuperacao VARCHAR(45) NOT NULL,
-        tipo_de_conta ENUM('CLIENTE', 'FORNECEDOR') NOT NULL,
-        foto_usuario VARCHAR (255),
-        backgroud_perfil VARCHAR(45),
-        descricao VARCHAR(255)
-);
-## 7
-##########  TABELA FORMA DE PAGAMENTO #####################
-CREATE TABLE tbl_forma_pagamento(
-		cod_pagamento INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        tipo_de_pagamento ENUM ('DINHEIRO', 'DÉBITO', 'CARTÃO DE CREDITO'),
-        descricao VARCHAR(100),
-        CPF VARCHAR(15)
-);
-## 8
-##########  TABELA PEDIDOS #####################
-CREATE TABLE tbl_pedido(
-		cod_pedido INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        cod_servicos INT(10) UNSIGNED NOT NULL,
-        cod_usuario INT(10) UNSIGNED NOT NULL,
-        cod_agenda INT(10)  UNSIGNED NOT NULL,
-        cod_pagamento INT(10)  UNSIGNED NOT NULL,
-        data_pedido TIMESTAMP(6) NOT NULL,
-        status_pedido ENUM ('EM ABERTO', 'EM ANDAMENTO','CANCELADO', 'FINALIZADO', 'AGENDADO') NOT NULL,
-        descricao VARCHAR(100)
-);
-## 9
-##########  TABELA SERVIÇOS #####################
-CREATE TABLE tbl_servicos(
-		cod_servicos INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        cod_fornecedor INT(10) UNSIGNED,
-        cod_categoria INT(10) UNSIGNED NOT NULL,
-        nome_servico VARCHAR(45) NOT NULL,
-        valor DOUBLE NOT NULL,
-        qtde_avaliacoes INT,
-        descricao VARCHAR(255),
-        duracao TIME(4),
-        foto VARCHAR(45)
 
+=============================================================================================================================================================================
+
+## 5
+## TABELA SERVIÇO
+CREATE TABLE tbl_servico(
+		id_servico INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        id_estabelecimento INT(10) UNSIGNED NOT NULL,
+        id_categoria INT(10) UNSIGNED NOT NULL,
+        nome VARCHAR(255) NOT NULL,
+        valor DOUBLE NOT NULL,
 );
-##10
-##########  TABELA CLASSIFICAÇÃO #####################
-CREATE TABLE tbl_classificacao(
-		cod_classificacao INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        cod_servicos INT(10) UNSIGNED NOT NULL,
-        nota ENUM('1','2', '3','4','5') NOT NULL,
-        descricao VARCHAR (255)
+
+=============================================================================================================================================================================
+
+## 6
+## TABELA RELACIONAMENTO ESTABELECIMENTO E CATEGORIA
+CREATE TABLE tbl_estabelecimento_categoria(
+		id_estabelecimento INT(10) UNSIGNED NOT NULL,
+        id_categoria INT(10) UNSIGNED NOT NULL
 );
-##11
-##########  TABELA AGENDA #####################
+
+=============================================================================================================================================================================
+
+## 7
+## TABELA AGENDA
 CREATE TABLE tbl_agenda(
-		cod_agenda INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+		id_agenda INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        id_estabelecimento INT(10) UNSIGNED NOT NULL,
+        id_cliente INT(10) UNSIGNED NOT NULL,
+        id_servico INT(10) UNSIGNED NOT NULL,
         data_agenda TIMESTAMP(6) NOT NULL,
-        descricao VARCHAR (255)
+        status_agenda ENUM ('AGENDADO', 'CANCELADO', 'FINALIZADO') NOT NULL
 );
+
+=============================================================================================================================================================================
 
 ## CRIAÇÃO DAS FK
+
 ## 1
-########## FK TABELA CLIENTE #####################
-## FK USUARIO
-ALTER TABLE tbl_cliente
-ADD CONSTRAINT FK_USUARIO_CLIENTE
-FOREIGN KEY(cod_usuario)
-REFERENCES tbl_usuario (cod_usuario);
+## FK TABELA ESTABELECIMENTO
+
 ## FK ENDEREÇO
-ALTER TABLE tbl_cliente
-ADD CONSTRAINT FK_ENDERECO_CLIENTE
-FOREIGN KEY(cod_endereco)
-REFERENCES tbl_endereco (cod_endereco);
+ALTER TABLE tbl_estabelecimento
+ADD CONSTRAINT FK_ENDERECO_ESTABELECIMENTO
+FOREIGN KEY(id_endereco)
+REFERENCES tbl_endereco (id_endereco);
+
+=============================================================================================================================================================================
 
 ## 2
-########## FK TABELA FORNECEDOR #####################
-## FK USUARIO
-ALTER TABLE tbl_fornecedor
-ADD CONSTRAINT FK_USUARIO_FORNECEDOR
-FOREIGN KEY(cod_usuario)
-REFERENCES tbl_usuario (cod_usuario);
-## FK ENDEREÇO
-ALTER TABLE tbl_fornecedor
-ADD CONSTRAINT FK_ENDERECO_FORNECEDOR
-FOREIGN KEY(cod_endereco)
-REFERENCES tbl_endereco (cod_endereco);
+## FK TABELA RELACIONADORA ESTABELECIMENTO E CATEGORIA
+
+## FK FORNECEDOR
+ALTER TABLE tbl_estabelecimento_categoria
+ADD CONSTRAINT FK_ESTABELECIMENTO_RELACIONADORA
+FOREIGN KEY(id_estabelecimento)
+REFERENCES tbl_estabelecimento (id_estabelecimento);
+
+## FK CATEGORIA
+ALTER TABLE tbl_estabelecimento_categoria
+ADD CONSTRAINT FK_CATEGORIA_RELACIONADORA
+FOREIGN KEY(id_categoria)
+REFERENCES tbl_categoria (id_categoria);
+
+=============================================================================================================================================================================
 
 ## 3
-########## FK TABELA RELACIONADORA FORNECEDOR E CATEGORIA #####################
-## FK FORNECEDOR
-ALTER TABLE tbl_fornecedor_has_tbl_categoria
-ADD CONSTRAINT FK_FORNCEDOR_RELACIONADORA
-FOREIGN KEY(cod_fornecedor)
-REFERENCES tbl_fornecedor (cod_fornecedor);
-## FK CATEGORIA
-ALTER TABLE tbl_fornecedor_has_tbl_categoria
-ADD CONSTRAINT FK_CATEGORIA_RELACIONADORA
-FOREIGN KEY(cod_categoria)
-REFERENCES tbl_categoria (cod_categoria);
+## FK TABELA AGENDA
 
-## 4
-########## FK TABELA PEDIDOS #####################
-## FK SERVIÇOS
-ALTER TABLE tbl_pedido
-ADD CONSTRAINT FK_SERVICOS_PEDIDO
-FOREIGN KEY(cod_servicos)
-REFERENCES tbl_servicos (cod_servicos);
-## FK USUÁRIO
-ALTER TABLE tbl_pedido
-ADD CONSTRAINT FK_USUARIO_PEDIDO
-FOREIGN KEY(cod_usuario)
-REFERENCES tbl_usuario (cod_usuario);
-## FK AGENDA
-ALTER TABLE tbl_pedido
-ADD CONSTRAINT FK_AGENDA_PEDIDO
-FOREIGN KEY(cod_agenda)
-REFERENCES tbl_agenda (cod_agenda);
-## FK PAGAMENTO
-ALTER TABLE tbl_pedido
-ADD CONSTRAINT FK_PAGAMENTO_PEDIDO
-FOREIGN KEY(cod_pagamento)
-REFERENCES tbl_forma_pagamento (cod_pagamento);
+## FK ESTABELECIMENTO
+ALTER TABLE tbl_agenda
+ADD CONSTRAINT FK_AGENDA_ESTABELECIMENTO
+FOREIGN KEY(id_estabelecimento)
+REFERENCES tbl_estabelecimento (id_estabelecimento);
 
-## 5
-########## FK TABELA SERVICOS #####################
-## FK SERVIÇOS
-ALTER TABLE tbl_servicos
-ADD CONSTRAINT FK_CATEGORIA_SERVICOS
-FOREIGN KEY(cod_categoria)
-REFERENCES tbl_categoria (cod_categoria);
-## FK FORNECEDOR
-ALTER TABLE tbl_servicos
-ADD CONSTRAINT FK_FORNECEDOR_SERVICOS
-FOREIGN KEY(cod_fornecedor)
-REFERENCES tbl_fornecedor (cod_fornecedor);
+## FK CLIENTE
+ALTER TABLE tbl_agenda
+ADD CONSTRAINT FK_AGENDA_CLIENTE
+FOREIGN KEY(id_cliente)
+REFERENCES tbl_cliente (id_cliente);
 
-
-## 6
-########## FK TABELA CLASSIFICAÇÃO #####################
-## FK CLASSIFICAÇÃO
-ALTER TABLE tbl_classificacao
-ADD CONSTRAINT FK_SERVICOS_CLASSIFICACAO
-FOREIGN KEY(cod_servicos)
-REFERENCES tbl_servicos (cod_servicos);
-
-
-
-
-
-
+## FK SERVICO
+ALTER TABLE tbl_agenda
+ADD CONSTRAINT FK_AGENDA_SERVICO
+FOREIGN KEY(id_servico)
+REFERENCES tbl_servico (id_servico);
