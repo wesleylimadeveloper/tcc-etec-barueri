@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { 
+    SafeAreaView,
     StatusBar,
     StyleSheet, 
     Text, 
@@ -11,10 +12,10 @@ import BotaoPrincipal from '../components/BotaoPrincipal'
 import globalStyles from '../styles/globalStyles'
 
 export default ({ navigation }) => {
-    const [checked, setChecked] = useState('usuário')
+    const [checked, setChecked] = useState('cliente')
     
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <StatusBar 
                 backgroundColor={globalStyles.corSecundaria}
                 barStyle="light-content" />
@@ -27,11 +28,11 @@ export default ({ navigation }) => {
                 <View style={styles.radioOptionContainer}>
                     <RadioButton
                         color={globalStyles.corSecundaria}
-                        onPress={() => setChecked('usuário')}
-                        status={checked === 'usuário' ? 'checked' : 'unchecked'}
-                        value="usuário"
+                        onPress={() => setChecked('cliente')}
+                        status={checked === 'cliente' ? 'checked' : 'unchecked'}
+                        value="cliente"
                     />
-                    <Text style={styles.texto}>Usuário</Text>
+                    <Text style={styles.texto}>Cliente</Text>
                 </View>
                 <View style={styles.radioOptionContainer}>
                     <RadioButton
@@ -46,14 +47,14 @@ export default ({ navigation }) => {
             <View>
                 <BotaoPrincipal
                     onPress={
-                        checked == 'usuário'
-                        ? () => navigation.navigate("TelaCadastroUsuario")
+                        checked == 'cliente'
+                        ? () => navigation.navigate("TelaCadastroCliente")
                         : () => navigation.navigate("TelaCadastroFornecedor")
                     }
                     title="Avançar"
                 />
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 

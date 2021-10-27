@@ -1,28 +1,28 @@
 import React, { useState } from 'react'
 import {
+  SafeAreaView,
   StatusBar,
   StyleSheet,
   Text,
   View
 } from 'react-native'
-import Titulo from '../components/Titulo'
+
 import Input from '../components/Input'
 import BotaoPrincipal from '../components/BotaoPrincipal'
 import globalStyles from '../styles/globalStyles'
 
 export default ({ navigation }) => {
   const [nome, setNome] = useState('')
-  const [telefone, setTelefone] = useState('')
-  const [dataNascimento, setDataNascimento] = useState('')
+  const [sobrenome, setSobrenome] = useState('')
+  const [email, setEmail] = useState('')
+  const [senha, setSenha] = useState('')
+  const [confirmarSenha, setConfirmarSenha] = useState('')
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <StatusBar
         backgroundColor={globalStyles.corSecundaria}
         barStyle="light-content" />
-      <Titulo>
-        <Text>Dados de Cliente</Text>
-      </Titulo>
       <View style={styles.inputsContainer}>
         <Input
           onChangeText={value => setNome(value)}
@@ -30,24 +30,35 @@ export default ({ navigation }) => {
           value={nome}
         />
         <Input
-          keyboardType="phone-pad"
-          onChangeText={value => setTelefone(value)}
-          placeholder="Telefone"
-          textContentType="telephoneNumber"
-          value={telefone}
+          onChangeText={value => setSobrenome(value)}
+          placeholder="Sobrenome"
+          value={sobrenome}
         />
         <Input
-          onChangeText={value => setDataNascimento(value)}
-          placeholder="Data de nascimento"
-          value={dataNascimento}
+          onChangeText={value => setEmail(value)}
+          placeholder="E-mail"
+          value={email}
+        />
+        <Input
+          onChangeText={value => setSenha(value)}
+          placeholder="Senha"
+          secureTextEntry={true}
+          value={senha}
+        />
+        <Input
+          onChangeText={value => setConfirmarSenha(value)}
+          placeholder="Confirmar senha"
+          secureTextEntry={true}
+          value={confirmarSenha}
         />
       </View>
       <View>
         <BotaoPrincipal
-          onPress={() => navigation.navigate("TelaCadastroEndereco")}
-          title="Avançar" />
+          onPress={() => navigation.navigate("TelaCadastroCliente")}
+          title="Avançar"
+        />
       </View>
-    </View>
+    </SafeAreaView>
   )
 }
 
@@ -59,9 +70,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   inputsContainer: {
-    height: 170,
+    height: 270,
     justifyContent: 'space-around',
     marginBottom: 10,
-    marginTop: 10
+    marginTop: 10,
   },
 })

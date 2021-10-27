@@ -1,16 +1,18 @@
 import React from 'react'
 import {
   ActivityIndicator,
+  SafeAreaView,
   StatusBar,
   StyleSheet,
   View
 } from 'react-native'
+
 import Logo from '../components/Logo'
 import globalStyles from '../styles/globalStyles'
 
 export default () => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <StatusBar
         backgroundColor={globalStyles.corSecundaria}
         barStyle="light-content" />
@@ -18,7 +20,7 @@ export default () => {
         <Logo />
         <ActivityIndicator color={globalStyles.corSecundaria} size="large" />
       </View>
-    </View>
+    </SafeAreaView>
   )
 }
 

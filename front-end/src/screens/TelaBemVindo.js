@@ -1,6 +1,7 @@
 import React from 'react'
 import { 
     Image, 
+    SafeAreaView, 
     StatusBar, 
     StyleSheet, 
     Text, 
@@ -13,7 +14,7 @@ import globalStyles from '../styles/globalStyles'
 
 export default () => {
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <StatusBar 
                 backgroundColor={globalStyles.corSecundaria}
                 barStyle="light-content" />
@@ -35,7 +36,7 @@ export default () => {
                 <BotaoSecundario title="Agora não" />
                 <BotaoPrincipal title="Ativar serviços de localização" />
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {
   Alert,
+  SafeAreaView,
   StatusBar,
   StyleSheet,
   TouchableOpacity,
@@ -42,7 +43,7 @@ export default ({ navigation }) => {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <StatusBar
         backgroundColor={globalStyles.corSecundaria}
         barStyle="light-content" />
@@ -73,7 +74,7 @@ export default ({ navigation }) => {
           <Text style={styles.textoBotaoGoogle}>Entrar com a conta do Google</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   )
 }
 
@@ -82,10 +83,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: globalStyles.corPrincipal,
     flex: 1,
+    justifyContent: 'center',
   },
   logoContainer: {
     marginBottom: 15,
-    marginTop: 50,
   },
   inputsContainer: {
     height: 100,
