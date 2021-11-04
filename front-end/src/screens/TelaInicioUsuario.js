@@ -36,7 +36,7 @@ export default ({ navigation }) => {
         return (
             <View style={styles.carouselContainer}>
                 <Image style={styles.imagemEstabelecimento} 
-                    source={{ uri: `${item.fotos_lugar}` }} />
+                    source={{ uri: `${item.foto}` }} />
                 <View style={styles.infoContainer}>
                     <TouchableOpacity onPress={() => navigation.navigate("TelaEstabelecimento", item)}>
                         <Text style={styles.nomeFantasia}>{item.nome_fantasia}</Text>

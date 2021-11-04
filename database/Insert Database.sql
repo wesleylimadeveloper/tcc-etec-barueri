@@ -8,8 +8,6 @@ VALUES ('76558-177', 'Rua Noruega', '793', 'Valhalla', 'Valhalla', 'NR'),
 ('12256-858', 'Avenida Walt Disney', '101', 'Florida', 'Florida', 'FD'),
 ('74777-787', 'Rua Century Fox', '20', 'Hollywood', 'Hollywood', 'HW');
 
-=============================================================================================================================================================================
-
 ## INSERT DADOS TABELA ESTABELECIMENTO
 
 INSERT INTO tbl_estabelecimento (id_endereco, nome_fantasia, telefone, foto, status_estabelecimento) 
@@ -19,8 +17,6 @@ VALUES  (1, 'Barbearia dos Vikings', '95858-1565', 'https://www.guiadasemana.com
 (4, 'Marge Simpson Spa', '98787-2562', 'https://tec-cia.com.br/wp-content/uploads/2014/07/Marge_Simpson_by_leif_j.jpg', 'ABERTO'), 
 (5, 'Cruella De Vil Pet Shop', '95947-1815', 'https://thaisfarage.com.br/wp-content/uploads/2021/08/1623486101492154-20210531-Cruella-de-Vil-Preview-Image-2.jpg', 'ABERTO'),
 (6, 'Edward Mãos de Tesoura Cabeleireiro', '95200-1011', 'https://livrosfilmesdehorrorhome.files.wordpress.com/2021/02/edward-final-blog-post.jpg', 'ABERTO');
-
-=============================================================================================================================================================================
 
 INSERT INTO tbl_categoria (nome, foto) 
 VALUES ('Barba', 'https://images.pexels.com/photos/1319461/pexels-photo-1319461.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
@@ -37,11 +33,9 @@ VALUES ('Barba', 'https://images.pexels.com/photos/1319461/pexels-photo-1319461.
 ('Tatuagem', 'https://images.pexels.com/photos/4125659/pexels-photo-4125659.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
 ('Tratamento Capilar', 'https://images.pexels.com/photos/3993454/pexels-photo-3993454.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
 
-=============================================================================================================================================================================
+## INSERT DADOS TABELA SERVIÇO
 
-INSERT DADOS TABELA SERVIÇO
-
-INSERT INTO tbl_servico (id_ id_estabelecimento, id_categoria, nome, valor)
+INSERT INTO tbl_servico (id_estabelecimento, id_categoria, nome, valor)
 VALUES (1, 1, 'Barba', 14.99),
 (1, 2, 'Corte Adulto', 14.99),
 (1, 2, 'Corte Infantil', 9.99),

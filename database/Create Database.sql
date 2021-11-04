@@ -4,8 +4,6 @@ CREATE DATABASE bdtcc;
 
 USE bdtcc;
 
-=============================================================================================================================================================================
-
 ## CRIAÇÃO DAS TABELAS
 
 ## 1
@@ -21,8 +19,6 @@ CREATE TABLE tbl_cliente(
         sexo ENUM ('MASCULINO', 'FEMININO', 'OUTRO') NOT NULL
 );
 
-=============================================================================================================================================================================
-
 ## 2
 ## TABELA ENDEREÇO
 CREATE TABLE tbl_endereco(
@@ -31,13 +27,12 @@ CREATE TABLE tbl_endereco(
         logradouro VARCHAR(255) NOT NULL,
         numero VARCHAR(255) NOT NULL,
         complemento VARCHAR(255),
+        bairro VARCHAR(255) NOT NULL,
 		cidade VARCHAR(255) NOT NULL,
         uf VARCHAR(2) NOT NULL,
         latitude VARCHAR(255),
         longitude VARCHAR(255)
 );
-
-=============================================================================================================================================================================
 
 ## 3
 ## TABELA ESTABELECIMENTO
@@ -50,8 +45,6 @@ CREATE TABLE tbl_estabelecimento(
         status_estabelecimento ENUM ('ABERTO', 'ALMOÇO', 'JANTA', 'FECHADO') NOT NULL
 );
 
-=============================================================================================================================================================================
-
 ## 4
 ## TABELA CATEGORIA
 CREATE TABLE tbl_categoria(
@@ -60,8 +53,6 @@ CREATE TABLE tbl_categoria(
         foto VARCHAR(255)
 );
 
-=============================================================================================================================================================================
-
 ## 5
 ## TABELA SERVIÇO
 CREATE TABLE tbl_servico(
@@ -69,10 +60,8 @@ CREATE TABLE tbl_servico(
         id_estabelecimento INT(10) UNSIGNED NOT NULL,
         id_categoria INT(10) UNSIGNED NOT NULL,
         nome VARCHAR(255) NOT NULL,
-        valor DOUBLE NOT NULL,
+        valor DOUBLE NOT NULL
 );
-
-=============================================================================================================================================================================
 
 ## 6
 ## TABELA RELACIONAMENTO ESTABELECIMENTO E CATEGORIA
@@ -80,8 +69,6 @@ CREATE TABLE tbl_estabelecimento_categoria(
 		id_estabelecimento INT(10) UNSIGNED NOT NULL,
         id_categoria INT(10) UNSIGNED NOT NULL
 );
-
-=============================================================================================================================================================================
 
 ## 7
 ## TABELA AGENDA
@@ -94,8 +81,6 @@ CREATE TABLE tbl_agenda(
         status_agenda ENUM ('AGENDADO', 'CANCELADO', 'FINALIZADO') NOT NULL
 );
 
-=============================================================================================================================================================================
-
 ## CRIAÇÃO DAS FK
 
 ## 1
@@ -106,8 +91,6 @@ ALTER TABLE tbl_estabelecimento
 ADD CONSTRAINT FK_ENDERECO_ESTABELECIMENTO
 FOREIGN KEY(id_endereco)
 REFERENCES tbl_endereco (id_endereco);
-
-=============================================================================================================================================================================
 
 ## 2
 ## FK TABELA RELACIONADORA ESTABELECIMENTO E CATEGORIA
@@ -123,8 +106,6 @@ ALTER TABLE tbl_estabelecimento_categoria
 ADD CONSTRAINT FK_CATEGORIA_RELACIONADORA
 FOREIGN KEY(id_categoria)
 REFERENCES tbl_categoria (id_categoria);
-
-=============================================================================================================================================================================
 
 ## 3
 ## FK TABELA AGENDA

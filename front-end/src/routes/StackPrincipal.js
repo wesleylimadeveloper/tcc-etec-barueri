@@ -5,6 +5,8 @@ import SplashScreen from '../screens/SplashScreen'
 import TelaBemVindo from '../screens/TelaBemVindo'
 import TelaLogin from '../screens/TelaLogin'
 import TelaCadastroCliente from '../screens/TelaCadastroCliente'
+import TabUsuario from './TabUsuario'
+
 import globalStyles from '../styles/globalStyles'
 
 export default () => {
@@ -13,7 +15,7 @@ export default () => {
 
     return (
         <Navigator
-            initialRouteName="SplashScreen"
+            initialRouteName="TabUsuario"
             screenOptions={{
                 headerTitleStyle: {
                     fontSize: 26,
@@ -29,6 +31,7 @@ export default () => {
             <Screen component={TelaBemVindo} name="TelaBemVindo" options={{ headerShown: false }} />
             <Screen component={TelaLogin} name="TelaLogin" options={{ headerShown: false }} />
             <Screen component={TelaCadastroCliente} name="TelaCadastroCliente" options={{ headerTitle: "Cadastro de Cliente"}} />
+            <Screen component={TabUsuario} name="TabUsuario" options={{ headerShown: false }} />
         </Navigator>
     )
 }

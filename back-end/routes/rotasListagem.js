@@ -81,7 +81,7 @@ router.get('/servicos/categoria/:id', (req, res) => {
 })
 
 router.get('/estabelecimentos', (req, res) => {
-    const sql = 'SELECT id_estabelecimento, nome_fantasia, fotos_lugar, logradouro, numero, cidade FROM tbl_estabelecimento e JOIN tbl_endereco a ON e.id_endereco = a.id_endereco ORDER BY nome_fantasia'
+    const sql = 'SELECT id_estabelecimento, nome_fantasia, foto, logradouro, numero, bairro, cidade FROM tbl_estabelecimento e JOIN tbl_endereco a ON e.id_endereco = a.id_endereco ORDER BY nome_fantasia'
 
     connection.query(sql, (error, results, fields) => {
         if (!error) {
