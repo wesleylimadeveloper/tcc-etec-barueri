@@ -1,84 +1,84 @@
 import React, { useState } from 'react'
-import { 
-    SafeAreaView,
-    StatusBar,
-    StyleSheet, 
-    Text, 
-    View 
+import {
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  View
 } from 'react-native'
-import { RadioButton } from 'react-native-paper'
-import Titulo from '../components/Titulo'
+
+import Logo from '../components/Logo'
+import Input from '../components/Input'
 import BotaoPrincipal from '../components/BotaoPrincipal'
 import globalStyles from '../styles/globalStyles'
 
 export default ({ navigation }) => {
-    const [checked, setChecked] = useState('cliente')
-    
-    return (
-        <SafeAreaView style={styles.container}>
-            <StatusBar 
-                backgroundColor={globalStyles.corSecundaria}
-                barStyle="light-content" />
-            <View style={styles.titulo}>
-                <Titulo>
-                    <Text>Cadastrar</Text>
-                </Titulo>
-            </View>
-            <View style={styles.radioContainer}>
-                <View style={styles.radioOptionContainer}>
-                    <RadioButton
-                        color={globalStyles.corSecundaria}
-                        onPress={() => setChecked('cliente')}
-                        status={checked === 'cliente' ? 'checked' : 'unchecked'}
-                        value="cliente"
-                    />
-                    <Text style={styles.texto}>Cliente</Text>
-                </View>
-                <View style={styles.radioOptionContainer}>
-                    <RadioButton
-                        color={globalStyles.corSecundaria}
-                        onPress={() => setChecked('fornecedor')}
-                        status={checked === 'fornecedor' ? 'checked' : 'unchecked'}
-                        value="fornecedor"
-                    />
-                    <Text style={styles.texto}>Fornecedor</Text>
-                </View>
-            </View>
-            <View>
-                <BotaoPrincipal
-                    onPress={
-                        checked == 'cliente'
-                        ? () => navigation.navigate("TelaCadastroCliente")
-                        : () => navigation.navigate("TelaCadastroFornecedor")
-                    }
-                    title="Avançar"
-                />
-            </View>
-        </SafeAreaView>
-    )
+  const [nome, setNome] = useState('')
+  const [sobrenome, setSobrenome] = useState('')
+  const [email, setEmail] = useState('')
+  const [senha, setSenha] = useState('')
+  const [confirmarSenha, setConfirmarSenha] = useState('')
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <StatusBar
+        backgroundColor={globalStyles.corSecundaria}
+        barStyle="light-content" />
+      <View style={styles.logoContainer}>
+        <Logo />
+      </View>
+      <View style={styles.inputsContainer}>
+        <Input
+          onChangeText={value => setNome(value)}
+          placeholder="Nome"
+          value={nome}
+        />
+        <Input
+          onChangeText={value => setSobrenome(value)}
+          placeholder="Sobrenome"
+          value={sobrenome}
+        />
+        <Input
+          onChangeText={value => setEmail(value)}
+          placeholder="E-mail"
+          value={email}
+        />
+        <Input
+          onChangeText={value => setSenha(value)}
+          placeholder="Senha"
+          secureTextEntry={true}
+          value={senha}
+        />
+        <Input
+          onChangeText={value => setConfirmarSenha(value)}
+          placeholder="Confirmar senha"
+          secureTextEntry={true}
+          value={confirmarSenha}
+        />
+      </View>
+      <View>
+        <BotaoPrincipal
+          onPress={() => navigation.navigate("TelaCadastroCliente")}
+          title="Cadastrar"
+        />
+      </View>
+    </SafeAreaView>
+  )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        alignItems: 'center',
-        backgroundColor: globalStyles.corPrincipal,
-        flex: 1,
-        justifyContent: 'center',
-    },
-    titulo: {
-        marginBottom: 15,
-    },
-    radioContainer: {
-        flexDirection: 'row',
-        marginBottom: 10,
-    },
-    radioOptionContainer: {
-        alignItems: 'center',
-        flexDirection: 'row',
-        marginHorizontal: 15,
-    },
-    texto: {
-        color: globalStyles.corSecundaria,
-        fontSize: 18,
-    },
+  container: {
+    alignItems: 'center',
+    backgroundColor: globalStyles.corPrincipal,
+    flex: 1,
+    justifyContent: 'center',
+  },
+  logoContainer: {
+    marginTop: -90,
+  },
+  inputsContainer: {
+    height: 220,
+    justifyContent: 'space-around',
+    marginBottom: 10,
+    marginTop: -10,
+  },
 })

@@ -1,7 +1,7 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Icon } from 'react-native-elements'
-import StackInicioUsuario from './StackInicioUsuario'
+import StackInicio from './StackInicio'
 import StackCategorias from './StackCategorias'
 import TelaEnderecos from '../screens/TelaEnderecos'
 import TelaPerfil from '../screens/TelaPerfil'
@@ -14,10 +14,6 @@ export default () => {
         <Tab.Navigator
             screenOptions={{
                 headerShown: false,
-                headerStyle: {
-                    backgroundColor: globalStyles.corPrincipal,
-                },
-                headerTintColor: globalStyles.corSecundaria,
                 headerTitleAlign: 'center',
                 headerTitleStyle: {
                     fontSize: 28,
@@ -34,8 +30,8 @@ export default () => {
                 },
             }}>
             <Tab.Screen
-                component={StackInicioUsuario}
-                name="StackInicioUsuario"
+                component={StackInicio}
+                name="StackInicio"
                 options={{
                     title: 'Inicio',
                     tabBarIcon: ({ color }) => (

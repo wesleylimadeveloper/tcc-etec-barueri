@@ -4,8 +4,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import SplashScreen from '../screens/SplashScreen'
 import TelaBemVindo from '../screens/TelaBemVindo'
 import TelaLogin from '../screens/TelaLogin'
-import TelaCadastroCliente from '../screens/TelaCadastroCliente'
-import TabUsuario from './TabUsuario'
+import TelaCadastro from '../screens/TelaCadastro'
+import Tab from './Tab'
 
 import globalStyles from '../styles/globalStyles'
 
@@ -15,23 +15,23 @@ export default () => {
 
     return (
         <Navigator
-            initialRouteName="TabUsuario"
+            initialRouteName="Tab"
             screenOptions={{
                 headerTitleStyle: {
                     fontSize: 26,
                     fontWeight: 'bold',
                 },
                 headerStyle: {
-                    backgroundColor: globalStyles.corPrincipal,
+                    backgroundColor: globalStyles.corSecundaria,
                 },
                 headerShown: true,
-                headerTintColor: globalStyles.corSecundaria,
+                headerTintColor: globalStyles.corPrincipal,
         }}>
             <Screen component={SplashScreen} name="SplashScreen" options={{ headerShown: false }} />
             <Screen component={TelaBemVindo} name="TelaBemVindo" options={{ headerShown: false }} />
             <Screen component={TelaLogin} name="TelaLogin" options={{ headerShown: false }} />
-            <Screen component={TelaCadastroCliente} name="TelaCadastroCliente" options={{ headerTitle: "Cadastro de Cliente"}} />
-            <Screen component={TabUsuario} name="TabUsuario" options={{ headerShown: false }} />
+            <Screen component={TelaCadastro} name="TelaCadastro" options={{ headerTitle: "Cadastro"}} />
+            <Screen component={Tab} name="Tab" options={{ headerShown: false }} />
         </Navigator>
     )
 }

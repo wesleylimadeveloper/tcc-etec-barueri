@@ -10,7 +10,7 @@ VALUES ('76558-177', 'Rua Noruega', '793', 'Valhalla', 'Valhalla', 'NR'),
 
 ## INSERT DADOS TABELA ESTABELECIMENTO
 
-INSERT INTO tbl_estabelecimento (id_endereco, nome_fantasia, telefone, foto, status_estabelecimento) 
+INSERT INTO tbl_estabelecimento (id_endereco, nome_fantasia, telefone_estabelecimento, foto_estabelecimento, status_estabelecimento) 
 VALUES  (1, 'Barbearia dos Vikings', '95858-1565', 'https://www.guiadasemana.com.br/contentFiles/image/2017/02/FEA/principal/49393_w840h0_1486764558shutterstock-barbearia.jpg', 'ABERTO'), 
 (2, 'Salão da Mary Jane', '96320-8748', 'https://i.pinimg.com/originals/06/2c/86/062c867fb4139a2a7bbc9876bb75ed0a.jpg', 'ABERTO'), 
 (3, 'HP Hairstyle', '99941-2000', 'https://t2.tudocdn.net/576478?w=1200', 'ABERTO'), 
@@ -18,7 +18,7 @@ VALUES  (1, 'Barbearia dos Vikings', '95858-1565', 'https://www.guiadasemana.com
 (5, 'Cruella De Vil Pet Shop', '95947-1815', 'https://thaisfarage.com.br/wp-content/uploads/2021/08/1623486101492154-20210531-Cruella-de-Vil-Preview-Image-2.jpg', 'ABERTO'),
 (6, 'Edward Mãos de Tesoura Cabeleireiro', '95200-1011', 'https://livrosfilmesdehorrorhome.files.wordpress.com/2021/02/edward-final-blog-post.jpg', 'ABERTO');
 
-INSERT INTO tbl_categoria (nome, foto) 
+INSERT INTO tbl_categoria (nome_categoria, foto_categoria) 
 VALUES ('Barba', 'https://images.pexels.com/photos/1319461/pexels-photo-1319461.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
 ('Cortes', 'https://images.pexels.com/photos/1805600/pexels-photo-1805600.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
 ('Depilação', 'https://cdn.pixabay.com/photo/2020/10/20/13/08/hair-removal-5670408_960_720.jpg'),
@@ -35,7 +35,7 @@ VALUES ('Barba', 'https://images.pexels.com/photos/1319461/pexels-photo-1319461.
 
 ## INSERT DADOS TABELA SERVIÇO
 
-INSERT INTO tbl_servico (id_estabelecimento, id_categoria, nome, valor)
+INSERT INTO tbl_servico (id_estabelecimento, id_categoria, nome_servico, valor_servico)
 VALUES (1, 1, 'Barba', 14.99),
 (1, 2, 'Corte Adulto', 14.99),
 (1, 2, 'Corte Infantil', 9.99),

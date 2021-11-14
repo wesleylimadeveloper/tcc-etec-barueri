@@ -86,15 +86,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   logoContainer: {
-    marginBottom: 15,
+    marginTop: -90,
   },
   inputsContainer: {
-    height: 100,
+    height: 90,
     justifyContent: 'space-between',
     marginBottom: 15,
   },
   botoesContainer: {
-    height: 145,
+    height: 140,
     justifyContent: 'space-between',
   },
   botaoFacebook: {

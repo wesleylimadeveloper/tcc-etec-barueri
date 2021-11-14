@@ -13,12 +13,12 @@ export default () => {
             screenOptions={{
                 headerShown: false,
                 headerStyle: {
-                    backgroundColor: globalStyles.corPrincipal,
+                    backgroundColor: globalStyles.corSecundaria,
                 },
-                headerTintColor: globalStyles.corSecundaria,
+                headerTintColor: globalStyles.corPrincipal,
                 headerTitleAlign: 'center',
                 headerTitleStyle: {
-                    fontSize: 28,
+                    fontSize: 26,
                     fontWeight: 'bold',
                 },
             }}>
@@ -29,10 +29,18 @@ export default () => {
             <Stack.Screen 
                 component={TelaFiltroCategorias}
                 name="TelaFiltroCategorias"
+                options={{
+                    headerShown: true,
+                    headerTitle: 'Categoria'
+                }}
             /> 
             <Stack.Screen 
                 component={TelaEstabelecimento}
                 name="TelaEstabelecimento"
+                options={{
+                    headerShown: true,
+                    headerTitle: 'Estabelecimento'
+                }}
             />            
         </Stack.Navigator>
     )

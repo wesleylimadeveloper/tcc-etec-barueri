@@ -11,7 +11,7 @@ export default ({ children }) => {
 const styles = StyleSheet.create({
     titulo: {
         color: globalStyles.corSecundaria,
-        fontSize: 28,
+        fontSize: 26,
         fontWeight: 'bold',
         textAlign: 'center',
     }

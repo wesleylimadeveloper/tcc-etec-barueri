@@ -36,7 +36,7 @@ export default ({ navigation }) => {
         return (
             <View style={styles.carouselContainer}>
                 <Image style={styles.imagemEstabelecimento} 
-                    source={{ uri: `${item.foto}` }} />
+                    source={{ uri: `${item.foto_estabelecimento}` }} />
                 <View style={styles.infoContainer}>
                     <TouchableOpacity onPress={() => navigation.navigate("TelaEstabelecimento", item)}>
                         <Text style={styles.nomeFantasia}>{item.nome_fantasia}</Text>
@@ -59,7 +59,7 @@ export default ({ navigation }) => {
                     value={buscar} 
                 />
             </View>
-            <Text style={styles.titulo}>Estabelecimentos próximos</Text>
+            <Text style={styles.titulo}>Estabelecimentos</Text>
             {loading
                 ?
                 <View style={styles.loading}>

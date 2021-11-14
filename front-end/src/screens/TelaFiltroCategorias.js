@@ -15,14 +15,14 @@ import api from '../api/api'
 import globalStyles from '../styles/globalStyles'
 
 export default ({ route, navigation }) => {
-    const { cod_categoria, nome_categoria } = route.params
+    const { id_categoria, nome_categoria } = route.params
     const [servicos, setServicos] = useState([])
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         async function getCategorias() {
             try {
-                const { data } = await api.get(`/servicos/categoria/${cod_categoria}`)
+                const { data } = await api.get(`/servicos/categoria/${id_categoria}`)
                 setServicos(data)
                 setLoading(false)
             } catch (error) {
@@ -51,11 +51,11 @@ export default ({ route, navigation }) => {
                 <>
                     <FlatList
                         data={servicos}
-                        keyExtractor={item => item.cod_servicos.toString()}
+                        keyExtractor={item => item.id_servico.toString()}
                         renderItem={({ item }) => {
                             return (
                                 <View style={styles.servicoContainer}>
-                                    <Image style={styles.fotoLugar} source={{ uri: `${item.fotos_lugar}` }} />
+                                    <Image style={styles.fotoLugar} source={{ uri: `${item.foto_estabelecimento}` }} />
                                     <TouchableOpacity style={styles.nomeFantasiaContainer}
                                         onPress={() => navigation.navigate("TelaEstabelecimento", item)}>
                                         <Text style={styles.nomeFantasia}>{item.nome_fantasia}</Text>
@@ -63,7 +63,7 @@ export default ({ route, navigation }) => {
                                     </TouchableOpacity>
                                     <View style={styles.servicoInfoContainer}>
                                         <Text style={styles.textoInfoServico}>{item.nome_servico}</Text>
-                                        <Text style={styles.textoInfoServico}>R$ {item.valor.toString().replace(".", ",")}</Text>
+                                        <Text style={styles.textoInfoServico}>R$ {item.valor_servico.toString().replace(".", ",")}</Text>
                                     </View>
                                 </View>
                             )
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     titulo: {
         alignItems: 'center',
         marginBottom: 15,
-        marginTop: 30,
+        marginTop: 10,
     },
     loading: {
         flex: 1,

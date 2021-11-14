@@ -54,7 +54,7 @@ router.get('/servicos', (req, res) => {
 
 router.get('/servicos/:id', (req, res) => {
     const { id } = req.params
-    const sql = 'SELECT * from tbl_servico WHERE id_estabelecimento = ? ORDER BY valor DESC'
+    const sql = 'SELECT * from tbl_servico WHERE id_estabelecimento = ? ORDER BY valor_servico DESC'
 
     connection.query(sql, [id], (error, results, fields) => {
         if (!error) {
@@ -68,7 +68,7 @@ router.get('/servicos/:id', (req, res) => {
 
 router.get('/servicos/categoria/:id', (req, res) => {
     const { id } = req.params
-    const sql = 'SELECT id_servico, nome, valor, s.id_estabelecimento, nome_fantasia, foto FROM tbl_servicos s JOIN tbl_estabelecimento e ON s.id_estabelecimento = e.id_estabelecimento JOIN tbl_categoria c ON s.id_categoria = c.id_categoria WHERE c.id_categoria = ? ORDER BY valor DESC'
+    const sql = 'SELECT id_servico, nome_servico, valor_servico, s.id_estabelecimento, nome_fantasia, foto_estabelecimento FROM tbl_servico s JOIN tbl_estabelecimento e ON s.id_estabelecimento = e.id_estabelecimento JOIN tbl_categoria c ON s.id_categoria = c.id_categoria WHERE c.id_categoria = ? ORDER BY valor_servico DESC'
 
     connection.query(sql, [id], (error, results, fields) => {
         if (!error) {
@@ -81,7 +81,7 @@ router.get('/servicos/categoria/:id', (req, res) => {
 })
 
 router.get('/estabelecimentos', (req, res) => {
-    const sql = 'SELECT id_estabelecimento, nome_fantasia, foto, logradouro, numero, bairro, cidade FROM tbl_estabelecimento e JOIN tbl_endereco a ON e.id_endereco = a.id_endereco ORDER BY nome_fantasia'
+    const sql = 'SELECT id_estabelecimento, nome_fantasia, foto_estabelecimento, logradouro, numero, bairro, cidade FROM tbl_estabelecimento e JOIN tbl_endereco a ON e.id_endereco = a.id_endereco ORDER BY nome_fantasia'
 
     connection.query(sql, (error, results, fields) => {
         if (!error) {

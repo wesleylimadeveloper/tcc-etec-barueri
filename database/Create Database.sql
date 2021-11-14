@@ -10,13 +10,13 @@ USE bdtcc;
 ## TABELA CLIENTE
 CREATE TABLE tbl_cliente(
         id_cliente INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        nome VARCHAR(255) NOT NULL,
-        sobrenome VARCHAR(255) NOT NULL,
-        email VARCHAR(255) NOT NULL,
-        senha VARCHAR(255) NOT NULL,
-        telefone VARCHAR(255) NOT NULL,
-        foto VARCHAR(255),
-        sexo ENUM ('MASCULINO', 'FEMININO', 'OUTRO') NOT NULL
+        nome_cliente VARCHAR(255) NOT NULL,
+        sobrenome_cliente VARCHAR(255) NOT NULL,
+        email_cliente VARCHAR(255) NOT NULL,
+        senha_cliente VARCHAR(255) NOT NULL,
+        telefone_cliente VARCHAR(255) NOT NULL,
+        foto_cliente VARCHAR(255),
+        sexo_cliente ENUM ('MASCULINO', 'FEMININO', 'OUTRO') NOT NULL
 );
 
 ## 2
@@ -40,8 +40,8 @@ CREATE TABLE tbl_estabelecimento(
 		id_estabelecimento INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 		id_endereco INT(10) UNSIGNED NOT NULL,
         nome_fantasia VARCHAR (100) NOT NULL,
-        telefone VARCHAR(20) NOT NULL,
-        foto VARCHAR(255),
+        telefone_estabelecimento VARCHAR(20) NOT NULL,
+        foto_estabelecimento VARCHAR(255),
         status_estabelecimento ENUM ('ABERTO', 'ALMOÇO', 'JANTA', 'FECHADO') NOT NULL
 );
 
@@ -49,8 +49,8 @@ CREATE TABLE tbl_estabelecimento(
 ## TABELA CATEGORIA
 CREATE TABLE tbl_categoria(
 		id_categoria INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        nome VARCHAR(255) NOT NULL,
-        foto VARCHAR(255)
+        nome_categoria VARCHAR(255) NOT NULL,
+        foto_categoria VARCHAR(255)
 );
 
 ## 5
@@ -59,8 +59,8 @@ CREATE TABLE tbl_servico(
 		id_servico INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         id_estabelecimento INT(10) UNSIGNED NOT NULL,
         id_categoria INT(10) UNSIGNED NOT NULL,
-        nome VARCHAR(255) NOT NULL,
-        valor DOUBLE NOT NULL
+        nome_servico VARCHAR(255) NOT NULL,
+        valor_servico DOUBLE NOT NULL
 );
 
 ## 6

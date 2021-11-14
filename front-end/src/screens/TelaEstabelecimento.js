@@ -17,12 +17,12 @@ import globalStyles from '../styles/globalStyles'
 export default ({ route }) => {
     const [servicos, setServicos] = useState([])
     const [loading, setLoading] = useState(true)
-    const { cod_fornecedor, nome_fantasia, fotos_lugar } = route.params
+    const { id_estabelecimento, nome_fantasia, foto_estabelecimento } = route.params
 
     useEffect(() => {
         async function getServicos() {
             try {
-                const { data } = await api.get(`/servicos/${cod_fornecedor}`)
+                const { data } = await api.get(`/servicos/${id_estabelecimento}`)
                 setServicos(data)
                 setLoading(false)
             } catch (error) {
@@ -30,12 +30,6 @@ export default ({ route }) => {
             }
         }
         getServicos()
-    }, [])
-
-    useEffect(() => {
-        api.get(`/servicos/${cod_fornecedor}`)
-            .then(response => setServicos(response.data))
-            .catch(error => console.log(error))
     }, [])
 
     return (
@@ -50,7 +44,7 @@ export default ({ route }) => {
             </View>
             <View style={styles.imagemContainer}>
                 <Image style={styles.imagemEstabelecimento}
-                    source={{ uri: `${fotos_lugar}` }}
+                    source={{ uri: `${foto_estabelecimento}` }}
                 />
             </View>
             <Text style={styles.textoServicos}>Serviços</Text>
@@ -64,13 +58,13 @@ export default ({ route }) => {
                     <View style={styles.servicosContainer}>
                         <FlatList 
                             data={servicos}
-                            keyExtractor={item => item.cod_servicos.toString()}
+                            keyExtractor={item => item.id_servico.toString()}
                             renderItem={({item}) => {
                                 return (
                                     <View>
                                         <View style={styles.infoServico}>
                                             <Text style={styles.textoInfoServico}>{item.nome_servico}</Text>
-                                            <Text style={styles.textoInfoServico}>R$ {item.valor.toString().replace(".", ",")}</Text>
+                                            <Text style={styles.textoInfoServico}>R$ {item.valor_servico.toString().replace(".", ",")}</Text>
                                         </View>
                                         <Divider orientation="horizontal" />
                                     </View>
@@ -93,8 +87,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     nomeFantasiaContainer: {
-        marginBottom: 5,
-        marginTop: 50,
+        marginVertical: 10,
         width: '85%',
     },
     imagemContainer: {
@@ -103,7 +96,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         marginBottom: 10,
         paddingHorizontal: 10,
-        paddingVertical: 5,
+        paddingVertical: 10,
     },
     imagemEstabelecimento: {
         height: 218,
@@ -113,7 +106,7 @@ const styles = StyleSheet.create({
         color: globalStyles.corSecundaria,
         fontSize: 24,
         fontWeight: 'bold',
-        marginBottom: 5,
+        marginBottom: 10,
     },
     loading: {
         marginTop: 40,

@@ -34,7 +34,7 @@ export default ({ navigation }) => {
     function renderItem({ item }) {
         return (
             <View style={styles.categoriaContainer}>
-                <Image style={styles.foto} source={{ uri: `${item.foto}` }} />
+                <Image style={styles.foto} source={{ uri: `${item.foto_categoria}` }} />
                 <TouchableOpacity onPress={() => navigation.navigate("TelaFiltroCategorias", item)}>
                     <Text style={styles.nome}>{item.nome_categoria}</Text>
                 </TouchableOpacity>
@@ -66,7 +66,7 @@ export default ({ navigation }) => {
                 <>
                     <FlatList
                     data={categorias}
-                    keyExtractor={item => item.cod_categoria.toString()}
+                    keyExtractor={item => item.id_categoria.toString()}
                     renderItem={renderItem}
                     />
                 </>
