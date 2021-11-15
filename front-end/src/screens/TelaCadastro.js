@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import {
+  Alert,
+  Picker,
   SafeAreaView,
   StatusBar,
   StyleSheet,
+  Text,
   View
 } from 'react-native'
 
-import Logo from '../components/Logo'
+import api from '../api/api'
 import Input from '../components/Input'
 import BotaoPrincipal from '../components/BotaoPrincipal'
 import globalStyles from '../styles/globalStyles'
@@ -17,15 +20,39 @@ export default ({ navigation }) => {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [confirmarSenha, setConfirmarSenha] = useState('')
+  const [telefone, setTelefone] = useState('')
+  const [sexo, setSexo] = useState('')
+
+  async function cadastrar() {
+    if(nome == '' && sobrenome == '' & email == '' & senha == '' & confirmarSenha == '' & telefone == '' & sexo == '') {
+      Alert.alert('', 'Por favor, preencha todos os campos.')
+    } else if(senha != confirmarSenha) {
+      Alert.alert('', 'Senhas não conferem')
+    } else {
+      const cliente = { 
+        "nome": nome, 
+        "sobrenome": sobrenome, 
+        "email": email, 
+        "senha": senha, 
+        "telefone": telefone, 
+        "sexo": sexo 
+      }
+
+      const response = await api.post('/clientes', cliente)
+
+      if(response.data == "Dados cadastrados com sucesso!") {
+        navigation.navigate("Tab")
+      } else {
+        Alert.alert('', 'Erro ao cadastrar o usuário.')        
+      }
+    }    
+  }
 
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
         backgroundColor={globalStyles.corSecundaria}
         barStyle="light-content" />
-      <View style={styles.logoContainer}>
-        <Logo />
-      </View>
       <View style={styles.inputsContainer}>
         <Input
           onChangeText={value => setNome(value)}
@@ -54,12 +81,25 @@ export default ({ navigation }) => {
           secureTextEntry={true}
           value={confirmarSenha}
         />
+        <Input
+          onChangeText={value => setTelefone(value)}
+          placeholder="Telefone"
+          value={telefone}
+        />
+        <View style={styles.pickerContainer}>
+          <Picker
+          style={styles.picker}
+          selectedValue={sexo}
+          onValueChange={value => setSexo(value)
+        }>
+          <Picker.Item label="Masculino" value="MASCULINO" />
+          <Picker.Item label="Feminino" value="FEMININO" />
+          <Picker.Item label="Outro" value="OUTRO" />
+        </Picker>
+        </View>
       </View>
       <View>
-        <BotaoPrincipal
-          onPress={() => navigation.navigate("TelaCadastroCliente")}
-          title="Cadastrar"
-        />
+        <BotaoPrincipal onPress={cadastrar} title="Cadastrar" />
       </View>
     </SafeAreaView>
   )
@@ -72,13 +112,20 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
-  logoContainer: {
-    marginTop: -90,
-  },
   inputsContainer: {
-    height: 220,
+    height: 350,
     justifyContent: 'space-around',
     marginBottom: 10,
-    marginTop: -10,
   },
+  pickerContainer: {
+    alignItems: 'center',
+    backgroundColor: '#FFF',
+    borderRadius: 5,
+    height: 40,
+    justifyContent: 'center',
+    paddingLeft: 75,
+  },
+  picker: {
+    width: '70%',
+  }
 })

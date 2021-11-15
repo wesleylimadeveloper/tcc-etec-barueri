@@ -2,6 +2,31 @@ const express = require('express')
 const connection = require('../util/database')
 const router = express.Router()
 
+router.get('/clientes', (req, res) => {
+    const sql = 'SELECT * from tbl_cliente'
+
+    connection.query(sql, (error, results, fields) => {
+        if (!error) {
+            res.send(results)
+        } else {
+            res.send('Erro ao listar dados!')
+        }
+    })
+})
+
+router.get('/clientes/:email', (req, res) => {
+    const { email } = req.params
+    const sql = 'SELECT * from tbl_cliente WHERE email_cliente = ?'
+
+    connection.query(sql, [email], (error, results, fields) => {
+        if (!error) {
+            res.send(results)
+        } else {
+            res.send("Erro ao listar dados!")
+        }
+    })
+})
+
 router.get('/enderecos', (req, res) => {
     const sql = 'SELECT * from tbl_endereco'
 
@@ -68,7 +93,7 @@ router.get('/servicos/:id', (req, res) => {
 
 router.get('/servicos/categoria/:id', (req, res) => {
     const { id } = req.params
-    const sql = 'SELECT id_servico, nome_servico, valor_servico, s.id_estabelecimento, nome_fantasia, foto_estabelecimento FROM tbl_servico s JOIN tbl_estabelecimento e ON s.id_estabelecimento = e.id_estabelecimento JOIN tbl_categoria c ON s.id_categoria = c.id_categoria WHERE c.id_categoria = ? ORDER BY valor_servico DESC'
+    const sql = 'SELECT id_servico, nome_servico, valor_servico, s.id_estabelecimento, nome_fantasia, foto_estabelecimento FROM tbl_servico s JOIN tbl_estabelecimento e ON s.id_estabelecimento = e.id_estabelecimento JOIN tbl_categoria c ON s.id_categoria = c.id_categoria WHERE c.id_categoria = ? ORDER BY nome_fantasia'
 
     connection.query(sql, [id], (error, results, fields) => {
         if (!error) {

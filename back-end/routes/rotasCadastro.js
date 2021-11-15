@@ -3,10 +3,10 @@ const connection = require('../util/database')
 const router = express.Router()
 
 router.post('/clientes', (req, res) => {
-    const { nome, telefone, data_nascimento, sexo, descricao } = req.body
-    const sql = `INSERT INTO tbl_cliente(nome_cliente, telefone, dt_nascimento, sexo, descricao) VALUES(?, ?, ?, ?, ?)`
+    const { nome, sobrenome, email, senha, telefone, sexo } = req.body
+    const sql = `INSERT INTO tbl_cliente(nome_cliente, sobrenome_cliente, email_cliente, senha_cliente, telefone_cliente, sexo_cliente) VALUES(?, ?, ?, ?, ?, ?)`
     
-    connection.query(sql, [nome, telefone, data_nascimento, sexo, descricao], (error, results, fields) => {
+    connection.query(sql, [nome, sobrenome, email, senha, telefone, sexo], (error, results, fields) => {
         if (!error) {
             res.send('Dados cadastrados com sucesso!')
         } else {
