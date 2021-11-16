@@ -14,10 +14,11 @@ import Carousel from 'react-native-snap-carousel'
 import api from '../api/api'
 import globalStyles from '../styles/globalStyles'
 
-export default ({ navigation }) => {
+export default ({ navigation, route }) => {
     const [buscar, setBuscar] = useState('')
     const [estabelecimentos, setEstabelecimentos] = useState([])
     const [loading, setLoading] = useState(true)
+    const usuario = route.params
 
     useEffect(() => {
         async function getEstabelecimentos() {

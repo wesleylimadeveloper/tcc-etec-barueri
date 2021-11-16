@@ -1,5 +1,6 @@
 import React from 'react'
-import { 
+import {
+    Image, 
     StatusBar, 
     StyleSheet,
     Text, 
@@ -8,12 +9,12 @@ import {
 } from 'react-native'
 import { Icon } from 'react-native-elements/dist/icons/Icon'
 
-import Titulo from '../components/Titulo'
 import Logo from '../components/Logo'
 import globalStyles from '../styles/globalStyles'
 
 export default ({ navigation, route }) => {
     const usuario = route.params
+    const { foto_cliente } = route.params
 
     return (
         <View style={styles.container}>
@@ -21,12 +22,20 @@ export default ({ navigation, route }) => {
                 backgroundColor={globalStyles.corSecundaria}
                 barStyle="light-content" 
             />
-            <View style={styles.tituloContainer}>
-                <Titulo>Seja bem-vindo(a) {usuario.nome_cliente}!</Titulo>
-            </View>
-            <View style={styles.logoContainer}>
-                <Logo />
-            </View>
+            <TouchableOpacity onPress={() => navigation.navigate("TelaPerfil", usuario)}>
+                <View style={styles.tituloContainer}>
+                    {foto_cliente == null
+                        ?
+                        <View style={styles.iconePerfilContainer}>
+                            <Icon color="#FFF" name="user" size={26} type="font-awesome" />
+                        </View>
+                        :
+                        <Image style={styles.fotoPerfil} source={{ uri: `${foto_cliente}` }} />
+                    }
+                    <Text style={styles.textoSaudacao}>Olá, {usuario.nome_cliente}!</Text>
+                </View>
+            </TouchableOpacity>
+            <Logo />
             <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate("TelaEstabelecimentos", usuario)}>
                 <Icon color='#FFF' name="shopping-store" size={36} type="fontisto" />
                 <Text style={styles.texto}>Estabelecimentos</Text>
@@ -38,10 +47,6 @@ export default ({ navigation, route }) => {
             <TouchableOpacity style={styles.botao}>
                 <Icon color="#FFF" name="tasks" size={36} type="font-awesome" />
                 <Text style={styles.texto}>Pedidos</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate("TelaPerfil", usuario)}>
-                <Icon color="#FFF" name="user-circle" size={36} type="font-awesome" />
-                <Text style={styles.texto}>Perfil</Text>
             </TouchableOpacity>
         </View>
     )
@@ -55,10 +60,29 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     tituloContainer: {
+        alignItems: 'center',
+        flexDirection: 'row',
         marginTop: 10,
     },
-    logoContainer: {
-        marginVertical: -13,
+    iconePerfilContainer: {
+        alignItems: 'center',
+        backgroundColor: globalStyles.corSecundaria,
+        borderRadius: 30,
+        height: 60,
+        justifyContent: 'center',
+        marginRight: 10,
+        width: 60,
+    },
+    fotoPerfil: {
+        borderRadius: 30,
+        height: 60,
+        marginRight: 10,
+        width: 60,
+    },
+    textoSaudacao: {
+        color: globalStyles.corSecundaria,
+        fontSize: 26,
+        fontWeight: 'bold'
     },
     botao: {
         alignItems: 'center',

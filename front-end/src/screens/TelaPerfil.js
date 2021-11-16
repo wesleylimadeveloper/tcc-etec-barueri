@@ -1,16 +1,19 @@
 import React from 'react'
 import {
+    Image,
     StatusBar, 
     StyleSheet, 
     Text, 
     View 
 } from 'react-native'
+import { Icon } from 'react-native-elements'
 
 import BotaoPrincipal from '../components/BotaoPrincipal'
+import BotaoSecundario from '../components/BotaoSecundario'
 import globalStyles from '../styles/globalStyles'
 
 export default ({ route }) => {
-    const { nome_cliente, sobrenome_cliente, email_cliente, telefone_cliente, sexo_cliente } = route.params
+    const { foto_cliente, nome_cliente, sobrenome_cliente, email_cliente, telefone_cliente, sexo_cliente } = route.params
 
     return (
         <View style={styles.container}>
@@ -19,13 +22,22 @@ export default ({ route }) => {
                 barStyle="light-content" 
             />
             <View style={styles.infoContainer}>
+                {foto_cliente == null
+                    ?
+                    <View style={styles.iconePerfilContainer}>
+                        <Icon color="#FFF" name="user" size={62} type="font-awesome" />
+                    </View>
+                    :
+                    <Image style={styles.fotoPerfil} source={{ uri: `${foto_cliente}` }} />
+                }
                 <Text style={styles.nome}>{nome_cliente} {sobrenome_cliente}</Text>
                 <Text style={styles.textoInfo}>E-mail: <Text style={styles.texto}>{email_cliente}</Text> </Text>
                 <Text style={styles.textoInfo}>Telefone: <Text style={styles.texto}>{telefone_cliente}</Text> </Text>
                 <Text style={styles.textoInfo}>Sexo: <Text style={styles.texto}>{sexo_cliente}</Text> </Text>
             </View>
-            <View>
+            <View style={styles.botoesContainer}>
                 <BotaoPrincipal title="Editar" />
+                <BotaoSecundario title="Sair" />
             </View>
         </View>
     )
@@ -43,12 +55,23 @@ const styles = StyleSheet.create({
     },
     infoContainer: {
         alignItems: 'center',
-        backgroundColor: '#FFF',
-        borderRadius: 5,
-        height: '30%',
+        height: '50%',
         justifyContent: 'space-evenly',
         marginVertical: 20,
         width: '70%'
+    },
+    iconePerfilContainer: {
+        alignItems: 'center',
+        backgroundColor: globalStyles.corSecundaria,
+        borderRadius: 75,
+        height: 150,
+        justifyContent: 'center',
+        width: 150
+    },
+    fotoPerfil: {
+        borderRadius: 75,
+        height: 150,
+        width: 150
     },
     nome: {
         color: globalStyles.corSecundaria,
@@ -63,5 +86,9 @@ const styles = StyleSheet.create({
     texto: {
         fontSize: 16,
         fontWeight: 'normal'
+    },
+    botoesContainer: {
+        height: 90,
+        justifyContent: 'space-between',
     }
 })
