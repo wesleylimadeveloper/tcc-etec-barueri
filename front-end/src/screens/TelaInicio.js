@@ -1,134 +1,77 @@
-import React, { useEffect, useState } from 'react'
-import {
-    ActivityIndicator,
-    Image, 
-    ScrollView, 
+import React from 'react'
+import { 
     StatusBar, 
-    StyleSheet, 
+    StyleSheet,
     Text, 
     TouchableOpacity, 
     View 
 } from 'react-native'
-import SearchBar from '../components/SearchBar'
-import Carousel from 'react-native-snap-carousel'
-import api from '../api/api'
+import { Icon } from 'react-native-elements/dist/icons/Icon'
+
+import Titulo from '../components/Titulo'
+import Logo from '../components/Logo'
 import globalStyles from '../styles/globalStyles'
 
-export default ({ navigation }) => {
-    const [buscar, setBuscar] = useState('')
-    const [estabelecimentos, setEstabelecimentos] = useState([])
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        async function getEstabelecimentos() {
-            try {
-                const { data } = await api.get('/estabelecimentos')
-                setEstabelecimentos(data)
-                setLoading(false)
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        getEstabelecimentos()
-    }, [])
-
-    function estabelecimentosProximos({ item }) {
-        return (
-            <View style={styles.carouselContainer}>
-                <Image style={styles.imagemEstabelecimento} 
-                    source={{ uri: `${item.foto_estabelecimento}` }} />
-                <View style={styles.infoContainer}>
-                    <TouchableOpacity onPress={() => navigation.navigate("TelaEstabelecimento", item)}>
-                        <Text style={styles.nomeFantasia}>{item.nome_fantasia}</Text>
-                        <Text style={styles.endereco}>{item.logradouro}, {item.numero} - {item.cidade}</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
-        )
-    }
+export default ({ navigation, route }) => {
+    const usuario = route.params
 
     return (
-        <ScrollView style={styles.container}>
+        <View style={styles.container}>
             <StatusBar 
                 backgroundColor={globalStyles.corSecundaria}
-                barStyle="light-content" />
-            <View style={styles.searchBarContainer}>
-                <SearchBar
-                    onChangeText={value => setBuscar(value)} 
-                    placeholder="Buscar..."
-                    value={buscar} 
-                />
+                barStyle="light-content" 
+            />
+            <View style={styles.tituloContainer}>
+                <Titulo>Seja bem-vindo(a) {usuario.nome_cliente}!</Titulo>
             </View>
-            <Text style={styles.titulo}>Estabelecimentos</Text>
-            {loading
-                ?
-                <View style={styles.loading}>
-                    <ActivityIndicator size="large" color={globalStyles.corSecundaria} />
-                </View>
-                :
-                <>
-                    <Carousel 
-                        data={estabelecimentos}
-                        itemWidth={350}
-                        renderItem={estabelecimentosProximos}
-                        sliderWidth={400}
-                    />
-                    <Text style={styles.titulo}>Promoções</Text>
-                    <Carousel 
-                        data={estabelecimentos}
-                        itemWidth={350}
-                        renderItem={estabelecimentosProximos}
-                        sliderWidth={400}
-                    />
-                </>
-            }
-        </ScrollView>
+            <View style={styles.logoContainer}>
+                <Logo />
+            </View>
+            <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate("TelaEstabelecimentos", usuario)}>
+                <Icon color='#FFF' name="shopping-store" size={36} type="fontisto" />
+                <Text style={styles.texto}>Estabelecimentos</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate("TelaCategorias", usuario)}>
+                <Icon color="#FFF" name="filter" size={36} type="font-awesome" />
+                <Text style={styles.texto}>Categorias</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.botao}>
+                <Icon color="#FFF" name="tasks" size={36} type="font-awesome" />
+                <Text style={styles.texto}>Pedidos</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate("TelaPerfil", usuario)}>
+                <Icon color="#FFF" name="user-circle" size={36} type="font-awesome" />
+                <Text style={styles.texto}>Perfil</Text>
+            </TouchableOpacity>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
+        alignItems: 'center',
         backgroundColor: globalStyles.corPrincipal,
         flex: 1,
+        justifyContent: 'center'
     },
-    searchBarContainer: {
-        alignSelf: 'center',
-        marginVertical: 20,
+    tituloContainer: {
+        marginTop: 10,
     },
-    titulo: {
-        color: globalStyles.corSecundaria,
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginBottom: 5,
-        textAlign: 'center',
+    logoContainer: {
+        marginVertical: -13,
     },
-    loading: {
-        marginTop: 250,
-    },
-    carouselContainer: {
+    botao: {
         alignItems: 'center',
-        backgroundColor: '#FFF',
+        backgroundColor: globalStyles.corSecundaria,
         borderRadius: 5,
         marginBottom: 10,
-        paddingVertical: 5,
+        paddingVertical: 10,
+        width: '80%'
     },
-    imagemEstabelecimento: {
-        height: 218,
-        marginBottom: 2,
-        width: 330,
-    },
-    infoContainer: {
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    nomeFantasia: {
-        color: globalStyles.corSecundaria,
-        fontSize: 18,
+    texto: {
+        color: '#FFF',
+        fontSize: 16,
         fontWeight: 'bold',
-        textAlign: 'center',
-    },
-    endereco: {
-        fontSize: 14,
-        textAlign: 'center',
+        marginTop: 5
     }
 })

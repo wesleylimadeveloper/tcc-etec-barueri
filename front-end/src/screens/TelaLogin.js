@@ -18,15 +18,15 @@ export default ({ navigation }) => {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
 
-  async function validarLogin(emailUsuario, senhaUsuario) {
+  async function entrar(emailUsuario, senhaUsuario) {
     if(emailUsuario.trim() == '' || senhaUsuario.trim() == '') {
       Alert.alert('Preencha todos os campos', 'Digite e-mail e senha.')
     } else {
       const { data } = await api.get(`/clientes/${email}`)
-      const [dadosLogin] = data
+      const [usuario] = data
 
-      if(emailUsuario.trim() == dadosLogin.email_cliente && senhaUsuario.trim() == dadosLogin.senha_cliente) {
-        navigation.navigate("Tab")
+      if(emailUsuario.trim() == usuario.email_cliente && senhaUsuario == usuario.senha_cliente) {
+        navigation.navigate("TelaInicio", usuario)
       } else {
         Alert.alert('Senha incorreta', 'Verifique e-mail e senha.')
       }
@@ -55,7 +55,7 @@ export default ({ navigation }) => {
         />
       </View>
       <View style={styles.botoesContainer}>
-        <BotaoPrincipal onPress={() => validarLogin(email, senha)} title="Entrar" />
+        <BotaoPrincipal onPress={() => entrar(email, senha)} title="Entrar" />
         <BotaoSecundario onPress={() => navigation.navigate("TelaCadastro")} title="Cadastrar" />
       </View>
     </SafeAreaView>

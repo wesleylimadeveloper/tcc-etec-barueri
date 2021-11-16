@@ -9,7 +9,6 @@ import {
     TouchableOpacity,
     View
 } from 'react-native'
-import Titulo from '../components/Titulo'
 import SearchBar from '../components/SearchBar'
 import api from '../api/api'
 import globalStyles from '../styles/globalStyles'
@@ -46,12 +45,8 @@ export default ({ navigation }) => {
         <View style={styles.container}>
             <StatusBar
                 backgroundColor={globalStyles.corSecundaria}
-                barStyle="light-content" />
-            <View style={styles.titulo}>
-                <Titulo>
-                    <Text>Categorias</Text>
-                </Titulo>
-            </View>
+                barStyle="light-content" 
+            />
             <View style={styles.searchBarContainer}>
                 <SearchBar
                     placeholder="Buscar..."

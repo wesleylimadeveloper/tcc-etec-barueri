@@ -5,7 +5,6 @@ import {
   SafeAreaView,
   StatusBar,
   StyleSheet,
-  Text,
   View
 } from 'react-native'
 
@@ -24,10 +23,10 @@ export default ({ navigation }) => {
   const [sexo, setSexo] = useState('')
 
   async function cadastrar() {
-    if(nome == '' && sobrenome == '' & email == '' & senha == '' & confirmarSenha == '' & telefone == '' & sexo == '') {
-      Alert.alert('', 'Por favor, preencha todos os campos.')
+    if(nome == '' || sobrenome == '' || email == '' || senha == '' || confirmarSenha == '' || telefone == '' || sexo == '') {
+      Alert.alert('Campos inválidos', 'Por favor, preencha todos os campos.')
     } else if(senha != confirmarSenha) {
-      Alert.alert('', 'Senhas não conferem')
+      Alert.alert('Senhas divergentes', 'As senhas não conferem')
     } else {
       const cliente = { 
         "nome": nome, 
@@ -41,9 +40,10 @@ export default ({ navigation }) => {
       const response = await api.post('/clientes', cliente)
 
       if(response.data == "Dados cadastrados com sucesso!") {
-        navigation.navigate("Tab")
+        Alert.alert('Cadastro realizado', 'Usuário cadastrado com sucesso!')
+        navigation.navigate("TelaLogin")
       } else {
-        Alert.alert('', 'Erro ao cadastrar o usuário.')        
+        Alert.alert('Erro', 'Não foi possível cadastrar o usuário.')        
       }
     }    
   }

@@ -57,7 +57,7 @@ export default ({ route, navigation }) => {
                                 <View style={styles.servicoContainer}>
                                     <Image style={styles.fotoLugar} source={{ uri: `${item.foto_estabelecimento}` }} />
                                     <TouchableOpacity style={styles.nomeFantasiaContainer}
-                                        onPress={() => navigation.navigate("TelaEstabelecimento", item)}>
+                                        onPress={() => navigation.navigate("TelaServicos", item)}>
                                         <Text style={styles.nomeFantasia}>{item.nome_fantasia}</Text>
                                         <Divider />
                                     </TouchableOpacity>
@@ -69,9 +69,7 @@ export default ({ route, navigation }) => {
                             )
                         }}
                     />
-                </>
-                
-
+                </>              
             }
         </View>
     )

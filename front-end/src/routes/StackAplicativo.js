@@ -5,7 +5,12 @@ import SplashScreen from '../screens/SplashScreen'
 import TelaBemVindo from '../screens/TelaBemVindo'
 import TelaLogin from '../screens/TelaLogin'
 import TelaCadastro from '../screens/TelaCadastro'
-import Tab from './Tab'
+import TelaInicio from '../screens/TelaInicio'
+import TelaEstabelecimentos from '../screens/TelaEstabelecimentos'
+import TelaServicos from '../screens/TelaServicos'
+import TelaCategorias from '../screens/TelaCategorias'
+import TelaFiltroCategorias from '../screens/TelaFiltroCategorias'
+import TelaPerfil from '../screens/TelaPerfil'
 
 import globalStyles from '../styles/globalStyles'
 
@@ -26,7 +31,7 @@ export default () => {
                     backgroundColor: globalStyles.corSecundaria,
                 },
                 headerShown: true,
-                headerTintColor: globalStyles.corPrincipal,
+                headerTintColor: '#FFF',
         }}>
             <Screen 
                 component={SplashScreen} 
@@ -49,9 +54,34 @@ export default () => {
                 options={{ headerTitle: "Cadastro"}} 
             />
             <Screen 
-                component={Tab} 
-                name="Tab" 
+                component={TelaInicio} 
+                name="TelaInicio" 
                 options={{ headerShown: false }} 
+            />
+            <Screen 
+                component={TelaEstabelecimentos} 
+                name="TelaEstabelecimentos" 
+                options={{ headerTitle: "Estabelecimentos" }} 
+            />
+            <Screen 
+                component={TelaServicos} 
+                name="TelaServicos" 
+                options={{ headerTitle: "Serviços" }} 
+            />
+            <Screen 
+                component={TelaCategorias} 
+                name="TelaCategorias" 
+                options={{ headerTitle: "Categorias" }} 
+            />
+            <Screen 
+                component={TelaFiltroCategorias} 
+                name="TelaFiltroCategorias" 
+                options={{ headerTitle: "Categoria" }} 
+            />
+            <Screen 
+                component={TelaPerfil} 
+                name="TelaPerfil" 
+                options={{ headerTitle: "Perfil" }} 
             />
         </Navigator>
     )

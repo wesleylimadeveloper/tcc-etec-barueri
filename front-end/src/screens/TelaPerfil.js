@@ -1,41 +1,31 @@
 import React from 'react'
 import {
-    Image, 
     StatusBar, 
     StyleSheet, 
     Text, 
-    TouchableOpacity, 
     View 
 } from 'react-native'
-import { Icon } from 'react-native-elements/dist/icons/Icon'
-import Titulo from '../components/Titulo'
-import foto from '../assets/usuario.jpg'
+
+import BotaoPrincipal from '../components/BotaoPrincipal'
 import globalStyles from '../styles/globalStyles'
 
-export default () => {
+export default ({ route }) => {
+    const { nome_cliente, sobrenome_cliente, email_cliente, telefone_cliente, sexo_cliente } = route.params
+
     return (
         <View style={styles.container}>
             <StatusBar 
                 backgroundColor={globalStyles.corSecundaria}
-                barStyle="light-content" />
-            <View style={styles.titulo}>
-                <Titulo>
-                    <Text>Perfil</Text>
-                </Titulo>
+                barStyle="light-content" 
+            />
+            <View style={styles.infoContainer}>
+                <Text style={styles.nome}>{nome_cliente} {sobrenome_cliente}</Text>
+                <Text style={styles.textoInfo}>E-mail: <Text style={styles.texto}>{email_cliente}</Text> </Text>
+                <Text style={styles.textoInfo}>Telefone: <Text style={styles.texto}>{telefone_cliente}</Text> </Text>
+                <Text style={styles.textoInfo}>Sexo: <Text style={styles.texto}>{sexo_cliente}</Text> </Text>
             </View>
             <View>
-                <Image style={styles.fotoPerfil} source={foto} />
-                <Text style={styles.nome}>Wesley Lima</Text>
-            </View>
-            <View style={styles.botoesContainer}>
-                <TouchableOpacity style={styles.botoes}>
-                    <Icon color="#FFF" name="info" size={25} type="font-awesome" />
-                    <Text style={styles.textoBotoes}>Informações da Conta</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.botoes}>
-                    <Icon color="#FFF" name="map-marker" size={25} type="font-awesome" />
-                    <Text style={styles.textoBotoes}>Endereços</Text>
-                </TouchableOpacity>
+                <BotaoPrincipal title="Editar" />
             </View>
         </View>
     )
@@ -51,37 +41,27 @@ const styles = StyleSheet.create({
         marginBottom: 50,
         marginTop: 20,
     },
-    fotoPerfil: {
-        borderRadius: 75,
-        height: 150,
-        marginBottom: 5,
-        width: 150,
+    infoContainer: {
+        alignItems: 'center',
+        backgroundColor: '#FFF',
+        borderRadius: 5,
+        height: '30%',
+        justifyContent: 'space-evenly',
+        marginVertical: 20,
+        width: '70%'
     },
     nome: {
         color: globalStyles.corSecundaria,
         fontSize: 24,
         fontWeight: 'bold',
-        marginBottom: 20,
-        textAlign: 'center',
     },
-    botoesContainer: {
-        justifyContent: 'space-between',
-        height: 100,
-    },
-    botoes: {
-        alignItems: 'center',
-        backgroundColor: globalStyles.corSecundaria,
-        borderRadius: 5,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        paddingHorizontal: 15,
-        paddingVertical: 8,
-        width: 300,
-    },
-    textoBotoes: {
-        color: '#FFF',
+    textoInfo: {
+        color: globalStyles.corSecundaria,
         fontSize: 18,
         fontWeight: 'bold',
-        marginLeft: 10,
     },
+    texto: {
+        fontSize: 16,
+        fontWeight: 'normal'
+    }
 })
