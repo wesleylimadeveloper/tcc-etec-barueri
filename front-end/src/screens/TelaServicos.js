@@ -6,6 +6,7 @@ import {
     StatusBar,
     StyleSheet,
     Text,
+    TouchableOpacity,
     View
 } from 'react-native'
 import { Divider } from 'react-native-elements/dist/divider/Divider'
@@ -14,10 +15,11 @@ import Titulo from '../components/Titulo'
 import BotaoPrincipal from '../components/BotaoPrincipal'
 import globalStyles from '../styles/globalStyles'
 
-export default ({ route }) => {
+export default ({ navigation, route }) => {
     const [servicos, setServicos] = useState([])
     const [loading, setLoading] = useState(true)
-    const { id_estabelecimento, nome_fantasia, foto_estabelecimento } = route.params
+    const { id_estabelecimento, nome_fantasia, foto_estabelecimento } = route.params[0]
+    const { id_cliente } = route.params[1]
 
     useEffect(() => {
         async function getServicos() {
@@ -63,8 +65,10 @@ export default ({ route }) => {
                                 return (
                                     <View>
                                         <View style={styles.infoServico}>
-                                            <Text style={styles.textoInfoServico}>{item.nome_servico}</Text>
-                                            <Text style={styles.textoInfoServico}>R$ {item.valor_servico.toString().replace(".", ",")}</Text>
+                                            <Text style={styles.textoInfoServico}>{item.nome_servico} - R$ {item.valor_servico.toString().replace(".", ",")}</Text>
+                                            <TouchableOpacity onPress={() => navigation.navigate("TelaAgendamento", [id_estabelecimento, id_cliente, item.id_servico])}>
+                                                <Text>Agendar</Text>
+                                            </TouchableOpacity>
                                         </View>
                                         <Divider orientation="horizontal" />
                                     </View>
@@ -72,7 +76,6 @@ export default ({ route }) => {
                             }}
                         />
                     </View>
-                    <BotaoPrincipal title="Agendar" onPress={() => console.log(servicos)} />
                 </>   
             }
 

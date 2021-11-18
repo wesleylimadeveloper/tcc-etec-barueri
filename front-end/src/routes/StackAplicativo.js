@@ -8,6 +8,7 @@ import TelaCadastro from '../screens/TelaCadastro'
 import TelaInicio from '../screens/TelaInicio'
 import TelaEstabelecimentos from '../screens/TelaEstabelecimentos'
 import TelaServicos from '../screens/TelaServicos'
+import TelaAgendamento from '../screens/TelaAgendamento'
 import TelaCategorias from '../screens/TelaCategorias'
 import TelaFiltroCategorias from '../screens/TelaFiltroCategorias'
 import TelaPerfil from '../screens/TelaPerfil'
@@ -67,6 +68,11 @@ export default () => {
                 component={TelaServicos} 
                 name="TelaServicos" 
                 options={{ headerTitle: "Serviços" }} 
+            />
+            <Screen 
+                component={TelaAgendamento} 
+                name="TelaAgendamento" 
+                options={{ headerTitle: "Agendamento" }} 
             />
             <Screen 
                 component={TelaCategorias} 

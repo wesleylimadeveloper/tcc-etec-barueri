@@ -39,7 +39,7 @@ export default ({ navigation, route }) => {
                 <Image style={styles.imagemEstabelecimento} 
                     source={{ uri: `${item.foto_estabelecimento}` }} />
                 <View style={styles.infoContainer}>
-                    <TouchableOpacity onPress={() => navigation.navigate("TelaServicos", item)}>
+                    <TouchableOpacity onPress={() => navigation.navigate("TelaServicos", [item, usuario])}>
                         <Text style={styles.nomeFantasia}>{item.nome_fantasia}</Text>
                         <Text style={styles.endereco}>{item.logradouro}, {item.numero} - {item.cidade}</Text>
                     </TouchableOpacity>
