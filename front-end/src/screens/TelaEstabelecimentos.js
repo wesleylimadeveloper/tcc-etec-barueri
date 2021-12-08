@@ -53,20 +53,13 @@ export default ({ navigation, route }) => {
             <StatusBar 
                 backgroundColor={globalStyles.corSecundaria}
                 barStyle="light-content" />
-            <View style={styles.searchBarContainer}>
-                <SearchBar
-                    onChangeText={value => setBuscar(value)} 
-                    placeholder="Buscar..."
-                    value={buscar} 
-                />
-            </View>
             {loading
                 ?
                 <View style={styles.loading}>
                     <ActivityIndicator size="large" color={globalStyles.corSecundaria} />
                 </View>
                 :
-                <>
+                <View style={styles.carrossel}>
                     <Carousel 
                         data={estabelecimentos}
                         itemWidth={350}
@@ -80,7 +73,7 @@ export default ({ navigation, route }) => {
                         renderItem={estabelecimentosProximos}
                         sliderWidth={400}
                     />
-                </>
+                </View>
             }
         </ScrollView>
     )
@@ -91,19 +84,18 @@ const styles = StyleSheet.create({
         backgroundColor: globalStyles.corPrincipal,
         flex: 1,
     },
-    searchBarContainer: {
-        alignSelf: 'center',
-        marginVertical: 20,
-    },
     titulo: {
         color: globalStyles.corSecundaria,
         fontSize: 24,
         fontWeight: 'bold',
-        marginBottom: 5,
+        marginBottom: 10,
         textAlign: 'center',
     },
     loading: {
         marginTop: 250,
+    },
+    carrossel: {
+        marginTop: 20,
     },
     carouselContainer: {
         alignItems: 'center',

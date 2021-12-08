@@ -15,9 +15,10 @@ import api from '../api/api'
 import globalStyles from '../styles/globalStyles'
 
 export default ({ route, navigation }) => {
-    const { id_categoria, nome_categoria } = route.params
     const [servicos, setServicos] = useState([])
     const [loading, setLoading] = useState(true)
+    const { id_categoria, nome_categoria } = route.params[0]
+    const usuario = route.params[1]
 
     useEffect(() => {
         async function getCategorias() {
@@ -57,7 +58,7 @@ export default ({ route, navigation }) => {
                                 <View style={styles.servicoContainer}>
                                     <Image style={styles.fotoLugar} source={{ uri: `${item.foto_estabelecimento}` }} />
                                     <TouchableOpacity style={styles.nomeFantasiaContainer}
-                                        onPress={() => navigation.navigate("TelaServicos", item)}>
+                                        onPress={() => navigation.navigate("TelaServicos", [item, usuario])}>
                                         <Text style={styles.nomeFantasia}>{item.nome_fantasia}</Text>
                                         <Divider />
                                     </TouchableOpacity>

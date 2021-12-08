@@ -66,8 +66,10 @@ export default ({ navigation, route }) => {
                                     <View>
                                         <View style={styles.infoServico}>
                                             <Text style={styles.textoInfoServico}>{item.nome_servico} - R$ {item.valor_servico.toString().replace(".", ",")}</Text>
-                                            <TouchableOpacity onPress={() => navigation.navigate("TelaAgendamento", [id_estabelecimento, id_cliente, item.id_servico])}>
-                                                <Text>Agendar</Text>
+                                            <TouchableOpacity
+                                                style={styles.botaoAgendar} 
+                                                onPress={() => navigation.navigate("TelaAgendamento", [id_estabelecimento, id_cliente, item.id_servico, item.nome_servico, item.valor_servico])}>
+                                                <Text style={styles.textoBotaoAgendar}>Agendar</Text>
                                             </TouchableOpacity>
                                         </View>
                                         <Divider orientation="horizontal" />
@@ -125,10 +127,25 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'space-between',
+        marginBottom: 10,
+        marginTop: 5,
     },
     textoInfoServico: {
         color: globalStyles.corSecundaria,
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: 'bold',
-    }
+    },
+    botaoAgendar: {
+        alignItems: 'center',
+        backgroundColor: globalStyles.corSecundaria,
+        borderRadius: 3,
+        justifyContent: 'center',
+        padding: 2,
+        width: '25%'
+    },
+    textoBotaoAgendar: {
+        color: '#FFF',
+        fontSize: 16,
+        fontWeight: 'bold'
+    },
 })

@@ -44,9 +44,9 @@ export default ({ navigation, route }) => {
                 <Icon color="#FFF" name="filter" size={36} type="font-awesome" />
                 <Text style={styles.texto}>Categorias</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.botao}>
+            <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate("TelaPedidos", usuario)}>
                 <Icon color="#FFF" name="tasks" size={36} type="font-awesome" />
-                <Text style={styles.texto}>Pedidos</Text>
+                <Text style={styles.texto}>Meus Pedidos</Text>
             </TouchableOpacity>
         </View>
     )

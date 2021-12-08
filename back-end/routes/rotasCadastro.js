@@ -16,14 +16,14 @@ router.post('/clientes', (req, res) => {
 })
 
 router.post('/agendas', (req, res) => {
-    const { data_agenda, descricao } = req.body
-    const sql = `INSERT INTO tbl_agenda(data_agenda, descricao) VALUES(?, ?)`
+    const { id_estabelecimento, id_cliente, id_servico, data_agenda, status_agenda } = req.body
+    const sql = `INSERT INTO tbl_agenda(id_estabelecimento, id_cliente, id_servico, data_agenda, status_agenda) VALUES(?, ?, ?, ?, ?)`
     
-    connection.query(sql, [data_agenda, descricao], (error, results, fields) => {
+    connection.query(sql, [id_estabelecimento, id_cliente, id_servico, data_agenda, status_agenda], (error, results, fields) => {
         if (!error) {
             res.send('Dados cadastrados com sucesso!')
         } else {
-            res.send('Erro ao cadastrar os dados.')
+            res.send(error)
         }
     })
 })

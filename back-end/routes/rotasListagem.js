@@ -117,4 +117,17 @@ router.get('/estabelecimentos', (req, res) => {
     })
 })
 
+router.get('/agendas/:id', (req, res) => {
+    const { id } = req.params
+    const sql = 'SELECT id_agenda, nome_fantasia, telefone_estabelecimento, data_agenda, status_agenda FROM tbl_agenda a JOIN tbl_estabelecimento e ON a.id_estabelecimento = e.id_estabelecimento WHERE id_cliente = ? ORDER BY data_agenda'
+
+    connection.query(sql, [id], (error, results, fields) => {
+        if (!error) {
+            res.send(results)
+        } else {
+            res.send('Erro ao listar dados!')
+        }
+    })
+})
+
 module.exports = router

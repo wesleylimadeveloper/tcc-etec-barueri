@@ -11,6 +11,7 @@ import TelaServicos from '../screens/TelaServicos'
 import TelaAgendamento from '../screens/TelaAgendamento'
 import TelaCategorias from '../screens/TelaCategorias'
 import TelaFiltroCategorias from '../screens/TelaFiltroCategorias'
+import TelaPedidos from '../screens/TelaPedidos'
 import TelaPerfil from '../screens/TelaPerfil'
 
 import globalStyles from '../styles/globalStyles'
@@ -83,6 +84,11 @@ export default () => {
                 component={TelaFiltroCategorias} 
                 name="TelaFiltroCategorias" 
                 options={{ headerTitle: "Categoria" }} 
+            />
+            <Screen 
+                component={TelaPedidos} 
+                name="TelaPedidos" 
+                options={{ headerTitle: "Meus Pedidos" }} 
             />
             <Screen 
                 component={TelaPerfil} 

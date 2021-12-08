@@ -22,13 +22,17 @@ export default ({ navigation }) => {
     if(emailUsuario.trim() == '' || senhaUsuario.trim() == '') {
       Alert.alert('Preencha todos os campos', 'Digite e-mail e senha.')
     } else {
-      const { data } = await api.get(`/clientes/${email}`)
-      const [usuario] = data
+      try {
+        const { data } = await api.get(`/clientes/${email}`)
+        const [usuario] = data
 
-      if(emailUsuario.trim() == usuario.email_cliente && senhaUsuario == usuario.senha_cliente) {
+        if(emailUsuario.trim() == usuario.email_cliente && senhaUsuario == usuario.senha_cliente) {
         navigation.navigate("TelaInicio", usuario)
-      } else {
+        } else {
         Alert.alert('Senha incorreta', 'Verifique e-mail e senha.')
+        }
+      } catch (error) {
+        console.log(error)
       }
     }
   }
