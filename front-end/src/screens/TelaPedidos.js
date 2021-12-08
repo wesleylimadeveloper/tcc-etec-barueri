@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {
     ActivityIndicator,
+    Alert,
     FlatList,
     Image,
     StatusBar,
@@ -30,11 +31,12 @@ export default ({ route }) => {
             }
         }
         getPedidos()
-    }, [])
+    }, [pedidos])
 
-    async function excluirPedido() {
+    async function excluirPedido(agenda) {
         try {
-            await api.delete(`/agendas/${id_agenda}`)
+            await api.delete(`/agendas/${agenda}`)
+            Alert.alert("Pedido excluído", "Pedido excluído com sucesso!")
         } catch (error) {
             console.log(error)
         }
@@ -67,11 +69,8 @@ export default ({ route }) => {
                                         <Text style={styles.texto}>Telefone: {item.telefone_estabelecimento}</Text>
                                         <Text style={styles.texto}>Data: {item.data_agenda}</Text>
                                         <Text style={styles.nomeFantasia}>{item.status_agenda}</Text>
-                                        <View style={styles.iconsContainer}>
-                                            <TouchableOpacity>
-                                                <Icon color={globalStyles.corSecundaria} name="edit" size={24} type="font-awesome" />
-                                            </TouchableOpacity>
-                                            <TouchableOpacity onPress={excluirPedido}>
+                                        <View style={styles.iconContainer}>
+                                            <TouchableOpacity onPress={() => excluirPedido(item.id_agenda)}>
                                                 <Icon color="red" name="trash" size={24} type="font-awesome" />
                                             </TouchableOpacity>
                                         </View>
@@ -127,10 +126,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold'
     },
-    iconsContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
+    iconContainer: {
         marginTop: 10,
-        width: '50%'
     }
 })

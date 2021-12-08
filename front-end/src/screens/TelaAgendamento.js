@@ -28,7 +28,7 @@ export default ({ navigation, route }) => {
             "id_estabelecimento": id_estabelecimento,
             "id_cliente": id_cliente,
             "id_servico": id_servico,
-            "data_agenda": `${data} 13:30:00`,
+            "data_agenda": `${data} 00:00:00`,
             "status_agenda": "AGENDADO"
         }
 

@@ -1,12 +1,10 @@
 import React from 'react'
 import {
-    Image,
     StatusBar, 
     StyleSheet, 
     Text, 
     View 
 } from 'react-native'
-import { Icon } from 'react-native-elements'
 
 import BotaoPrincipal from '../components/BotaoPrincipal'
 import BotaoSecundario from '../components/BotaoSecundario'

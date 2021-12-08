@@ -9,7 +9,6 @@ import {
     TouchableOpacity,
     View
 } from 'react-native'
-import SearchBar from '../components/SearchBar'
 import api from '../api/api'
 import globalStyles from '../styles/globalStyles'
 

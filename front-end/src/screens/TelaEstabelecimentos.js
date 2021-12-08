@@ -9,7 +9,6 @@ import {
     TouchableOpacity, 
     View 
 } from 'react-native'
-import SearchBar from '../components/SearchBar'
 import Carousel from 'react-native-snap-carousel'
 import api from '../api/api'
 import globalStyles from '../styles/globalStyles'
@@ -49,7 +48,7 @@ export default ({ navigation, route }) => {
     }
 
     return (
-        <ScrollView style={styles.container}>
+        <View style={styles.container}>
             <StatusBar 
                 backgroundColor={globalStyles.corSecundaria}
                 barStyle="light-content" />
@@ -66,16 +65,9 @@ export default ({ navigation, route }) => {
                         renderItem={estabelecimentosProximos}
                         sliderWidth={400}
                     />
-                    <Text style={styles.titulo}>Promoções</Text>
-                    <Carousel 
-                        data={estabelecimentos}
-                        itemWidth={350}
-                        renderItem={estabelecimentosProximos}
-                        sliderWidth={400}
-                    />
                 </View>
             }
-        </ScrollView>
+        </View>
     )
 }
 
@@ -83,13 +75,6 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: globalStyles.corPrincipal,
         flex: 1,
-    },
-    titulo: {
-        color: globalStyles.corSecundaria,
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginBottom: 10,
-        textAlign: 'center',
     },
     loading: {
         marginTop: 250,
@@ -102,6 +87,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFF',
         borderRadius: 5,
         marginBottom: 10,
+        marginTop: 150,
         paddingVertical: 5,
     },
     imagemEstabelecimento: {
