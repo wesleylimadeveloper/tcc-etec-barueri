@@ -13,12 +13,13 @@ import BotaoPrincipal from '../components/BotaoPrincipal'
 import api from '../api/api'
 import globalStyles from '../styles/globalStyles'
 
-export default ({ navigation, route }) => {    
-    const id_estabelecimento = route.params[0]
-    const id_cliente = route.params[1]
-    const id_servico = route.params[2]
-    const nome_servico = route.params[3]
-    const valor_servico = route.params[4]
+export default ({ navigation, route }) => {
+    const usuario = route.params[0]    
+    const id_estabelecimento = route.params[1]
+    const id_cliente = route.params[2]
+    const id_servico = route.params[3]
+    const nome_servico = route.params[4]
+    const valor_servico = route.params[5]
 
     const [data, setData] = useState('')
 
@@ -35,7 +36,7 @@ export default ({ navigation, route }) => {
 
         if (response.data == "Dados cadastrados com sucesso!") {
             Alert.alert('Serviço agendado', 'Serviço agendado com sucesso!')
-            navigation.navigate("TelaInicio")
+            navigation.navigate("TelaInicio", usuario)
         } else {
             Alert.alert('Erro', 'Preencha todos os dados.')
         }

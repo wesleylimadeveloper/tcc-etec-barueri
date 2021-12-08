@@ -18,6 +18,7 @@ import globalStyles from '../styles/globalStyles'
 export default ({ navigation, route }) => {
     const [servicos, setServicos] = useState([])
     const [loading, setLoading] = useState(true)
+    const usuario = route.params[1]
     const { id_estabelecimento, nome_fantasia, foto_estabelecimento } = route.params[0]
     const { id_cliente } = route.params[1]
 
@@ -68,7 +69,7 @@ export default ({ navigation, route }) => {
                                             <Text style={styles.textoInfoServico}>{item.nome_servico} - R$ {item.valor_servico.toString().replace(".", ",")}</Text>
                                             <TouchableOpacity
                                                 style={styles.botaoAgendar} 
-                                                onPress={() => navigation.navigate("TelaAgendamento", [id_estabelecimento, id_cliente, item.id_servico, item.nome_servico, item.valor_servico])}>
+                                                onPress={() => navigation.navigate("TelaAgendamento", [usuario, id_estabelecimento, id_cliente, item.id_servico, item.nome_servico, item.valor_servico])}>
                                                 <Text style={styles.textoBotaoAgendar}>Agendar</Text>
                                             </TouchableOpacity>
                                         </View>

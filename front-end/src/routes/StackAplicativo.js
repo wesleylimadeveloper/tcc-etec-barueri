@@ -13,6 +13,7 @@ import TelaCategorias from '../screens/TelaCategorias'
 import TelaFiltroCategorias from '../screens/TelaFiltroCategorias'
 import TelaPedidos from '../screens/TelaPedidos'
 import TelaPerfil from '../screens/TelaPerfil'
+import TelaEditarPerfil from '../screens/TelaEditarPerfil'
 
 import globalStyles from '../styles/globalStyles'
 
@@ -94,6 +95,11 @@ export default () => {
                 component={TelaPerfil} 
                 name="TelaPerfil" 
                 options={{ headerTitle: "Perfil" }} 
+            />
+            <Screen 
+                component={TelaEditarPerfil} 
+                name="TelaEditarPerfil" 
+                options={{ headerTitle: "Editar Perfil" }} 
             />
         </Navigator>
     )

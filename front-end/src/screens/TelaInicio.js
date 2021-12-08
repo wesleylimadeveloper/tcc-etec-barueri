@@ -14,7 +14,6 @@ import globalStyles from '../styles/globalStyles'
 
 export default ({ navigation, route }) => {
     const usuario = route.params
-    const { foto_cliente } = route.params
 
     return (
         <View style={styles.container}>
@@ -24,14 +23,6 @@ export default ({ navigation, route }) => {
             />
             <TouchableOpacity onPress={() => navigation.navigate("TelaPerfil", usuario)}>
                 <View style={styles.tituloContainer}>
-                    {foto_cliente == null
-                        ?
-                        <View style={styles.iconePerfilContainer}>
-                            <Icon color="#FFF" name="user" size={26} type="font-awesome" />
-                        </View>
-                        :
-                        <Image style={styles.fotoPerfil} source={{ uri: `${foto_cliente}` }} />
-                    }
                     <Text style={styles.textoSaudacao}>Olá, {usuario.nome_cliente}!</Text>
                 </View>
             </TouchableOpacity>

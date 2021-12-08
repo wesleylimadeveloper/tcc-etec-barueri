@@ -12,8 +12,9 @@ import BotaoPrincipal from '../components/BotaoPrincipal'
 import BotaoSecundario from '../components/BotaoSecundario'
 import globalStyles from '../styles/globalStyles'
 
-export default ({ route }) => {
-    const { foto_cliente, nome_cliente, sobrenome_cliente, email_cliente, telefone_cliente, sexo_cliente } = route.params
+export default ({ navigation, route }) => {
+    const { nome_cliente, sobrenome_cliente, email_cliente, telefone_cliente, sexo_cliente } = route.params
+    const usuario = route.params
 
     return (
         <View style={styles.container}>
@@ -22,21 +23,13 @@ export default ({ route }) => {
                 barStyle="light-content" 
             />
             <View style={styles.infoContainer}>
-                {foto_cliente == null
-                    ?
-                    <View style={styles.iconePerfilContainer}>
-                        <Icon color="#FFF" name="user" size={62} type="font-awesome" />
-                    </View>
-                    :
-                    <Image style={styles.fotoPerfil} source={{ uri: `${foto_cliente}` }} />
-                }
                 <Text style={styles.nome}>{nome_cliente} {sobrenome_cliente}</Text>
                 <Text style={styles.textoInfo}>E-mail: <Text style={styles.texto}>{email_cliente}</Text> </Text>
                 <Text style={styles.textoInfo}>Telefone: <Text style={styles.texto}>{telefone_cliente}</Text> </Text>
                 <Text style={styles.textoInfo}>Sexo: <Text style={styles.texto}>{sexo_cliente}</Text> </Text>
             </View>
             <View style={styles.botoesContainer}>
-                <BotaoPrincipal title="Editar" />
+                <BotaoPrincipal onPress={() => navigation.navigate("TelaEditarPerfil", usuario)} title="Editar" />
                 <BotaoSecundario title="Sair" />
             </View>
         </View>
@@ -55,7 +48,7 @@ const styles = StyleSheet.create({
     },
     infoContainer: {
         alignItems: 'center',
-        height: '50%',
+        height: '35%',
         justifyContent: 'space-evenly',
         marginVertical: 20,
         width: '70%'
