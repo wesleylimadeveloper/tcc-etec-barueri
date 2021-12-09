@@ -28,7 +28,7 @@ export default ({ navigation, route }) => {
             </View>
             <View style={styles.botoesContainer}>
                 <BotaoPrincipal onPress={() => navigation.navigate("TelaEditarPerfil", usuario)} title="Editar" />
-                <BotaoSecundario title="Sair" />
+                <BotaoSecundario onPress={() => navigation.navigate("TelaLogin")} title="Sair" />
             </View>
         </View>
     )

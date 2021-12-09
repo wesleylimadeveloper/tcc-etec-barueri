@@ -11,6 +11,7 @@ import {
 } from 'react-native'
 import Carousel from 'react-native-snap-carousel'
 import api from '../api/api'
+import Titulo from '../components/Titulo'
 import globalStyles from '../styles/globalStyles'
 
 export default ({ navigation, route }) => {
@@ -65,6 +66,17 @@ export default ({ navigation, route }) => {
                         renderItem={estabelecimentosProximos}
                         sliderWidth={400}
                     />
+                    <View style={styles.titulo}>
+                        <Titulo>
+                            <Text>Promoções</Text>
+                        </Titulo>
+                    </View>
+                    <Carousel 
+                        data={estabelecimentos}
+                        itemWidth={350}
+                        renderItem={estabelecimentosProximos}
+                        sliderWidth={400}
+                    />
                 </View>
             }
         </View>
@@ -82,12 +94,14 @@ const styles = StyleSheet.create({
     carrossel: {
         marginTop: 20,
     },
+    titulo: {
+        marginBottom: 10,
+    },
     carouselContainer: {
         alignItems: 'center',
         backgroundColor: '#FFF',
         borderRadius: 5,
         marginBottom: 10,
-        marginTop: 150,
         paddingVertical: 5,
     },
     imagemEstabelecimento: {
